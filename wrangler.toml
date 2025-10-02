@@ -2,6 +2,7 @@ name = "sqlite-wiki-search"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
+account_id = "<REDACTED_ACCOUNT_ID>"
 
 # AI binding for AutoRAG access
 [ai]
