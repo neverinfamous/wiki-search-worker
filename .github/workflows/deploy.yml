@@ -1,0 +1,69 @@
+name: Deploy Wiki Search Worker & Sync AutoRAG
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Worker and Sync AutoRAG
+    
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Deploy Worker using Wrangler
+      - name: Deploy Worker to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Step 5: Sync wiki files to R2 bucket
+      - name: Clone wiki repository
+        run: |
+          git clone https://github.com/neverinfamous/sqlite-mcp-server.wiki.git wiki-temp
+          
+      - name: Upload wiki files to R2
+        run: |
+          cd wiki-temp
+          for file in *.md; do
+            echo "Uploading $file to R2..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/"$file" --file="$file"
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Step 6: Trigger AutoRAG sync (forces a manual index sync)
+      - name: Trigger AutoRAG Index Sync
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/ai-search/sqlite-mcp-server-wiki/sync" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json"
+        continue-on-error: true  # Don't fail if manual sync isn't available
+
+      - name: Deployment Summary
+        run: |
+          echo "✅ Worker deployed to Cloudflare"
+          echo "✅ Wiki files synced to R2 bucket: sqlite-mcp-server-wiki"
+          echo "✅ AutoRAG index sync triggered"
+          echo ""
+          echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
+          echo "🔗 Custom Domain: https://search.adamic.tech"
+
