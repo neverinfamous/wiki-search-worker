@@ -101,8 +101,8 @@ const HTML_CONTENT = `<!DOCTYPE html>
             color: var(--text-muted);
             font-size: 0.875rem;
             margin-left: auto;
-            margin-right: 0.5rem;
             line-height: 1.2;
+            white-space: nowrap;
         }
         /* Hamburger Menu */
         .hamburger {
@@ -933,6 +933,15 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 });
             });
         }
+        
+        // Close mobile nav when clicking any link without target attribute
+        document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!link.hasAttribute('target')) {
+                    closeMobileNav();
+                }
+            });
+        });
     </script>
 </body>
 </html>`;
