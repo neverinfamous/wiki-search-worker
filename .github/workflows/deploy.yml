@@ -44,7 +44,7 @@ jobs:
           cd wiki-temp
           for file in *.md; do
             echo "Uploading $file to R2..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/"$file" --file="$file"
+            npx wrangler r2 object put sqlite-mcp-server-wiki/"$file" --file="$file" --remote
           done
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
