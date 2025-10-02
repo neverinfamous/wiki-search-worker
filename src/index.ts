@@ -61,6 +61,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            height: 88px;
         }
         .logo-link { display: inline-block; text-decoration: none; }
         .logo { height: 58px; width: 58px; display: block; object-fit: contain; }
@@ -568,7 +569,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     </svg>
                 </a>
             </nav>
-            <div class="site-tagline">MCP Server Documentation & Support</div>
+            <div class="site-tagline">MCP Server Support</div>
             
             <!-- Hamburger Menu Button -->
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">
@@ -626,7 +627,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <div class="container">
         <header class="page-header">
-            <h1>🔍 SQLite MCP Server Documentation Search</h1>
+            <h1>🔍 SQLite MCP Server AI Documentation Search</h1>
             <p>AI-Powered Natural Language Search for 73+ Database Tools and Features</p>
         </header>
         
