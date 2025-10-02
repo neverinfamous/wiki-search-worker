@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite MCP Server Wiki Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .search-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: #667eea;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .mode-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn {
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .search-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #667eea;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .result-mode {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .result-time {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .result-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .result-content pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .result-content code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .source-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .source-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #c33;
+        }
+
+        .examples {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .examples h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .example-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .example-btn:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+            transform: translateX(4px);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 SQLite MCP Server</h1>
+            <p>AI-Powered Wiki Search</p>
+        </div>
+
+        <div class="search-card">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Ask anything about SQLite MCP Server..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="ai">
+                    ✨ AI-Enhanced
+                </button>
+                <button class="mode-btn" data-mode="search">
+                    📄 Raw Docs
+                </button>
+            </div>
+
+            <button class="search-btn" id="searchBtn">Search</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Searching the wiki...</p>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <div class="examples">
+            <h3>💡 Try These Examples:</h3>
+            <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">
+                How do I use JSON helper tools for data normalization?
+            </button>
+            <button class="example-btn" data-query="How do I prevent SQL injection attacks?">
+                How do I prevent SQL injection attacks?
+            </button>
+            <button class="example-btn" data-query="What statistical analysis tools are available?">
+                What statistical analysis tools are available?
+            </button>
+            <button class="example-btn" data-query="How do I set up vector search with embeddings?">
+                How do I set up vector search with embeddings?
+            </button>
+            <button class="example-btn" data-query="How do I backup and restore my database?">
+                How do I backup and restore my database?
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>
+                Powered by <a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank">SQLite MCP Server</a> 
+                • <a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank">Documentation</a>
+                • <a href="https://adamic.tech" target="_blank">Adamic.tech</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'ai';
+
+        // Mode toggle
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentMode = btn.dataset.mode;
+            });
+        });
+
+        // Search function
+        async function performSearch(query) {
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const searchBtn = document.getElementById('searchBtn');
+
+            loading.classList.add('show');
+            results.classList.remove('show');
+            searchBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        mode: currentMode,
+                        max_results: 5
+                    })
+                });
+
+                const data = await response.json();
+
+                loading.classList.remove('show');
+                results.classList.add('show');
+
+                if (data.success) {
+                    displayResults(data, query);
+                } else {
+                    results.innerHTML = `
+                        <div class="result-card">
+                            <div class="error">
+                                <strong>Error:</strong> ${data.error}
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                loading.classList.remove('show');
+                results.classList.add('show');
+                results.innerHTML = `
+                    <div class="result-card">
+                        <div class="error">
+                            <strong>Error:</strong> ${error.message}
+                        </div>
+                    </div>
+                `;
+            } finally {
+                searchBtn.disabled = false;
+            }
+        }
+
+        function displayResults(data, query) {
+            const results = document.getElementById('results');
+            const mode = data.mode === 'ai' ? '✨ AI-Enhanced' : '📄 Raw Documents';
+
+            if (data.mode === 'ai') {
+                // AI mode - display synthesized response
+                results.innerHTML = `
+                    <div class="result-card">
+                        <div class="result-header">
+                            <span class="result-mode">${mode}</span>
+                            <span class="result-time">${new Date(data.timestamp).toLocaleTimeString()}</span>
+                        </div>
+                        <div class="result-content">
+                            <p><strong>Query:</strong> ${query}</p>
+                            <hr style="margin: 1rem 0; border: none; border-top: 1px solid #eee;">
+                            ${formatAIResponse(data.data)}
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Search mode - display raw chunks
+                const chunks = data.data.data || [];
+                results.innerHTML = `
+                    <div class="result-card">
+                        <div class="result-header">
+                            <span class="result-mode">${mode}</span>
+                            <span class="result-time">${chunks.length} results</span>
+                        </div>
+                        <div class="result-content">
+                            ${chunks.map(chunk => `
+                                <div class="source-item">
+                                    <h4>${chunk.filename || 'Document'}</h4>
+                                    <p>${formatContent(chunk.content)}</p>
+                                    <small style="color: #999;">Score: ${(chunk.score * 100).toFixed(1)}%</small>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function formatAIResponse(data) {
+            // Handle string response
+            if (typeof data === 'string') {
+                return `<p>${data.replace(/\n/g, '<br>')}</p>`;
+            }
+            
+            // Handle object with response field
+            if (data.response) {
+                return `<p>${data.response.replace(/\n/g, '<br>')}</p>`;
+            }
+
+            // Handle array of content chunks
+            if (Array.isArray(data)) {
+                return data.map(item => `<p>${JSON.stringify(item)}</p>`).join('');
+            }
+
+            // Fallback
+            return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        function formatContent(content) {
+            if (Array.isArray(content)) {
+                return content.map(c => c.text || c).join(' ');
+            }
+            if (typeof content === 'object') {
+                return content.text || JSON.stringify(content);
+            }
+            return content;
+        }
+
+        // Search button click
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                performSearch(query);
+            }
+        });
+
+        // Enter key in search input
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = e.target.value.trim();
+                if (query) {
+                    performSearch(query);
+                }
+            }
+        });
+
+        // Example buttons
+        document.querySelectorAll('.example-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const query = btn.dataset.query;
+                document.getElementById('searchInput').value = query;
+                performSearch(query);
+            });
+        });
+    </script>
+</body>
+</html>
+

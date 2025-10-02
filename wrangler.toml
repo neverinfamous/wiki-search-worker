@@ -1,0 +1,25 @@
+name = "sqlite-wiki-search"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# AI binding for AutoRAG access
+[ai]
+binding = "AI"
+
+# Environment variables
+[vars]
+# Comma-separated list of allowed origins for CORS
+# Use "*" to allow all origins (not recommended for production)
+# Example: "https://adamic.tech,https://docs.adamic.tech"
+ALLOWED_ORIGINS = "*"
+
+# Production configuration
+[env.production]
+vars = { ALLOWED_ORIGINS = "https://adamic.tech" }
+
+# Custom domain route
+routes = [
+  { pattern = "adamic.tech/wiki-search/*", zone_name = "adamic.tech" }
+]
+

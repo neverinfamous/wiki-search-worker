@@ -1,0 +1,31 @@
+{
+	"name": "sqlite-wiki-search-worker",
+	"version": "1.0.0",
+	"description": "Public search interface for SQLite MCP Server Wiki using Cloudflare AutoRAG",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"deploy:production": "wrangler deploy --env production",
+		"tail": "wrangler tail"
+	},
+	"keywords": [
+		"cloudflare",
+		"workers",
+		"autorag",
+		"sqlite",
+		"mcp",
+		"search"
+	],
+	"author": "Adamic",
+	"license": "MIT",
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250110.0",
+		"typescript": "^5.7.2",
+		"wrangler": "^3.107.0"
+	},
+	"overrides": {
+		"esbuild": "^0.25.10"
+	}
+}
+
