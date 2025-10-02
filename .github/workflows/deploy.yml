@@ -51,12 +51,20 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
-      - name: AutoRAG Sync Note
+      - name: AutoRAG Sync Instructions
         run: |
-          echo "📝 Note: AutoRAG automatically syncs every 6 hours from R2."
-          echo "💡 To manually trigger sync now, visit:"
-          echo "   https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki"
-          echo "   Click 'Sync Index' button in the dashboard."
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "⚠️  MANUAL STEP REQUIRED: Sync AutoRAG Index"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          echo "📝 R2 files have been updated, but AutoRAG needs manual sync."
+          echo ""
+          echo "🔗 Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki"
+          echo "👆 Click the 'Sync Index' button"
+          echo ""
+          echo "⏱️  Or wait up to 6 hours for automatic sync"
+          echo ""
 
       - name: Deployment Summary
         run: |
