@@ -24,9 +24,10 @@ Add these two secrets:
 
 | Secret Name | Value | Where to Find |
 |------------|-------|---------------|
-| `CLOUDFLARE_API_TOKEN` | Your Cloudflare Global API Key | Already set: `75d9c0a2d7894f19a088f85375557b65c0dc0` |
-| `CLOUDFLARE_EMAIL` | Your Cloudflare account email | Already set: `writenotenow@gmail.com` |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Already set: `<REDACTED_ACCOUNT_ID>` |
+| `CLOUDFLARE_API_TOKEN` | Your Cloudflare Global API Key | Use: `75d9c0a2d7894f19a088f85375557b65c0dc0` |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Use: `<REDACTED_ACCOUNT_ID>` |
+
+**Note**: Wrangler 4.x uses `CLOUDFLARE_API_TOKEN` for both API tokens and Global API Keys.
 
 **To create a new API token** (if needed):
 1. Go to https://dash.cloudflare.com/profile/api-tokens
