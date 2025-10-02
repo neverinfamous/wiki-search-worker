@@ -4,6 +4,9 @@ compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 account_id = "<REDACTED_ACCOUNT_ID>"
 
+# Smart Placement - optimizes Worker location based on backend calls
+placement = { mode = "smart" }
+
 # AI binding for AutoRAG access
 [ai]
 binding = "AI"
