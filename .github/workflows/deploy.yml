@@ -50,13 +50,13 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      # Step 6: Trigger AutoRAG sync (forces a manual index sync)
-      - name: Trigger AutoRAG Index Sync
+      # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
+      - name: AutoRAG Sync Note
         run: |
-          curl -X POST "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/ai-search/sqlite-mcp-server-wiki/sync" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            -H "Content-Type: application/json"
-        continue-on-error: true  # Don't fail if manual sync isn't available
+          echo "📝 Note: AutoRAG automatically syncs every 6 hours from R2."
+          echo "💡 To manually trigger sync now, visit:"
+          echo "   https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki"
+          echo "   Click 'Sync Index' button in the dashboard."
 
       - name: Deployment Summary
         run: |
