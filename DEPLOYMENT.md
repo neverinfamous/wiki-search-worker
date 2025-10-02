@@ -24,7 +24,7 @@ Add these two secrets:
 
 | Secret Name | Value | Where to Find |
 |------------|-------|---------------|
-| `CLOUDFLARE_API_TOKEN` | Your Cloudflare API token | Already set: `J2RJvuQh0MQ48wtPvc9FlOGjjWdVJxNkwP3bejTY` |
+| `CLOUDFLARE_API_TOKEN` | Your Cloudflare Global API Key | Already set: `75d9c0a2d7894f19a088f85375557b65c0dc0` |
 | `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Already set: `<REDACTED_ACCOUNT_ID>` |
 
 **To create a new API token** (if needed):

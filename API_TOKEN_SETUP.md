@@ -1,6 +1,8 @@
-# Create Cloudflare API Token for GitHub Actions
+# Cloudflare API Authentication for GitHub Actions
 
-The current API token (`J2RJvuQh0MQ48wtPvc9FlOGjjWdVJxNkwP3bejTY`) doesn't have the required permissions for Workers deployment.
+**Currently Using**: Global API Key (`75d9c0a2d7894f19a088f85375557b65c0dc0`)
+
+This provides full access to all Cloudflare features including Workers, R2, and all MCP servers.
 
 ## Required Permissions
 
