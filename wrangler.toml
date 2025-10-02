@@ -24,3 +24,6 @@ routes = [
   { pattern = "adamic.tech/wiki-search/*", zone_name = "adamic.tech" }
 ]
 
+# Workers Logs configuration
+[observability.logs]
+enabled = true

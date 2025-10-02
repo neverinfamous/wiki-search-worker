@@ -1017,8 +1017,11 @@ export default {
 
 async function handleSearch(request: Request, env: Env): Promise<Response> {
 	try {
+		console.log('Search request received:', request.url);
+		
 		// Parse request body
 		const body = await request.json() as SearchRequest;
+		console.log('Search query:', body.query, 'Mode:', body.mode || 'ai');
 		
 		if (!body.query || typeof body.query !== 'string') {
 			return jsonResponse(
@@ -1081,6 +1084,17 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 		}
 
 		const responseTime = Date.now() - startTime;
+		
+		// Log search results
+		const resultCount = mode === 'ai' 
+			? (result?.data?.length || 0) 
+			: (Array.isArray(result) ? result.length : 0);
+		console.log('Search completed:', {
+			query: body.query,
+			mode,
+			resultCount,
+			responseTime: `${responseTime}ms`
+		});
 
 		const response: SearchResponse = {
 			success: true,
@@ -1094,7 +1108,11 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 			'X-Response-Time': `${responseTime}ms`,
 		});
 	} catch (error) {
-		console.error('Search error:', error);
+		console.error('Search error:', {
+			error: error instanceof Error ? error.message : 'Unknown error',
+			stack: error instanceof Error ? error.stack : undefined,
+			url: request.url
+		});
 		return jsonResponse(
 			{
 				success: false,
