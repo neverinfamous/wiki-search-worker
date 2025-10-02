@@ -267,6 +267,43 @@ const HTML_CONTENT = `<!DOCTYPE html>
             text-decoration: underline;
         }
         
+        /* Back to Top Button - Desktop only, matches main site */
+        .back-to-top {
+            position: fixed;
+            top: min(50%, calc(100vh - 422px));
+            left: 10%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            z-index: 1000;
+            font-weight: bold;
+        }
+        .back-to-top:hover {
+            background: var(--text-color);
+            transform: translateY(-50%) translateX(2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        .back-to-top:active {
+            transform: translateY(-50%) translateX(0);
+        }
+        .back-to-top:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
         @media (max-width: 768px) {
             body { padding-top: 100px; }
             .header-content { padding: 0 1rem; }
@@ -297,6 +334,9 @@ const HTML_CONTENT = `<!DOCTYPE html>
             }
             .footer-section h2 { font-size: 1rem; }
             .footer-section a { font-size: 0.875rem; }
+            .back-to-top {
+                display: none !important;
+            }
         }
         .container { max-width: 900px; margin: 0 auto; width: 100%; padding: 2rem 1rem; }
         .page-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border-color); }
@@ -734,6 +774,9 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a> | <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
             </div>
         </footer>
+        
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">⇈</button>
     </div>
     <script>
         let currentMode = 'ai';
@@ -879,6 +922,17 @@ const HTML_CONTENT = `<!DOCTYPE html>
         if (hamburger) hamburger.addEventListener('click', toggleMobileNav);
         if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
         if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+        
+        // Back to Top functionality - Always visible, smooth scroll to top
+        const backToTopBtn = document.getElementById('backToTop');
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     </script>
 </body>
 </html>`;
