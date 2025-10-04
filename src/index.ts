@@ -9,8 +9,8 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Server Documentation Search | AI-Powered Wiki Search for SQLite & PostgreSQL</title>
-    <meta name="description" content="AI-powered search across SQLite MCP Server (73 tools) and PostgreSQL MCP Server (63 tools) documentation. Find answers about database operations, JSON tools, security, vector search, performance optimization, and more.">
+    <title>MCP Server AI Documentation Search | SQLite & PostgreSQL</title>
+    <meta name="description" content="AI-powered search for SQLite and PostgreSQL MCP documentation. 136 database tools, natural language queries, instant answers with source attribution.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, database documentation, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
@@ -214,7 +214,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
         .footer-section h2 {
@@ -726,7 +726,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>Common use cases across both servers: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping and location services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, time series data analysis, backup automation and disaster recovery, database performance optimization, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Getting Started</h4>
-                    <p class="no-margin">Both servers are available via Docker Hub for instant deployment: <a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP Server</a> and <a href="https://hub.docker.com/r/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP Server</a>. Complete documentation is available on GitHub: <a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a> with guides for core database tools, JSON operations, and statistical analysis; <a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">PostgreSQL Wiki</a> with performance intelligence, security best practices, and monitoring guides. Both servers integrate seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language database operations.</p>
+                    <p class="no-margin">Both servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. SQLite MCP Server features core database tools, JSON operations, and statistical analysis. PostgreSQL MCP Server includes performance intelligence, security best practices, and monitoring guides. Both servers integrate seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language database operations.</p>
                 </div>
             </section>
             
@@ -765,42 +765,32 @@ const HTML_CONTENT = `<!DOCTYPE html>
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h2>Open Source</h2>
+                    <h2>MCP Servers</h2>
                     <ul>
-                        <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal Source</a></li>
-                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">View Projects</a></li>
+                        <li><a href="https://adamic.tech/">Home</a></li>
+                        <li><a href="https://adamic.tech/articles/">Articles</a></li>
+                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2>Docker Images</h2>
+                    <h2>Resources</h2>
                     <ul>
-                        <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal</a></li>
-                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">All Docker Images</a></li>
+                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub Projects</a></li>
+                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a></li>
+                        <li><a href="https://adamic.tech/contact.html">Contact Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h2>Documentation</h2>
                     <ul>
-                    <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
-                    <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
-                    <li><a href="https://gist.github.com/neverinfamous/7a47b6ca39857c7a8e06c4f7e6537a16" target="_blank" rel="noopener">PostgreSQL Gists</a></li>
-                    <li><a href="https://gist.github.com/neverinfamous/0c8ed77ddaff0edbe31df4f4e18c33ce" target="_blank" rel="noopener">SQLite Gists</a></li>
-                    <li><a href="https://search.adamic.tech">AI Search</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h2>Support</h2>
-                    <ul>
-                        <li><a href="https://adamic.tech/contact.html">Contact</a></li>
-                        <li><a href="https://adamic.tech/security-policy.html">Security Policy</a></li>
-                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
+                        <li><a href="https://adamic.tech/">PostgreSQL MCP</a></li>
+                        <li><a href="https://adamic.tech/">SQLite MCP</a></li>
+                        <li><a href="https://adamic.tech/security-policy.html">Security</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a> | <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
+                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
             </div>
         </footer>
         
