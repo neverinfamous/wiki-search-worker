@@ -112,7 +112,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             padding: 0.5rem;
             border: none;
             background: none;
-            margin-left: 0.5rem;
+            margin-left: auto;
         }
         .hamburger span {
             width: 24px;
