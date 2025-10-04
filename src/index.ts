@@ -800,7 +800,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
+                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a> | <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
             </div>
         </footer>
         
