@@ -74,6 +74,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
         .nav-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.6rem 1.2rem;
             background: var(--background-alt);
@@ -84,6 +85,11 @@ const HTML_CONTENT = `<!DOCTYPE html>
             font-size: 0.875rem;
             font-weight: 500;
             transition: all 0.2s;
+            white-space: nowrap;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0;
         }
         .nav-link:hover {
             background: var(--primary-color);
@@ -578,23 +584,23 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <img src="https://adamic.tech/assets/images/logo.webp" alt="Adamic Logo" class="logo" width="58" height="58">
             </a>
             <nav class="main-nav">
-                <a href="https://adamic.tech/" class="nav-link" title="Home">
+                <a href="https://adamic.tech/" class="nav-link" title="Home" style="min-width: 79px; font-weight: 400;">
                     <span class="nav-text">Home</span>
                     <span class="nav-icon">🏠</span>
                 </a>
-                <a href="https://adamic.tech/articles/" class="nav-link" title="Articles">
+                <a href="https://adamic.tech/articles/" class="nav-link" title="Articles" style="min-width: 88px; font-weight: 400;">
                     <span class="nav-text">Articles</span>
                     <span class="nav-icon">📚</span>
                 </a>
-                <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
+                <a href="https://search.adamic.tech" class="nav-link active" title="AI Search" style="min-width: 100px; font-weight: 600;">
                     <span class="nav-text">AI Search</span>
                     <span class="nav-icon">🔍</span>
                 </a>
-                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
+                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ" style="min-width: 67px; font-weight: 400;">
                     <span class="nav-text">FAQ</span>
                     <span class="nav-icon">❓</span>
                 </a>
-                <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
+                <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact" style="min-width: 90px; font-weight: 400;">
                     <span class="nav-text">Contact</span>
                     <span class="nav-icon">📧</span>
                 </a>
