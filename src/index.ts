@@ -36,8 +36,12 @@ const HTML_CONTENT = `<!DOCTYPE html>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
             background: var(--background);
             color: var(--text-color);
+            text-rendering: optimizeSpeed;
             min-height: 100vh;
             padding-top: 120px;
         }
