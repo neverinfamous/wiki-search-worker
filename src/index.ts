@@ -775,27 +775,37 @@ const HTML_CONTENT = `<!DOCTYPE html>
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h2>MCP Servers</h2>
+                    <h2>Open Source</h2>
                     <ul>
-                        <li><a href="https://adamic.tech/">Home</a></li>
-                        <li><a href="https://adamic.tech/articles/">Articles</a></li>
-                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
+                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal</a></li>
+                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">View Projects</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2>Resources</h2>
+                    <h2>Docker Images</h2>
                     <ul>
-                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub Projects</a></li>
-                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a></li>
-                        <li><a href="https://adamic.tech/contact.html">Contact Support</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
+                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">All Docker Images</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h2>Documentation</h2>
                     <ul>
-                        <li><a href="https://adamic.tech/">PostgreSQL MCP</a></li>
-                        <li><a href="https://adamic.tech/">SQLite MCP</a></li>
-                        <li><a href="https://adamic.tech/security-policy.html">Security</a></li>
+                        <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
+                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
+                        <li><a href="https://gist.github.com/neverinfamous/7a47b6ca39857c7a8e06c4f7e6537a16" target="_blank" rel="noopener">PostgreSQL Gists</a></li>
+                        <li><a href="https://gist.github.com/neverinfamous/0c8ed77ddaff0edbe31df4f4e18c33ce" target="_blank" rel="noopener">SQLite Gists</a></li>
+                        <li><a href="https://search.adamic.tech">AI Search</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h2>Support</h2>
+                    <ul>
+                        <li><a href="https://adamic.tech/contact.html">Contact</a></li>
+                        <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
+                        <li><a href="https://adamic.tech/security-policy.html">Security Policy</a></li>
                     </ul>
                 </div>
             </div>
