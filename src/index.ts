@@ -224,7 +224,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
         .footer-section h2 {
