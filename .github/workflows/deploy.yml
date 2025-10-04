@@ -39,12 +39,27 @@ jobs:
         run: |
           git clone https://github.com/neverinfamous/sqlite-mcp-server.wiki.git wiki-temp
           
-      - name: Upload wiki files to R2
+      - name: Upload SQLite wiki files to R2
         run: |
           cd wiki-temp
           for file in *.md; do
-            echo "Uploading $file to R2..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/"$file" --file="$file" --remote
+            echo "Uploading $file to R2 (sqlite folder)..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/sqlite/"$file" --file="$file" --remote
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Clone Postgres wiki repository
+        run: |
+          git clone https://github.com/neverinfamous/postgres-mcp.wiki.git postgres-wiki-temp
+          
+      - name: Upload Postgres wiki files to R2
+        run: |
+          cd postgres-wiki-temp
+          for file in *.md; do
+            echo "Uploading $file to R2 (postgres folder)..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/postgres/"$file" --file="$file" --remote
           done
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -69,7 +84,8 @@ jobs:
       - name: Deployment Summary
         run: |
           echo "✅ Worker deployed to Cloudflare"
-          echo "✅ Wiki files synced to R2 bucket: sqlite-mcp-server-wiki"
+          echo "✅ SQLite wiki files synced to R2: sqlite-mcp-server-wiki/sqlite/"
+          echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
           echo "✅ AutoRAG index sync triggered"
           echo ""
           echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
