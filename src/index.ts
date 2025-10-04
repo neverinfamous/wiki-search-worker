@@ -756,9 +756,11 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <div class="footer-section">
                     <h2>Documentation</h2>
                     <ul>
-                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite MCP Wiki</a></li>
-                        <li><a href="https://adamic.tech/articles/">Articles</a></li>
-                        <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
+                    <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
+                    <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
+                    <li><a href="https://gist.github.com/neverinfamous/7a47b6ca39857c7a8e06c4f7e6537a16" target="_blank" rel="noopener">PostgreSQL Gists</a></li>
+                    <li><a href="https://gist.github.com/neverinfamous/0c8ed77ddaff0edbe31df4f4e18c33ce" target="_blank" rel="noopener">SQLite Gists</a></li>
+                    <li><a href="https://search.adamic.tech">AI Search</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
