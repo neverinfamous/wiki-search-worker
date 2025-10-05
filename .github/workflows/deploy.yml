@@ -65,6 +65,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: Clone Memory Journal wiki repository
+        run: |
+          git clone https://github.com/neverinfamous/memory-journal-mcp.wiki.git memory-journal-wiki-temp
+          
+      - name: Upload Memory Journal wiki files to R2
+        run: |
+          cd memory-journal-wiki-temp
+          for file in *.md; do
+            echo "Uploading $file to R2 (memory-journal folder)..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/memory-journal/"$file" --file="$file" --remote
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
       - name: AutoRAG Sync Instructions
         run: |
@@ -86,6 +101,7 @@ jobs:
           echo "✅ Worker deployed to Cloudflare"
           echo "✅ SQLite wiki files synced to R2: sqlite-mcp-server-wiki/sqlite/"
           echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
+          echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
           echo "✅ AutoRAG index sync triggered"
           echo ""
           echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"

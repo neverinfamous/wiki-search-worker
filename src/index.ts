@@ -9,22 +9,22 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Server AI Documentation Search | SQLite & PostgreSQL</title>
-    <meta name="description" content="AI-powered search for SQLite and PostgreSQL MCP documentation. 136 database tools, natural language queries, instant answers with source attribution.">
-    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, database documentation, Model Context Protocol">
+    <title>MCP Server Documentation Search | SQLite, PostgreSQL & Memory Journal</title>
+    <meta name="description" content="AI-powered search for MCP server documentation. Covers SQLite, PostgreSQL, and Memory Journal MCP servers with 151+ tools and natural language queries.">
+    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP Server Documentation Search - SQLite & PostgreSQL">
-    <meta property="og:description" content="AI-powered search across SQLite and PostgreSQL MCP Server documentation. 136 specialized database tools, comprehensive guides, and best practices.">
+    <meta property="og:title" content="MCP Server Documentation Search - SQLite, PostgreSQL & Memory Journal">
+    <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. 151+ specialized tools, comprehensive guides, and best practices.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP Server Documentation Search">
-    <meta property="twitter:description" content="Search SQLite & PostgreSQL MCP Server documentation with AI">
+    <meta property="twitter:description" content="Search SQLite, PostgreSQL & Memory Journal MCP documentation with AI">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -681,13 +681,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <div class="container">
         <header class="page-header">
             <h1>🔍 MCP Server Documentation Search</h1>
-            <p>AI-Powered Search Across SQLite & PostgreSQL MCP Server Documentation</p>
+            <p>AI-Powered Search Across SQLite, PostgreSQL & Memory Journal MCP Documentation</p>
         </header>
         
         <main>
             <section class="search-card">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: #1f2937;">Search Both MCP Server Wikis</h2>
-                <input type="text" id="searchInput" placeholder="Ask anything about SQLite or PostgreSQL MCP Servers..." autocomplete="off" aria-label="Search documentation">
+                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: #1f2937;">Search All MCP Server Wikis</h2>
+                <input type="text" id="searchInput" placeholder="Ask anything about SQLite, PostgreSQL, or Memory Journal MCP Servers..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
@@ -695,12 +695,12 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
             
-            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across SQLite and PostgreSQL MCP Server documentation...</p></div>
+            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across SQLite, PostgreSQL & Memory Journal MCP Server documentation...</p></div>
             <div class="results" id="results" aria-live="polite"></div>
             
             <section class="examples">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">💡 Example Queries</h2>
-                <p style="margin-bottom: 1rem; color: #666;">Search across both SQLite and PostgreSQL MCP Server documentation. Try these queries to explore features from either server:</p>
+                <p style="margin-bottom: 1rem; color: #666;">Search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. Try these queries to explore features from any server:</p>
                 
                 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
@@ -712,34 +712,38 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <button class="example-btn" data-query="What PostGIS geospatial features are available?">What PostGIS geospatial features are available?</button>
                 <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
                 
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">Memory Journal MCP Server Queries</h3>
+                <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
+                <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
+                <button class="example-btn" data-query="What are the available workflow prompts for sprint retrospectives?">What are the available workflow prompts for sprint retrospectives?</button>
+                
                 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">Security & Best Practices</h3>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
                 <div class="about-box">
                     <h3>About MCP Server Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for two enterprise-grade Model Context Protocol (MCP) database servers: the SQLite MCP Server and PostgreSQL MCP Server. Together, these servers offer 136 specialized tools for advanced database operations, analytics, and AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers: SQLite MCP Server, PostgreSQL MCP Server, and Memory Journal MCP Server. Together, these servers offer 151+ specialized tools for database operations, knowledge management, analytics, and AI-native workflows.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">SQLite MCP Server (73 Tools)</h4>
                     <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification.</p>
                     
-                    <p>Key SQLite capabilities: JSON helper tools for data normalization, parameter binding for security, fuzzy matching and phonetic search, descriptive statistics and percentiles, time series analysis, cosine similarity for AI applications, spatial indexing with R-Tree, automatic type inference for data import, and transaction safety with rollback protection. Perfect for embedded databases, mobile applications, edge computing, IoT devices, and rapid prototyping.</p>
-                    
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">PostgreSQL MCP Server (63 Tools)</h4>
                     <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting.</p>
                     
-                    <p>PostgreSQL enterprise features: Query optimization with Database Tuning Advisor (DTA) algorithms, workload analysis and slow query detection, capacity planning and growth forecasting, replication lag monitoring, connection pooling insights, buffer cache analysis, vacuum operation tracking, extension management (pg_trgm, fuzzystrmatch, pgvector, PostGIS), dual security modes (restricted for production, unrestricted for development), and comprehensive health monitoring including index usage, table bloat, and lock contention analysis.</p>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Memory Journal MCP Server (15 Tools)</h4>
+                    <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Capabilities include CRUD operations for journal entries, triple search system (FTS5 + date range + semantic), entry relationships with typed connections, Mermaid diagram generation for relationship visualization, 8 workflow prompts for daily standups and sprint retrospectives, comprehensive analytics and goal tracking, and data export to JSON and Markdown formats. Perfect for personal knowledge management, team collaboration, and tracking development progress.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Search Technology</h4>
-                    <p>This search interface uses Cloudflare's AI Search (formerly AutoRAG) technology to provide intelligent, context-aware answers from both wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from over 2,000 lines of comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
+                    <p>This search interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all three wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Use Cases & Applications</h4>
-                    <p>Both MCP servers excel in different scenarios. Use SQLite MCP for embedded applications, mobile apps, edge computing, IoT devices, local development, testing environments, and applications requiring zero-configuration databases. PostgreSQL MCP is ideal for enterprise applications, high-traffic web services, data warehousing, business intelligence, real-time analytics, multi-user systems, applications requiring ACID compliance, and scenarios demanding horizontal scalability with replication.</p>
+                    <p>SQLite MCP excels in embedded applications, mobile apps, edge computing, IoT devices, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications, high-traffic web services, data warehousing, business intelligence, and real-time analytics. Memory Journal MCP is perfect for knowledge management, development logging, sprint planning, team retrospectives, and building personal knowledge graphs.</p>
                     
-                    <p>Common use cases across both servers: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping and location services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, time series data analysis, backup automation and disaster recovery, database performance optimization, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
+                    <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Getting Started</h4>
-                    <p class="no-margin">Both servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. SQLite MCP Server features core database tools, JSON operations, and statistical analysis. PostgreSQL MCP Server includes performance intelligence, security best practices, and monitoring guides. Both servers integrate seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language database operations.</p>
+                    <p class="no-margin">All three servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations.</p>
                 </div>
             </section>
             
@@ -905,7 +909,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 e.preventDefault();
                 const platform = this.dataset.platform;
                 const url = encodeURIComponent(window.location.href);
-                const title = encodeURIComponent('MCP Server Documentation Search - SQLite & PostgreSQL');
+                const title = encodeURIComponent('MCP Server Documentation Search - SQLite, PostgreSQL & Memory Journal');
                 const successMsg = document.querySelector('.share-success');
                 
                 if (platform === 'twitter') {
@@ -1036,15 +1040,16 @@ export default {
 				return jsonResponse({
 					status: 'healthy',
 					service: 'MCP Server Documentation Search',
-					version: '2.0.0',
-					servers: ['SQLite MCP Server', 'PostgreSQL MCP Server'],
+					version: '3.0.0',
+					servers: ['SQLite MCP Server', 'PostgreSQL MCP Server', 'Memory Journal MCP Server'],
 					endpoints: {
 						search: '/api/search (POST)',
 						health: '/health (GET)',
 					},
 					documentation: {
 						sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
-						postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki'
+						postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
+						memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki'
 					},
 				});
 			}
