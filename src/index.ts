@@ -9,7 +9,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Server Documentation Search | SQLite, PostgreSQL & Memory Journal</title>
+    <title>MCP Documentation Search | SQLite, PostgreSQL & Memory Journal</title>
     <meta name="description" content="AI-powered search for MCP server documentation. Covers SQLite, PostgreSQL, and Memory Journal MCP servers with 151+ tools and natural language queries.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
@@ -17,13 +17,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP Server Documentation Search - SQLite, PostgreSQL & Memory Journal">
+    <meta property="og:title" content="MCP Documentation Search | SQLite, PostgreSQL & Memory Journal">
     <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. 151+ specialized tools, comprehensive guides, and best practices.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP Server Documentation Search">
+    <meta property="twitter:title" content="MCP Documentation Search | SQLite, PostgreSQL & Memory Journal">
     <meta property="twitter:description" content="Search SQLite, PostgreSQL & Memory Journal MCP documentation with AI">
     
     <!-- Favicons -->
@@ -743,7 +743,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Getting Started</h4>
-                    <p class="no-margin">All three servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations.</p>
+                    <p class="no-margin">All three servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations. Visit our <a href="https://adamic.tech/">main site</a> for more information, check the <a href="https://adamic.tech/faq.html">FAQ</a> for common questions, or read our latest <a href="https://adamic.tech/articles/">release articles</a>.</p>
                 </div>
             </section>
             
@@ -787,16 +787,14 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">Postgres MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">View All Projects</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h2>Docker Images</h2>
                     <ul>
-                        <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal Images</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/postgres-mcp-enhanced" target="_blank" rel="noopener">Postgres Images</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite Images</a></li>
-                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">View All Images</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/postgres-mcp-enhanced" target="_blank" rel="noopener">PostgreSQL</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -805,21 +803,20 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp/wiki" target="_blank" rel="noopener">Memory Journal Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
-                        <li><a href="https://gist.github.com/neverinfamous/7a47b6ca39857c7a8e06c4f7e6537a16" target="_blank" rel="noopener">PostgreSQL Gists</a></li>
-                        <li><a href="https://gist.github.com/neverinfamous/0c8ed77ddaff0edbe31df4f4e18c33ce" target="_blank" rel="noopener">SQLite Gists</a></li>                    </ul>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h2>Support</h2>
                     <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="security-policy.html">Security Policy</a></li>
-                        <li><a href="sitemap.html">Site Map</a></li>
+                        <li><a href="https://adamic.tech/contact.html">Contact</a></li>
+                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
+                        <li><a href="https://adamic.tech/security-policy.html">Security Policy</a></li>
+                        <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a> | <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
+                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://adamic.tech/">Home</a> | <a href="https://adamic.tech/articles/">Articles</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
             </div>
         </footer>
         
