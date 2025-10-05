@@ -160,6 +160,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             transition: right 0.3s ease;
             padding: 2rem 1rem;
             box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
         .mobile-nav.active { right: 0; }
         .mobile-nav-header {
@@ -188,10 +189,12 @@ const HTML_CONTENT = `<!DOCTYPE html>
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            text-align: left;
         }
         .mobile-nav-links .nav-link {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 0.75rem;
             padding: 0.75rem 1rem;
             background: var(--background-alt);
