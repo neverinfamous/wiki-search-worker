@@ -9,7 +9,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Documentation Search | SQLite, PostgreSQL & Memory Journal</title>
+    <title>MCP Docs Search | SQLite, PostgreSQL & Memory Journal</title>
     <meta name="description" content="AI-powered search for MCP server documentation. Covers SQLite, PostgreSQL, and Memory Journal MCP servers with 151+ tools and natural language queries.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
@@ -17,13 +17,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP Documentation Search | SQLite, PostgreSQL & Memory Journal">
+    <meta property="og:title" content="MCP Docs Search | SQLite, PostgreSQL & Memory Journal">
     <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. 151+ specialized tools, comprehensive guides, and best practices.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP Documentation Search | SQLite, PostgreSQL & Memory Journal">
+    <meta property="twitter:title" content="MCP Docs Search | SQLite, PostgreSQL & Memory Journal">
     <meta property="twitter:description" content="Search SQLite, PostgreSQL & Memory Journal MCP documentation with AI">
     
     <!-- Favicons -->
@@ -680,7 +680,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <div class="container">
         <header class="page-header">
-            <h1>🔍 MCP Server Documentation Search</h1>
+            <h1>🔍 MCP Documentation Search</h1>
             <p>AI-Powered Search Across SQLite, PostgreSQL & Memory Journal MCP Documentation</p>
         </header>
         
@@ -743,7 +743,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Getting Started</h4>
-                    <p class="no-margin">All three servers are available via <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a> for instant deployment with comprehensive documentation on <a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub</a>. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations. Visit our <a href="https://adamic.tech/">main site</a> for more information, check the <a href="https://adamic.tech/faq.html">FAQ</a> for common questions, or read our latest <a href="https://adamic.tech/articles/">release articles</a>.</p>
+                    <p class="no-margin">All three servers are available via Docker Hub for instant deployment with comprehensive documentation on GitHub. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations. Visit our <a href="https://adamic.tech/">main site</a> for more information, check the <a href="https://adamic.tech/faq.html">FAQ</a> for common questions, or read our latest <a href="https://adamic.tech/articles/">release articles</a>.</p>
                 </div>
             </section>
             
@@ -800,6 +800,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <div class="footer-section">
                     <h2>Documentation</h2>
                     <ul>
+                        <li><a href="https://search.adamic.tech">AI Search</a></li>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp/wiki" target="_blank" rel="noopener">Memory Journal Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
