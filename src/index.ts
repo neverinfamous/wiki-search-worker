@@ -686,8 +686,8 @@ const HTML_CONTENT = `<!DOCTYPE html>
         
         <main>
             <section class="search-card">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: #1f2937;">Search All MCP Server Wikis</h2>
-                <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a> or browse <a href="https://adamic.tech/articles/">release notes</a>.</p>
+                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All MCP Server Wikis</h2>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a> or browse <a href="https://adamic.tech/articles/">release notes</a>.</p>
                 <input type="text" id="searchInput" placeholder="Ask anything about SQLite, PostgreSQL, or Memory Journal MCP Servers..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
@@ -701,24 +701,24 @@ const HTML_CONTENT = `<!DOCTYPE html>
             
             <section class="examples">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">💡 Example Queries</h2>
-                <p style="margin-bottom: 1rem; color: #666;">Search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. Try these queries to explore features from any server. New to MCP? Start with our <a href="https://adamic.tech/">overview page</a>.</p>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. Try these queries to explore features from any server. New to MCP? Start with our <a href="https://adamic.tech/">overview page</a>.</p>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">SQLite MCP Server Queries</h3>
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
                 <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
                 <button class="example-btn" data-query="What SpatiaLite geospatial operations are available?">What SpatiaLite geospatial operations are available?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">PostgreSQL MCP Server Queries</h3>
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">PostgreSQL MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
                 <button class="example-btn" data-query="What PostGIS geospatial features are available?">What PostGIS geospatial features are available?</button>
                 <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">Memory Journal MCP Server Queries</h3>
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">Memory Journal MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
                 <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
                 <button class="example-btn" data-query="What are the available workflow prompts for sprint retrospectives?">What are the available workflow prompts for sprint retrospectives?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #374151; font-weight: 600;">Security & Best Practices</h3>
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">Security & Best Practices</h3>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
@@ -726,24 +726,24 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <h3>About MCP Server Documentation</h3>
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers: SQLite MCP Server, PostgreSQL MCP Server, and Memory Journal MCP Server. Together, these servers offer 151+ specialized tools for database operations, knowledge management, analytics, and AI-native workflows.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">SQLite MCP Server (73 Tools)</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">SQLite MCP Server (73 Tools)</h4>
                     <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification. Learn more on our <a href="https://adamic.tech/">homepage</a>.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">PostgreSQL MCP Server (63 Tools)</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">PostgreSQL MCP Server (63 Tools)</h4>
                     <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting. Read the latest updates in our <a href="https://adamic.tech/articles/">blog</a>.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Memory Journal MCP Server (15 Tools)</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server (15 Tools)</h4>
                     <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Capabilities include CRUD operations for journal entries, triple search system (FTS5 + date range + semantic), entry relationships with typed connections, Mermaid diagram generation for relationship visualization, 8 workflow prompts for daily standups and sprint retrospectives, comprehensive analytics and goal tracking, and data export to JSON and Markdown formats. Perfect for personal knowledge management, team collaboration, and tracking development progress. See <a href="https://adamic.tech/contact.html">support options</a>.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Search Technology</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Search Technology</h4>
                     <p>This search interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all three wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Use Cases & Applications</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Use Cases & Applications</h4>
                     <p>SQLite MCP excels in embedded applications, mobile apps, edge computing, IoT devices, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications, high-traffic web services, data warehousing, business intelligence, and real-time analytics. Memory Journal MCP is perfect for knowledge management, development logging, sprint planning, team retrospectives, and building personal knowledge graphs.</p>
                     
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: #374151;">Getting Started</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Getting Started</h4>
                     <p class="no-margin">All three servers are available via Docker Hub for instant deployment with comprehensive documentation on GitHub. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations. Visit our <a href="https://adamic.tech/">main site</a> for more information, check the <a href="https://adamic.tech/faq.html">FAQ</a> for common questions, or read our latest <a href="https://adamic.tech/articles/">release articles</a>.</p>
                 </div>
             </section>
@@ -860,11 +860,11 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         
                         // Show sources if available
                         if (data.data.data && data.data.data.length > 0) {
-                            content += '<hr style="margin: 2rem 0; border: none; border-top: 2px solid #f0f0f0;">';
-                            content += '<h4 style="color: #999; margin-bottom: 1rem;">📚 Sources:</h4>';
+                            content += '<hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--border-color);">';
+                            content += '<h4 style="color: var(--text-muted); margin-bottom: 1rem;">📚 Sources:</h4>';
                             data.data.data.forEach(function(source) {
-                                content += '<div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 4px solid #667eea;">';
-                                content += '<strong>' + source.filename + '</strong> <span style="color: #999;">(Score: ' + (source.score * 100).toFixed(1) + '%)</span>';
+                                content += '<div style="background: var(--background-alt); padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 4px solid var(--primary-color);">';
+                                content += '<strong>' + source.filename + '</strong> <span style="color: var(--text-muted);">(Score: ' + (source.score * 100).toFixed(1) + '%)</span>';
                                 content += '</div>';
                             });
                         }
