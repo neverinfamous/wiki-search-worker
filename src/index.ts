@@ -542,7 +542,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
             :root {
                 --primary-color: #60a5fa;
                 --text-color: #f9fafb;
-                --text-muted: #9ca3af;
+                --text-muted: #d1d5db;
                 --border-color: #374151;
                 --background: #111827;
                 --background-alt: #1f2937;
