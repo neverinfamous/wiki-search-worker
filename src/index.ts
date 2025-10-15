@@ -1053,16 +1053,38 @@ export default {
 				});
 			}
 
-			// Search endpoint
-			if (path === '/api/search' && request.method === 'POST') {
+		// Search endpoint
+		if (path === '/api/search') {
+			if (request.method === 'POST') {
 				return await handleSearch(request, env);
+			} else if (request.method === 'GET') {
+				// For GET requests (e.g., from crawlers), return method info with noindex
+				return jsonResponse(
+					{
+						error: 'Method not allowed',
+						message: 'This endpoint requires POST method with JSON body',
+						usage: {
+							method: 'POST',
+							contentType: 'application/json',
+							body: {
+								query: 'string (required, 3-500 chars)',
+								mode: 'ai | search (optional, default: ai)',
+								max_results: 'number (optional, default: 5)'
+							}
+						},
+						documentation: 'https://adamic.tech/faq.html'
+					},
+					405,
+					{ 'X-Robots-Tag': 'noindex, nofollow' }
+				);
 			}
+		}
 
-			// Not found
-			return jsonResponse(
-				{ error: 'Endpoint not found' },
-				404
-			);
+		// Not found
+		return jsonResponse(
+			{ error: 'Endpoint not found' },
+			404
+		);
 		} catch (error) {
 			console.error('Worker error:', error);
 			return jsonResponse(

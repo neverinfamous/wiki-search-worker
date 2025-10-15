@@ -22,8 +22,9 @@ ALLOWED_ORIGINS = "*"
 [env.production]
 vars = { ALLOWED_ORIGINS = "https://adamic.tech" }
 
-# Custom domain route
+# Custom domain routes
 routes = [
+  { pattern = "search.adamic.tech/*", zone_name = "adamic.tech" },
   { pattern = "adamic.tech/wiki-search/*", zone_name = "adamic.tech" }
 ]
 
