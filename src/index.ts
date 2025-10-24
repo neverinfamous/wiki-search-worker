@@ -622,7 +622,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     </svg>
                 </a>
             </nav>
-            <div class="site-tagline">MCP Server Support</div>
+            <div class="site-tagline">Adamic Support</div>
             
             <!-- Hamburger Menu Button -->
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">
