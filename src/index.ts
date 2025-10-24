@@ -9,22 +9,22 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Docs Search | SQLite, PostgreSQL & Memory Journal</title>
-    <meta name="description" content="AI-powered search for MCP server documentation. Covers SQLite, PostgreSQL, and Memory Journal MCP servers with 151+ tools and natural language queries.">
-    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
+    <title>MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager</title>
+    <meta name="description" content="AI-powered search for MCP server documentation and R2 Bucket Manager. Covers SQLite, PostgreSQL, Memory Journal MCP servers with 151+ tools, plus R2 cloud storage management.">
+    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, Cloudflare R2, cloud storage, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP Docs Search | SQLite, PostgreSQL & Memory Journal">
-    <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. 151+ specialized tools, comprehensive guides, and best practices.">
+    <meta property="og:title" content="MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager">
+    <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, Memory Journal MCP Server documentation and R2 Bucket Manager. 151+ specialized tools, cloud storage management, and best practices.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP Docs Search | SQLite, PostgreSQL & Memory Journal">
-    <meta property="twitter:description" content="Search SQLite, PostgreSQL & Memory Journal MCP documentation with AI">
+    <meta property="twitter:title" content="MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager">
+    <meta property="twitter:description" content="Search SQLite, PostgreSQL, Memory Journal MCP documentation and R2 Manager with AI">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -788,6 +788,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">Postgres MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener">R2 Bucket Manager</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -796,6 +797,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal</a></li>
                         <li><a href="https://hub.docker.com/r/writenotenow/postgres-mcp-enhanced" target="_blank" rel="noopener">PostgreSQL</a></li>
                         <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite</a></li>
+                        <li><a href="https://hub.docker.com/r/writenotenow/r2-bucket-manager" target="_blank" rel="noopener">R2 Manager</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -805,6 +807,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp/wiki" target="_blank" rel="noopener">Memory Journal Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
+                        <li><a href="https://github.com/neverinfamous/R2-Manager-Worker/wiki" target="_blank" rel="noopener">R2 Manager Wiki</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
