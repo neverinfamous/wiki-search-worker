@@ -34,7 +34,7 @@ This Cloudflare Worker provides an AI-powered search interface for the [SQLite M
 
 - 🤖 **AI-Enhanced Search** - Natural language answers with source attribution
 - ⚡ **Vector Search** - Fast semantic search across all documentation
-- 📚 **Complete Coverage** - Searches all 73 tools across 19 wiki pages
+- 📚 **Complete Coverage** - Searches documentation across 4 projects (SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager)
 - 🎯 **Context-Aware** - Understands questions and provides relevant examples
 - 🌙 **Dark Mode** - Automatic theme detection
 - 📱 **Mobile Responsive** - Works on all devices
@@ -244,8 +244,12 @@ routes = [
 - **Account ID**: `<REDACTED_ACCOUNT_ID>`
 - **AI Search ID**: `sqlite-mcp-server-wiki`
 - **R2 Source Bucket**: `sqlite-mcp-server-wiki`
-- **Wiki Source**: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki` (19 markdown files)
-- **Total Content**: ~2,000+ lines of documentation
+- **Wiki Sources**:
+  - SQLite MCP: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki` → `sqlite/` folder
+  - PostgreSQL MCP: `C:\Users\chris\Desktop\postgres-mcp.wiki` → `postgres/` folder
+  - Memory Journal MCP: `C:\Users\chris\Desktop\memory-journal-mcp.wiki` → `memory-journal/` folder
+  - R2 Bucket Manager: `C:\Users\chris\Desktop\R2-Manager-Worker.wiki` → `r2-manager/` folder
+- **Total Content**: 50+ markdown files across all projects
 - **Auto-Sync**: Every 6 hours automatically
 
 ### MCP Server Access
@@ -303,6 +307,131 @@ mcp_cloudflare-autorag_ai_search({
 4. Verify with a test query
 
 **Note**: Manual sync API endpoint does not exist. Dashboard-only operation.
+
+### Local Wiki Sync Script
+
+**PowerShell Script**: Use `sync-wikis-to-r2.ps1` for manual syncing from local wikis
+
+```powershell
+# Set required environment variables (one-time setup)
+$env:CLOUDFLARE_API_TOKEN = "<REDACTED_API_TOKEN>"
+$env:CLOUDFLARE_ACCOUNT_ID = "<REDACTED_ACCOUNT_ID>"
+
+# Sync all wikis
+.\sync-wikis-to-r2.ps1
+
+# Sync specific wiki only
+.\sync-wikis-to-r2.ps1 -WikiName r2-manager
+.\sync-wikis-to-r2.ps1 -WikiName sqlite
+.\sync-wikis-to-r2.ps1 -WikiName postgres
+.\sync-wikis-to-r2.ps1 -WikiName memory-journal
+```
+
+**After running the script**: Go to the Cloudflare dashboard and click "Sync Index" or wait for automatic sync.
+
+---
+
+## 🆕 Adding New Wikis to AI Search
+
+**Follow these steps to add a new project wiki to the AI Search system:**
+
+### 1. Add Wiki to Local Sync Script
+
+Edit `sync-wikis-to-r2.ps1` and add your new wiki to the `$wikis` hash table:
+
+```powershell
+$wikis = @{
+    # ... existing wikis ...
+    'your-project' = @{
+        Path = "$BASE_PATH\your-project.wiki"
+        Folder = "your-project"
+        DisplayName = "Your Project Name"
+    }
+}
+```
+
+### 2. Add Wiki to GitHub Actions Workflow
+
+Edit `.github/workflows/deploy.yml` and add these steps before "Step 6":
+
+```yaml
+- name: Clone Your Project wiki repository
+  run: |
+    git clone https://github.com/yourusername/your-project.wiki.git your-project-wiki-temp
+    
+- name: Upload Your Project wiki files to R2
+  run: |
+    cd your-project-wiki-temp
+    for file in *.md; do
+      echo "Uploading $file to R2 (your-project folder)..."
+      npx wrangler r2 object put sqlite-mcp-server-wiki/your-project/"$file" --file="$file" --remote
+    done
+  env:
+    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+```
+
+Update the deployment summary to include your new wiki.
+
+### 3. Configure R2 Bucket Folder Structure
+
+The R2 bucket uses this structure:
+```
+sqlite-mcp-server-wiki/
+├── sqlite/          # SQLite MCP Server wiki files
+├── postgres/        # PostgreSQL MCP Server wiki files
+├── memory-journal/  # Memory Journal MCP wiki files
+├── r2-manager/      # R2 Bucket Manager wiki files
+└── your-project/    # Your new project wiki files
+```
+
+### 4. Initial Sync
+
+After adding the configuration:
+
+**Option A: Local Sync (Fast)**
+```powershell
+.\sync-wikis-to-r2.ps1 -WikiName your-project
+```
+
+**Option B: GitHub Actions (Automatic)**
+- Commit and push your changes
+- GitHub Actions will automatically sync all wikis
+- Check Actions tab for progress
+
+### 5. Trigger AutoRAG Index Sync
+
+After files are in R2, sync the search index:
+
+1. Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki
+2. Click **"Sync Index"** button
+3. Wait 1-2 minutes for completion
+4. Test search at: https://search.adamic.tech
+
+### 6. Update Documentation
+
+Update these files to document the new wiki:
+- `wiki-search-worker/README.md` - Add to wiki sources list
+- `adamic-blog/README.md` - Add to supported projects
+- Both files: Update feature counts and descriptions
+
+### 7. Verify Integration
+
+Test that your wiki content is searchable:
+
+```bash
+curl -X POST https://search.adamic.tech/api/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "content from your new wiki", "mode": "ai"}'
+```
+
+### Common Gotchas
+
+- ✅ **R2 folder names**: Use lowercase with hyphens (e.g., `your-project`, not `YourProject`)
+- ✅ **Wiki path**: Ensure the local wiki path exists and contains `.md` files
+- ✅ **GitHub URL**: Use the correct `.wiki.git` repository URL
+- ✅ **Environment variables**: Both `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` must be set
+- ✅ **Manual sync**: Always click "Sync Index" after uploading to R2 for immediate updates
 
 ### R2 Bucket Configuration
 
