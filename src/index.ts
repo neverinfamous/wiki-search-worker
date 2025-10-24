@@ -680,15 +680,15 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <div class="container">
         <header class="page-header">
-            <h1>🔍 MCP Documentation Search</h1>
-            <p>AI-Powered Search Across SQLite, PostgreSQL & Memory Journal MCP Documentation</p>
+            <h1>🔍 Documentation Search</h1>
+            <p>AI-Powered Search Across MCP Servers & R2 Bucket Manager</p>
         </header>
         
         <main>
             <section class="search-card">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All MCP Server Wikis</h2>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a> or browse <a href="https://adamic.tech/articles/">release notes</a>.</p>
-                <input type="text" id="searchInput" placeholder="Ask anything about SQLite, PostgreSQL, or Memory Journal MCP Servers..." autocomplete="off" aria-label="Search documentation">
+                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All Documentation</h2>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers and R2 Manager</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a> or browse <a href="https://adamic.tech/articles/">release notes</a>.</p>
+                <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, or R2 Bucket Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
@@ -696,12 +696,12 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
             
-            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across SQLite, PostgreSQL & Memory Journal MCP Server documentation...</p></div>
+            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across MCP servers and R2 Manager documentation...</p></div>
             <div class="results" id="results" aria-live="polite"></div>
             
             <section class="examples">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">💡 Example Queries</h2>
-                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across SQLite, PostgreSQL, and Memory Journal MCP Server documentation. Try these queries to explore features from any server. New to MCP? Start with our <a href="https://adamic.tech/">overview page</a>.</p>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features. New to MCP? Start with our <a href="https://adamic.tech/">overview page</a>.</p>
                 
                 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
@@ -718,13 +718,18 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
                 <button class="example-btn" data-query="What are the available workflow prompts for sprint retrospectives?">What are the available workflow prompts for sprint retrospectives?</button>
                 
+                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">R2 Bucket Manager Queries</h3>
+                <button class="example-btn" data-query="How do I perform chunked uploads and manage large files?">How do I perform chunked uploads and manage large files?</button>
+                <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
+                <button class="example-btn" data-query="What folder and file organization features are available?">What folder and file organization features are available?</button>
+                
                 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">Security & Best Practices</h3>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
                 <div class="about-box">
-                    <h3>About MCP Server Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers: SQLite MCP Server, PostgreSQL MCP Server, and Memory Journal MCP Server. Together, these servers offer 151+ specialized tools for database operations, knowledge management, analytics, and AI-native workflows.</p>
+                    <h3>About Our Documentation</h3>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 151+ specialized database tools and modern cloud storage management for AI-native workflows.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">SQLite MCP Server (73 Tools)</h4>
                     <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification. Learn more on our <a href="https://adamic.tech/">homepage</a>.</p>
@@ -733,7 +738,10 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting. Read the latest updates in our <a href="https://adamic.tech/articles/">blog</a>.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server (15 Tools)</h4>
-                    <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Capabilities include CRUD operations for journal entries, triple search system (FTS5 + date range + semantic), entry relationships with typed connections, Mermaid diagram generation for relationship visualization, 8 workflow prompts for daily standups and sprint retrospectives, comprehensive analytics and goal tracking, and data export to JSON and Markdown formats. Perfect for personal knowledge management, team collaboration, and tracking development progress. See <a href="https://adamic.tech/contact.html">support options</a>.</p>
+                    <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Perfect for personal knowledge management and tracking development progress.</p>
+                    
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">R2 Bucket Manager</h4>
+                    <p>R2 Bucket Manager provides enterprise-grade cloud storage management for Cloudflare R2. Features include advanced file operations (chunked uploads, drag-and-drop), smart filtering, GitHub SSO authentication, folder hierarchies, signed URLs, batch operations, and zero-trust access. Complement your MCP servers with secure, scalable cloud storage.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Search Technology</h4>
                     <p>This search interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all three wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
