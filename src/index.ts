@@ -10,7 +10,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP & R2 Documentation Search | AI-Powered</title>
-    <meta name="description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage. Find answers instantly.">
+    <meta name="description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage. Find answers instantly.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, Cloudflare R2, cloud storage, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
@@ -18,13 +18,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="og:description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage. Find answers instantly.">
+    <meta property="og:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage. Find answers instantly.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="twitter:description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage.">
+    <meta property="twitter:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -680,14 +680,20 @@ const HTML_CONTENT = `<!DOCTYPE html>
     
     <div class="container">
         <header class="page-header">
-            <h1>🔍 Documentation Search</h1>
+            <h1 id="page-top">🔍 Documentation Search</h1>
             <p>AI-Powered Search Across MCP Servers & Cloudflare R2 Bucket Manager</p>
         </header>
         
         <main>
-            <section class="search-card">
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem;">
+                <a href="#search-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Search</a>
+                <a href="#examples-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Examples</a>
+                <a href="#about-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">About</a>
+            </div>
+            
+            <section class="search-card" id="search-section">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All Documentation</h2>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers and R2 Manager</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a>, browse <a href="https://adamic.tech/articles/">articles</a>, or <a href="https://adamic.tech/contact.html">contact us</a>.</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for MCP servers and R2 Manager. Enter queries below to find answers across SQLite, PostgreSQL, Memory Journal MCP, and R2 Bucket Manager documentation.</p>
                 <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, or R2 Bucket Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
@@ -699,9 +705,9 @@ const HTML_CONTENT = `<!DOCTYPE html>
             <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across MCP servers and R2 Manager documentation...</p></div>
             <div class="results" id="results" aria-live="polite"></div>
             
-            <section class="examples">
+            <section class="examples" id="examples-section">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">💡 Example Queries</h2>
-                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features. New to MCP? Start with our <a href="https://adamic.tech/">overview page</a>.</p>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
                 
                 <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
@@ -727,15 +733,15 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
-                <div class="about-box">
+                <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 151+ specialized database tools and modern cloud storage management for AI-native workflows.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">SQLite MCP Server (73 Tools)</h4>
-                    <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification. Learn more on our <a href="https://adamic.tech/">homepage</a>.</p>
+                    <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">PostgreSQL MCP Server (63 Tools)</h4>
-                    <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting. Read the latest updates in our <a href="https://adamic.tech/articles/">blog</a>.</p>
+                    <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server (15 Tools)</h4>
                     <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Perfect for personal knowledge management and tracking development progress.</p>
@@ -752,7 +758,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Getting Started</h4>
-                    <p class="no-margin">All solutions are production-ready and available for instant deployment. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol. For more details, visit our <a href="https://adamic.tech/">main site</a>, check the <a href="https://adamic.tech/faq.html">FAQ</a> for setup questions, read <a href="https://adamic.tech/articles/">articles</a>, or <a href="https://adamic.tech/contact.html">contact support</a>.</p>
+                    <p class="no-margin">All solutions are production-ready and available for instant deployment. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol. Use the search interface above to explore documentation for any topic across all solutions.</p>
                 </div>
             </section>
             
