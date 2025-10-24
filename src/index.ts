@@ -9,22 +9,22 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager</title>
-    <meta name="description" content="AI-powered search for MCP server documentation and R2 Bucket Manager. Covers SQLite, PostgreSQL, Memory Journal MCP servers with 151+ tools, plus R2 cloud storage management.">
+    <title>MCP & R2 Documentation Search | AI-Powered</title>
+    <meta name="description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage. Find answers instantly.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, Cloudflare R2, cloud storage, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager">
-    <meta property="og:description" content="AI-powered search across SQLite, PostgreSQL, Memory Journal MCP Server documentation and R2 Bucket Manager. 151+ specialized tools, cloud storage management, and best practices.">
+    <meta property="og:title" content="MCP & R2 Documentation Search | AI-Powered">
+    <meta property="og:description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage. Find answers instantly.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP Docs Search | SQLite, PostgreSQL, Memory Journal & R2 Manager">
-    <meta property="twitter:description" content="Search SQLite, PostgreSQL, Memory Journal MCP documentation and R2 Manager with AI">
+    <meta property="twitter:title" content="MCP & R2 Documentation Search | AI-Powered">
+    <meta property="twitter:description" content="AI-powered search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 cloud storage.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -681,13 +681,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <div class="container">
         <header class="page-header">
             <h1>🔍 Documentation Search</h1>
-            <p>AI-Powered Search Across MCP Servers & R2 Bucket Manager</p>
+            <p>AI-Powered Search Across MCP Servers & Cloudflare R2 Bucket Manager</p>
         </header>
         
         <main>
             <section class="search-card">
                 <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All Documentation</h2>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers and R2 Manager</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a> or browse <a href="https://adamic.tech/articles/">release notes</a>.</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for <a href="https://adamic.tech/">MCP servers and R2 Manager</a>. Need help? Check our <a href="https://adamic.tech/faq.html">installation guide</a>, browse <a href="https://adamic.tech/articles/">articles</a>, or <a href="https://adamic.tech/contact.html">contact us</a>.</p>
                 <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, or R2 Bucket Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
@@ -752,7 +752,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Getting Started</h4>
-                    <p class="no-margin">All three servers are available via Docker Hub for instant deployment with comprehensive documentation on GitHub. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol for natural language operations. Visit our <a href="https://adamic.tech/">main site</a> for more information, check the <a href="https://adamic.tech/faq.html">FAQ</a> for common questions, or read our latest <a href="https://adamic.tech/articles/">release articles</a>.</p>
+                    <p class="no-margin">All solutions are production-ready and available for instant deployment. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol. For more details, visit our <a href="https://adamic.tech/">main site</a>, check the <a href="https://adamic.tech/faq.html">FAQ</a> for setup questions, read <a href="https://adamic.tech/articles/">articles</a>, or <a href="https://adamic.tech/contact.html">contact support</a>.</p>
                 </div>
             </section>
             
@@ -791,45 +791,35 @@ const HTML_CONTENT = `<!DOCTYPE html>
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h2>Open Source</h2>
+                    <h2>Projects</h2>
                     <ul>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">Postgres MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener">R2 Bucket Manager</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2>Docker Images</h2>
-                    <ul>
-                        <li><a href="https://hub.docker.com/r/writenotenow/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/postgres-mcp-enhanced" target="_blank" rel="noopener">PostgreSQL</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/sqlite-mcp-server" target="_blank" rel="noopener">SQLite</a></li>
-                        <li><a href="https://hub.docker.com/r/writenotenow/r2-bucket-manager" target="_blank" rel="noopener">R2 Manager</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h2>Documentation</h2>
+                    <h2>Resources</h2>
                     <ul>
                         <li><a href="https://search.adamic.tech">AI Search</a></li>
-                        <li><a href="https://github.com/neverinfamous/memory-journal-mcp/wiki" target="_blank" rel="noopener">Memory Journal Wiki</a></li>
-                        <li><a href="https://github.com/neverinfamous/postgres-mcp/wiki" target="_blank" rel="noopener">Postgres Wiki</a></li>
-                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server/wiki" target="_blank" rel="noopener">SQLite Wiki</a></li>
-                        <li><a href="https://github.com/neverinfamous/R2-Manager-Worker/wiki" target="_blank" rel="noopener">R2 Manager Wiki</a></li>
+                        <li><a href="https://adamic.tech/articles/">Articles</a></li>
+                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
+                        <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h2>Support</h2>
                     <ul>
                         <li><a href="https://adamic.tech/contact.html">Contact</a></li>
-                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
                         <li><a href="https://adamic.tech/security-policy.html">Security Policy</a></li>
-                        <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
+                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub Profile</a></li>
+                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved. | <a href="https://adamic.tech/">Home</a> | <a href="https://adamic.tech/articles/">Articles</a> | <a href="https://adamic.tech/sitemap.html">Sitemap</a></p>
+                <p>&copy; 2025 Adamic. All rights reserved.</p>
             </div>
         </footer>
         
