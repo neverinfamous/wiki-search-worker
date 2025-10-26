@@ -1158,7 +1158,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 				max_num_results: maxResults,
 				rewrite_query: true, // Improve search accuracy
 				ranking_options: {
-					score_threshold: 0.3, // Filter low-quality results
+					score_threshold: 0.5, // Filter low-quality results (increased for faster, more relevant results)
 				},
 			});
 		} else {
@@ -1168,7 +1168,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 				max_num_results: maxResults,
 				rewrite_query: true,
 				ranking_options: {
-					score_threshold: 0.3,
+					score_threshold: 0.5, // Increased for faster, more relevant results
 				},
 			});
 		}
