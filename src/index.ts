@@ -574,6 +574,266 @@ const HTML_CONTENT = `<!DOCTYPE html>
             --background-alt: #1f2937;
         }
         
+        /* Apply theme colors to elements - light mode */
+        html[data-theme="light"] body {
+            background: var(--background);
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .site-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom-color: var(--border-color);
+        }
+        html[data-theme="light"] .nav-link {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .nav-link:hover,
+        html[data-theme="light"] .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        html[data-theme="light"] .hamburger span {
+            background: var(--text-color);
+        }
+        html[data-theme="light"] .mobile-nav {
+            background: var(--background);
+            border-left-color: var(--border-color);
+        }
+        html[data-theme="light"] .mobile-nav-header {
+            border-bottom-color: var(--border-color);
+        }
+        html[data-theme="light"] .mobile-nav-header h2 {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .mobile-nav-close {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .mobile-nav-links .nav-link {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .mobile-nav-links .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        html[data-theme="light"] .search-card {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .result-card {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .examples {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .about-box {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            border-left-color: var(--primary-color);
+        }
+        html[data-theme="light"] .about-box h3 {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .about-box p {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .about-box a {
+            color: var(--primary-color);
+        }
+        html[data-theme="light"] .about-box a:hover {
+            color: #1d4ed8;
+        }
+        html[data-theme="light"] #searchInput {
+            background: var(--background);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .example-btn {
+            background: var(--background);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .example-btn:hover {
+            background: var(--background-alt);
+        }
+        html[data-theme="light"] .mode-toggle {
+            background: var(--background);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .social-btn {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="light"] .social-btn.reddit {
+            color: #FF4500;
+            border-color: #FF4500;
+        }
+        html[data-theme="light"] .social-btn.discord {
+            color: #5865F2;
+            border-color: #5865F2;
+        }
+        html[data-theme="light"] .footer {
+            background: var(--background-alt);
+            border-top-color: var(--border-color);
+        }
+        html[data-theme="light"] .footer-section h2 {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .footer-section a {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        html[data-theme="light"] .footer-bottom {
+            border-top-color: var(--border-color);
+        }
+        html[data-theme="light"] .footer-bottom p {
+            color: var(--text-muted);
+        }
+        html[data-theme="light"] .footer-bottom a {
+            color: var(--text-color);
+        }
+        html[data-theme="light"] .footer-bottom a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Apply theme colors to elements - dark mode */
+        html[data-theme="dark"] body {
+            background: var(--background);
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .site-header {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom-color: var(--border-color);
+        }
+        html[data-theme="dark"] .nav-link {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .nav-link:hover,
+        html[data-theme="dark"] .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        html[data-theme="dark"] .hamburger span {
+            background: var(--text-color);
+        }
+        html[data-theme="dark"] .mobile-nav {
+            background: var(--background);
+            border-left-color: var(--border-color);
+        }
+        html[data-theme="dark"] .mobile-nav-header {
+            border-bottom-color: var(--border-color);
+        }
+        html[data-theme="dark"] .mobile-nav-header h2 {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .mobile-nav-close {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .mobile-nav-links .nav-link {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .mobile-nav-links .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        html[data-theme="dark"] .search-card {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .result-card {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .examples {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .about-box {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+            border-left-color: var(--primary-color);
+        }
+        html[data-theme="dark"] .about-box h3 {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .about-box p {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .about-box a {
+            color: var(--primary-color);
+        }
+        html[data-theme="dark"] .about-box a:hover {
+            color: #93c5fd;
+        }
+        html[data-theme="dark"] #searchInput {
+            background: var(--background);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .example-btn {
+            background: var(--background);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .example-btn:hover {
+            background: var(--background-alt);
+        }
+        html[data-theme="dark"] .mode-toggle {
+            background: var(--background);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .social-btn {
+            background: var(--background-alt);
+            border-color: var(--border-color);
+        }
+        html[data-theme="dark"] .social-btn.reddit {
+            color: #FF7B54;
+            border-color: #FF7B54;
+        }
+        html[data-theme="dark"] .social-btn.discord {
+            color: #7289DA;
+            border-color: #7289DA;
+        }
+        html[data-theme="dark"] .footer {
+            background: var(--background-alt);
+            border-top-color: var(--border-color);
+        }
+        html[data-theme="dark"] .footer-section h2 {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .footer-section a {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        html[data-theme="dark"] .footer-bottom {
+            border-top-color: var(--border-color);
+        }
+        html[data-theme="dark"] .footer-bottom p {
+            color: var(--text-muted);
+        }
+        html[data-theme="dark"] .footer-bottom a {
+            color: var(--text-color);
+        }
+        html[data-theme="dark"] .footer-bottom a:hover {
+            color: var(--primary-color);
+        }
+        
         /* System dark mode - only applies when no explicit theme is set */
         @media (prefers-color-scheme: dark) {
             html:not([data-theme]) {
@@ -619,9 +879,6 @@ const HTML_CONTENT = `<!DOCTYPE html>
             .footer-bottom a { color: var(--text-color); }
             .footer-bottom a:hover { color: var(--primary-color); }
         }
-        
-        html[data-theme="dark"] .social-btn.reddit { color: #FF7B54; border-color: #FF7B54; }
-        html[data-theme="dark"] .social-btn.discord { color: #7289DA; border-color: #7289DA; }
     </style>
     <script>
     (function() {
