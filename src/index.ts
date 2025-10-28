@@ -10,7 +10,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP & R2 Documentation Search | AI-Powered</title>
-    <meta name="description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage. Find answers instantly.">
+    <meta name="description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage. Find answers instantly.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, Cloudflare R2, cloud storage, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
@@ -18,13 +18,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="og:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage. Find answers instantly.">
+    <meta property="og:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage. Find answers instantly.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="twitter:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (15 tools), R2 storage.">
+    <meta property="twitter:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -1064,7 +1064,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 151+ specialized database tools and modern cloud storage management for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 152+ specialized database tools and modern cloud storage management for AI-native workflows.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">SQLite MCP Server (73 Tools)</h4>
                     <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification.</p>
@@ -1072,7 +1072,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">PostgreSQL MCP Server (63 Tools)</h4>
                     <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server (15 Tools)</h4>
+                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server (16 Tools)</h4>
                     <p>The Memory Journal MCP Server captures development work as structured journal entries with automatic project context. It features 15 specialized tools for creating, linking, and visualizing journal entries. Perfect for personal knowledge management and tracking development progress.</p>
                     
                     <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">R2 Bucket Manager</h4>
