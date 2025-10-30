@@ -31,6 +31,10 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <link rel="icon" type="image/png" sizes="16x16" href="https://adamic.tech/assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
     
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css">
+    <link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css">
+    
     <style>
 :root{--primary-color:#2563eb;--text-color:#1f2937;--text-muted:#6b7280;--border-color:#e5e7eb;--background:#fff;--background-alt:#f9fafb}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:400;line-height:1.6;background:var(--background);color:var(--text-color);text-rendering:optimizeSpeed;min-height:100vh;padding-top:120px}.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border-color);backdrop-filter:blur(10px);padding:1rem 0;contain:layout style}.header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:.75rem;height:88px}.logo-link{display:inline-block;text-decoration:none}.logo{height:58px;width:58px;display:block;object-fit:contain}
 .main-nav{display:flex;align-items:center;gap:.4rem;margin-left:.5rem}.nav-link{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1.2rem;background:var(--background-alt);border:1px solid var(--border-color);border-radius:6px;color:var(--text-color);text-decoration:none;font-size:.875rem;font-weight:500;transition:all .2s;white-space:nowrap;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:0}.nav-link:hover{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}.nav-link.active{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}.nav-text{display:inline}.nav-icon{display:none}.site-tagline{color:var(--text-muted);font-size:.875rem;margin-left:auto;line-height:1.2;white-space:nowrap}
@@ -74,34 +78,34 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <img src="https://adamic.tech/assets/images/logo.webp" alt="Adamic Logo" class="logo" width="58" height="58">
             </a>
             <nav class="main-nav">
-                <a href="https://adamic.tech/" class="nav-link" title="Home" style="min-width: 79px; font-weight: 400;">
+                <a href="https://adamic.tech/" class="nav-link" title="Home">
                     <span class="nav-text">Home</span>
                     <span class="nav-icon">🏠</span>
                 </a>
-                <a href="https://adamic.tech/articles/" class="nav-link" title="Articles" style="min-width: 88px; font-weight: 400;">
+                <a href="https://adamic.tech/articles/" class="nav-link" title="Articles">
                     <span class="nav-text">Articles</span>
                     <span class="nav-icon">📚</span>
                 </a>
-                <a href="https://search.adamic.tech" class="nav-link active" title="AI Search" style="min-width: 100px; font-weight: 600;">
+                <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
                     <span class="nav-text">AI Search</span>
                     <span class="nav-icon">🔍</span>
                 </a>
-                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ" style="min-width: 67px; font-weight: 400;">
+                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
                     <span class="nav-text">FAQ</span>
                     <span class="nav-icon">❓</span>
                 </a>
-                <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact" style="min-width: 90px; font-weight: 400;">
+                <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
                     <span class="nav-text">Contact</span>
                     <span class="nav-icon">📧</span>
                 </a>
                 <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener" class="nav-link" title="Docker Hub">
-                    <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; padding: 4px 0;">
+                    <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .101.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.30-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983 0 1.944-.09 2.86-.266a12.248 12.248 0 003.255-1.138A11.382 11.382 0 0016.366 16c.412-.738.744-1.527.991-2.35l.144-.005c.131 0 .263-.001.394-.005.494-.011.98-.097 1.42-.25.394-.138.748-.315 1.055-.528l.365-.253-.4-.288c-.048-.034-.16-.117-.25-.16l-.004-.002c-.287-.208-.82-.582-1.327-.582z"/>
                     </svg>
                 </a>
                 <a href="https://github.com/neverinfamous" target="_blank" rel="noopener" class="nav-link" title="GitHub">
-                    <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; padding: 4px 0;">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
                 <button id="theme-toggle" class="nav-link" title="Toggle theme (currently: System)" aria-label="Theme: System">
@@ -137,7 +141,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <span class="nav-text">Articles</span>
                 <span class="nav-icon">📚</span>
             </a>
-            <a href="https://search.adamic.tech" class="nav-link" title="AI Search" style="background: var(--primary-color); color: white;">
+            <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
                 <span class="nav-text">AI Search</span>
                 <span class="nav-icon">🔍</span>
             </a>
@@ -151,13 +155,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             </a>
             <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener" class="nav-link" title="Docker Hub">
                 <span class="nav-text">Docker Hub</span>
-                <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; padding: 4px 0;">
+                <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .101.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.30-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983 0 1.944-.09 2.86-.266a12.248 12.248 0 003.255-1.138A11.382 11.382 0 0016.366 16c.412-.738.744-1.527.991-2.35l.144-.005c.131 0 .263-.001.394-.005.494-.011.98-.097 1.42-.25.394-.138.748-.315 1.055-.528l.365-.253-.4-.288c-.048-.034-.16-.117-.25-.16l-.004-.002c-.287-.208-.82-.582-1.327-.582z"/>
                 </svg>
             </a>
             <a href="https://github.com/neverinfamous" target="_blank" rel="noopener" class="nav-link" title="GitHub">
                 <span class="nav-text">GitHub</span>
-                <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; padding: 4px 0;">
+                <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
             </a>
@@ -175,15 +179,15 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         </header>
         
         <main>
-            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem;">
-                <a href="#search-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Search</a>
-                <a href="#examples-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">Examples</a>
-                <a href="#about-section" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">About</a>
+            <div class="quick-nav">
+                <a href="#search-section">Search</a>
+                <a href="#examples-section">Examples</a>
+                <a href="#about-section">About</a>
             </div>
             
             <section class="search-card" id="search-section">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-color);">Search All Documentation</h2>
-                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Search comprehensive documentation for MCP servers and R2 Manager. Enter queries below to find answers across SQLite, PostgreSQL, Memory Journal MCP, and R2 Bucket Manager documentation.</p>
+                <h2 class="search-section-heading">Search All Documentation</h2>
+                <p class="search-description">Search comprehensive documentation for MCP servers and R2 Manager. Enter queries below to find answers across SQLite, PostgreSQL, Memory Journal MCP, and R2 Bucket Manager documentation.</p>
                 <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, or R2 Bucket Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
@@ -196,30 +200,30 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             <div class="results" id="results" aria-live="polite"></div>
             
             <section class="examples" id="examples-section">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">💡 Example Queries</h2>
-                <p style="margin-bottom: 1rem; color: var(--text-muted);">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
+                <h2 class="search-section-heading">💡 Example Queries</h2>
+                <p class="search-description">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">SQLite MCP Server Queries</h3>
+                <h3 class="search-section-subheading">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
                 <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
                 <button class="example-btn" data-query="What SpatiaLite geospatial operations are available?">What SpatiaLite geospatial operations are available?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">PostgreSQL MCP Server Queries</h3>
+                <h3 class="search-section-subheading">PostgreSQL MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
                 <button class="example-btn" data-query="What PostGIS geospatial features are available?">What PostGIS geospatial features are available?</button>
                 <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">Memory Journal MCP Server Queries</h3>
+                <h3 class="search-section-subheading">Memory Journal MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
                 <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
                 <button class="example-btn" data-query="What are the available workflow prompts for sprint retrospectives?">What are the available workflow prompts for sprint retrospectives?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">R2 Bucket Manager Queries</h3>
+                <h3 class="search-section-subheading">R2 Bucket Manager Queries</h3>
                 <button class="example-btn" data-query="How do I perform chunked uploads and manage large files?">How do I perform chunked uploads and manage large files?</button>
                 <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
                 <button class="example-btn" data-query="What folder and file organization features are available?">What folder and file organization features are available?</button>
                 
-                <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: var(--text-color); font-weight: 600;">Security & Best Practices</h3>
+                <h3 class="search-section-subheading">Security & Best Practices</h3>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
@@ -227,27 +231,27 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <h3>About Our Documentation</h3>
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 152+ specialized database tools (SQLite 73, PostgreSQL 63, Memory Journal 16) and modern cloud storage management for AI-native workflows.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">SQLite MCP Server (73 Tools)</h4>
+                    <h4 class="search-about-subheading">SQLite MCP Server (73 Tools)</h4>
                     <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">PostgreSQL MCP Server (63 Tools)</h4>
+                    <h4 class="search-about-subheading">PostgreSQL MCP Server (63 Tools)</h4>
                     <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Memory Journal MCP Server v2.0.0 (16 Tools, 13 Prompts, 8 Resources)</h4>
+                    <h4 class="search-about-subheading">Memory Journal MCP Server v2.0.0 (16 Tools, 13 Prompts, 8 Resources)</h4>
                     <p>The Memory Journal MCP Server v2.0.0 features production-stable modular architecture with 16 MCP tools, 13 workflow prompts, and 8 resources. Includes 96% code reduction, Git-based team collaboration, GitHub Projects/Issues/PRs integration, relationship mapping, and visual Mermaid diagrams. Perfect for personal knowledge management and tracking development progress.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">R2 Bucket Manager v1.3.0</h4>
+                    <h4 class="search-about-subheading">R2 Bucket Manager v1.3.0</h4>
                     <p>R2 Bucket Manager v1.3.0 provides enterprise-grade cloud storage management for Cloudflare R2 with simplified deployment (no database required). New features include multi-bucket download for disaster recovery and migration, architectural simplification with D1 database removal (2 fewer setup steps), cross-bucket search with advanced filtering, bulk bucket deletion with progress tracking, advanced file operations (chunked uploads, drag-and-drop), smart filtering, GitHub SSO authentication, folder hierarchies, signed URLs, batch operations, and zero-trust access. Complement your MCP servers with secure, scalable cloud storage.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Search Technology</h4>
+                    <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This search interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all three wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Use Cases & Applications</h4>
+                    <h4 class="search-about-subheading">Use Cases & Applications</h4>
                     <p>SQLite MCP excels in embedded applications, mobile apps, edge computing, IoT devices, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications, high-traffic web services, data warehousing, business intelligence, and real-time analytics. Memory Journal MCP is perfect for knowledge management, development logging, sprint planning, team retrospectives, and building personal knowledge graphs.</p>
                     
                     <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
-                    <h4 style="font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--text-color);">Getting Started</h4>
+                    <h4 class="search-about-subheading">Getting Started</h4>
                     <p class="no-margin">All solutions are production-ready and available for instant deployment. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol. Use the search interface above to explore documentation for any topic across all solutions.</p>
                 </div>
             </section>
@@ -352,16 +356,16 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     if (currentMode === 'ai' && data.data && data.data.response) {
                         // AI mode - show the synthesized response
                         content = '<div class="result-card">';
-                        content += '<h3 style="color: #667eea; margin-bottom: 1rem;">✨ AI Answer</h3>';
-                        content += '<div class="result-content" style="white-space: pre-wrap;">' + data.data.response + '</div>';
+                        content += '<h3 class="search-result-header">✨ AI Answer</h3>';
+                        content += '<div class="result-content search-result-content">' + data.data.response + '</div>';
                         
                         // Show sources if available
                         if (data.data.data && data.data.data.length > 0) {
-                            content += '<hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--border-color);">';
-                            content += '<h4 style="color: var(--text-muted); margin-bottom: 1rem;">📚 Sources:</h4>';
+                            content += '<hr class="search-result-divider">';
+                            content += '<h4 class="search-sources-heading">📚 Sources:</h4>';
                             data.data.data.forEach(function(source) {
-                                content += '<div style="background: var(--background-alt); padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 4px solid var(--primary-color);">';
-                                content += '<strong>' + source.filename + '</strong> <span style="color: var(--text-muted);">(Score: ' + (source.score * 100).toFixed(1) + '%)</span>';
+                                content += '<div class="search-source-item">';
+                                content += '<strong>' + source.filename + '</strong> <span class="search-source-score">(Score: ' + (source.score * 100).toFixed(1) + '%)</span>';
                                 content += '</div>';
                             });
                         }
