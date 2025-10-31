@@ -507,7 +507,9 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         }
         
         function updateThemeUI(theme) {
-            const config = themeConfig[theme];
+            // Fallback to 'dark' if theme is invalid (e.g., old 'system' value)
+            const validTheme = themeConfig[theme] ? theme : 'dark';
+            const config = themeConfig[validTheme];
             if (themeIcon) themeIcon.textContent = config.icon;
             if (themeIconMobile) themeIconMobile.textContent = config.icon;
             if (themeToggle) {
@@ -530,7 +532,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         }
         
         // Initialize theme UI
-        const currentTheme = localStorage.getItem('theme') || 'dark';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        // Migrate old 'system' value to 'dark'
+        if (currentTheme === 'system' || !themeConfig[currentTheme]) {
+            currentTheme = 'dark';
+            localStorage.setItem('theme', currentTheme);
+        }
+        applyTheme(currentTheme);
         updateThemeUI(currentTheme);
         
         // Add click handlers
