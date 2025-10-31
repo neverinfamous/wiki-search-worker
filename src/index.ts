@@ -47,27 +47,11 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
     </style>
     <script>
     (function() {
-        const savedTheme = localStorage.getItem('theme') || 'system';
-        function getSystemTheme() {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         function applyTheme(theme) {
-            if (theme === 'system') {
-                const systemTheme = getSystemTheme();
-                document.documentElement.setAttribute('data-theme', systemTheme);
-            } else {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
+            document.documentElement.setAttribute('data-theme', theme);
         }
         applyTheme(savedTheme);
-        if (savedTheme === 'system') {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            mediaQuery.addEventListener('change', () => {
-                if (localStorage.getItem('theme') === 'system') {
-                    applyTheme('system');
-                }
-            });
-        }
     })();
     </script>
 </head>
