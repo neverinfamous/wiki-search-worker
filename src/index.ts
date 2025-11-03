@@ -9,22 +9,22 @@ const HTML_CONTENT = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP & R2 Documentation Search | AI-Powered</title>
-    <meta name="description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage. Find answers instantly.">
-    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, Cloudflare R2, cloud storage, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
+    <title>MCP, D1 Manager & R2 Documentation Search | AI-Powered</title>
+    <meta name="description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage. Find answers instantly.">
+    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, Cloudflare D1, R2 Bucket Manager, Cloudflare R2, cloud storage, database management, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#2563eb">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="og:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage. Find answers instantly.">
+    <meta property="og:title" content="MCP, D1 Manager & R2 Documentation Search | AI-Powered">
+    <meta property="og:description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP & R2 Documentation Search | AI-Powered">
-    <meta property="twitter:description" content="AI search for MCP and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), R2 storage.">
+    <meta property="twitter:title" content="MCP, D1 Manager & R2 Documentation Search | AI-Powered">
+    <meta property="twitter:description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -159,7 +159,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
     <div class="container">
         <header class="page-header">
             <h1 id="page-top">🔍 Documentation Search</h1>
-            <p>AI-Powered Search Across MCP Servers & Cloudflare R2 Bucket Manager</p>
+            <p>AI-Powered Search Across MCP Servers, D1 Database Manager & R2 Bucket Manager</p>
         </header>
         
         <main>
@@ -171,8 +171,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             
             <section class="search-card" id="search-section">
                 <h2 class="search-section-heading">Search All Documentation</h2>
-                <p class="search-description">Search comprehensive documentation for MCP servers and R2 Manager. Enter queries below to find answers across SQLite, PostgreSQL, Memory Journal MCP, and R2 Bucket Manager documentation.</p>
-                <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, or R2 Bucket Manager..." autocomplete="off" aria-label="Search documentation">
+                <p class="search-description">Search comprehensive documentation for MCP servers, D1 Manager, and R2 Manager. Enter queries below to find answers across SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, and R2 Bucket Manager documentation.</p>
+                <input type="text" id="searchInput" placeholder="Ask about SQLite, PostgreSQL, Memory Journal MCP, D1 Manager, or R2 Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
@@ -180,63 +180,67 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
             
-            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across MCP servers and R2 Manager documentation...</p></div>
+            <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across MCP servers, D1 Manager, and R2 Manager documentation...</p></div>
             <div class="results" id="results" aria-live="polite"></div>
             
             <section class="examples" id="examples-section">
                 <h2 class="search-section-heading">💡 Example Queries</h2>
-                <p class="search-description">Search across MCP servers and R2 Bucket Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
+                <p class="search-description">Search across MCP servers, D1 Manager, and R2 Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
                 
                 <h3 class="search-section-subheading">SQLite MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
                 <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
-                <button class="example-btn" data-query="What SpatiaLite geospatial operations are available?">What SpatiaLite geospatial operations are available?</button>
                 
                 <h3 class="search-section-subheading">PostgreSQL MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
-                <button class="example-btn" data-query="What PostGIS geospatial features are available?">What PostGIS geospatial features are available?</button>
                 <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
                 
                 <h3 class="search-section-subheading">Memory Journal MCP Server Queries</h3>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
                 <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
-                <button class="example-btn" data-query="What are the available workflow prompts for sprint retrospectives?">What are the available workflow prompts for sprint retrospectives?</button>
+                
+                <h3 class="search-section-subheading">D1 Database Manager Queries</h3>
+                <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
+                <button class="example-btn" data-query="What column management features are available in D1 Manager?">What column management features are available in D1 Manager?</button>
+                <button class="example-btn" data-query="How do I use the SQL query console with syntax highlighting?">How do I use the SQL query console with syntax highlighting?</button>
                 
                 <h3 class="search-section-subheading">R2 Bucket Manager Queries</h3>
                 <button class="example-btn" data-query="How do I perform chunked uploads and manage large files?">How do I perform chunked uploads and manage large files?</button>
                 <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
-                <button class="example-btn" data-query="What folder and file organization features are available?">What folder and file organization features are available?</button>
                 
                 <h3 class="search-section-subheading">Security & Best Practices</h3>
-                <button class="example-btn" data-query="How do I prevent SQL injection attacks?">How do I prevent SQL injection attacks with parameter binding?</button>
+                <button class="example-btn" data-query="How do I prevent SQL injection attacks with parameter binding?">How do I prevent SQL injection attacks with parameter binding?</button>
                 <button class="example-btn" data-query="What are the backup and restore best practices?">What are the backup and restore best practices?</button>
                 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers plus R2 Bucket Manager. Together, these solutions offer 152+ specialized database tools (SQLite 73, PostgreSQL 63, Memory Journal 16) and modern cloud storage management for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers, D1 Database Manager, and R2 Bucket Manager. Together, these solutions offer 152+ specialized database tools (SQLite 73, PostgreSQL 63, Memory Journal 16), modern database management, and cloud storage for AI-native workflows.</p>
                     
                     <h4 class="search-about-subheading">SQLite MCP Server (73 Tools)</h4>
-                    <p>The SQLite MCP Server transforms SQLite into a powerful, AI-ready database engine with enterprise-grade capabilities. It provides 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features include JSON auto-normalization, SQL injection protection, JSONB binary storage, semantic vector search with embeddings, BM25 ranking, virtual tables for CSV and JSON import, PRAGMA optimization tools, and comprehensive backup and restore functionality with integrity verification.</p>
+                    <p>Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features SQL injection protection, semantic vector search with embeddings, BM25 ranking, virtual tables, and comprehensive backup functionality.</p>
                     
                     <h4 class="search-about-subheading">PostgreSQL MCP Server (63 Tools)</h4>
-                    <p>The PostgreSQL MCP Server delivers enterprise-grade database operations with 63 specialized tools across 9 categories. It features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg for zero-risk hypothetical testing, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis including correlation and regression, full-text search capabilities, backup and recovery planning, and real-time monitoring with alerting.</p>
+                    <p>Delivers enterprise-grade database operations with 63 specialized tools across 9 categories. Features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, full-text search, and backup planning.</p>
                     
-                    <h4 class="search-about-subheading">Memory Journal MCP Server v2.0.0 (16 Tools, 13 Prompts, 8 Resources)</h4>
-                    <p>The Memory Journal MCP Server v2.0.0 features production-stable modular architecture with 16 MCP tools, 13 workflow prompts, and 8 resources. Includes 96% code reduction, Git-based team collaboration, GitHub Projects/Issues/PRs integration, relationship mapping, and visual Mermaid diagrams. Perfect for personal knowledge management and tracking development progress.</p>
+                    <h4 class="search-about-subheading">Memory Journal MCP Server v2.0.0 (16 Tools)</h4>
+                    <p>Production-stable modular architecture with 16 MCP tools, 13 workflow prompts, and 8 resources. Features 96% code reduction, Git-based team collaboration, GitHub Projects/Issues/PRs integration, relationship mapping, and visual Mermaid diagrams. Perfect for personal knowledge management and tracking development progress.</p>
+                    
+                    <h4 class="search-about-subheading">D1 Database Manager v1.0.0</h4>
+                    <p>Modern web application for managing Cloudflare D1 databases with enterprise-grade authentication. Features complete CRUD operations, migration-based database renaming, visual schema designer, advanced table operations with bulk capabilities, column management (add, rename, modify, delete), foreign key dependency analysis with cascade visualization, row-level filtering with type-aware operators, SQL query console with syntax highlighting and CSV export, and dark/light theme support. Includes Docker deployment with multi-architecture support and Cloudflare Access Zero Trust authentication.</p>
                     
                     <h4 class="search-about-subheading">R2 Bucket Manager v1.3.0</h4>
-                    <p>R2 Bucket Manager v1.3.0 provides enterprise-grade cloud storage management for Cloudflare R2 with simplified deployment (no database required). New features include multi-bucket download for disaster recovery and migration, architectural simplification with D1 database removal (2 fewer setup steps), cross-bucket search with advanced filtering, bulk bucket deletion with progress tracking, advanced file operations (chunked uploads, drag-and-drop), smart filtering, GitHub SSO authentication, folder hierarchies, signed URLs, batch operations, and zero-trust access. Complement your MCP servers with secure, scalable cloud storage.</p>
+                    <p>Enterprise-grade cloud storage management for Cloudflare R2 with simplified deployment (no database required). Features multi-bucket download for disaster recovery, cross-bucket search with advanced filtering, bulk operations, chunked uploads, drag-and-drop, GitHub SSO authentication, folder hierarchies, signed URLs, and zero-trust access. Complement your databases with secure, scalable cloud storage.</p>
                     
                     <h4 class="search-about-subheading">Search Technology</h4>
-                    <p>This search interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all three wiki repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation chunks from comprehensive guides, tutorials, and API references. Results include source attribution showing which server and documentation page contains the answer, along with relevance scores to help you find the most accurate information quickly.</p>
+                    <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation from comprehensive guides, tutorials, and API references with source attribution and relevance scores.</p>
                     
                     <h4 class="search-about-subheading">Use Cases & Applications</h4>
-                    <p>SQLite MCP excels in embedded applications, mobile apps, edge computing, IoT devices, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications, high-traffic web services, data warehousing, business intelligence, and real-time analytics. Memory Journal MCP is perfect for knowledge management, development logging, sprint planning, team retrospectives, and building personal knowledge graphs.</p>
+                    <p>SQLite MCP excels in embedded applications, edge computing, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications and data warehousing. Memory Journal MCP is perfect for knowledge management and sprint planning. D1 Manager simplifies Cloudflare D1 database operations with an intuitive web interface. R2 Manager provides enterprise cloud storage management.</p>
                     
-                    <p>Common use cases: AI-powered applications with vector embeddings and semantic search, geospatial applications with mapping services, statistical data analysis and reporting, full-text search implementations, secure database operations with SQL injection protection, JSON document storage and querying, development work tracking and reflection, sprint planning and retrospectives, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
+                    <p>Common use cases: AI-powered applications with vector embeddings, geospatial applications with mapping, statistical analysis, full-text search, secure database operations with SQL injection protection, JSON document storage, database management with visual tools, development work tracking, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
                     <h4 class="search-about-subheading">Getting Started</h4>
-                    <p class="no-margin">All solutions are production-ready and available for instant deployment. Each server integrates seamlessly with Claude Desktop and Cursor IDE via the Model Context Protocol. Use the search interface above to explore documentation for any topic across all solutions.</p>
+                    <p class="no-margin">All solutions are production-ready and available for instant deployment. MCP servers integrate seamlessly with Claude Desktop and Cursor IDE. D1 Manager and R2 Manager deploy to Cloudflare Workers or Docker. Use the search interface above to explore documentation for any topic across all solutions.</p>
                 </div>
             </section>
             
@@ -280,6 +284,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/d1-manager" target="_blank" rel="noopener">D1 Database Manager</a></li>
                         <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener">R2 Bucket Manager</a></li>
                     </ul>
                 </div>
@@ -393,7 +398,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 e.preventDefault();
                 const platform = this.dataset.platform;
                 const url = encodeURIComponent(window.location.href);
-                const title = encodeURIComponent('MCP Server Documentation Search - SQLite, PostgreSQL & Memory Journal');
+                const title = encodeURIComponent('MCP Server Documentation Search - SQLite, PostgreSQL, Memory Journal, D1 Manager & R2 Manager');
                 const successMsg = document.querySelector('.share-success');
                 
                 if (platform === 'twitter') {
@@ -577,9 +582,9 @@ export default {
 			if (path === '/health') {
 				return jsonResponse({
 					status: 'healthy',
-					service: 'MCP Server Documentation Search',
-					version: '3.0.0',
-					servers: ['SQLite MCP Server', 'PostgreSQL MCP Server', 'Memory Journal MCP Server'],
+					service: 'MCP Server & Database Manager Documentation Search',
+					version: '4.0.0',
+					servers: ['SQLite MCP Server', 'PostgreSQL MCP Server', 'Memory Journal MCP Server', 'D1 Database Manager', 'R2 Bucket Manager'],
 					endpoints: {
 						search: '/api/search (POST)',
 						health: '/health (GET)',
@@ -587,7 +592,9 @@ export default {
 					documentation: {
 						sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
 						postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
-						memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki'
+						memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
+						d1Manager: 'https://github.com/neverinfamous/d1-manager',
+						r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker'
 					},
 				});
 			}
