@@ -9,7 +9,7 @@
     to manually trigger a sync in the Cloudflare dashboard or wait for automatic sync.
     
 .PARAMETER WikiName
-    Optional. Specify a single wiki to sync: sqlite, postgres, memory-journal, or r2-manager
+    Optional. Specify a single wiki to sync: sqlite, postgres, memory-journal, r2-manager, or d1-manager
     If not specified, syncs all wikis.
     
 .EXAMPLE
@@ -20,6 +20,10 @@
     .\sync-wikis-to-r2.ps1 -WikiName r2-manager
     Syncs only the R2 Manager wiki
     
+.EXAMPLE
+    .\sync-wikis-to-r2.ps1 -WikiName d1-manager
+    Syncs only the D1 Manager wiki
+    
 .NOTES
     Requires: Wrangler CLI, CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID environment variables
     After running: Go to https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki
@@ -27,7 +31,7 @@
 #>
 
 param(
-    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'all')]
+    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'all')]
     [string]$WikiName = 'all'
 )
 
@@ -56,6 +60,11 @@ $wikis = @{
         Path = "$BASE_PATH\R2-Manager-Worker.wiki"
         Folder = "r2-manager"
         DisplayName = "R2 Bucket Manager"
+    }
+    'd1-manager' = @{
+        Path = "$BASE_PATH\d1-manager.wiki"
+        Folder = "d1-manager"
+        DisplayName = "D1 Database Manager"
     }
 }
 
