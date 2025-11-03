@@ -1,5 +1,5 @@
 # Wiki Search Worker - Complete Documentation
-*Last Updated: October 2, 2025*
+*Last Updated: October 3, 2025*
 
 **Production URL**: https://search.adamic.tech  
 **Worker Name**: `sqlite-wiki-search`  
