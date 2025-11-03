@@ -31,9 +31,11 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <link rel="icon" type="image/png" sizes="16x16" href="https://adamic.tech/assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
     
-    <!-- External Stylesheets -->
-    <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css">
-    <link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css">
+    <!-- External Stylesheets - Async Loading -->
+    <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/main.css"></noscript>
+    <link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css"></noscript>
     
     <style>
 :root{--primary-color:#2563eb;--text-color:#1f2937;--text-muted:#6b7280;--border-color:#e5e7eb;--background:#fff;--background-alt:#f9fafb}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:400;line-height:1.6;background:var(--background);color:var(--text-color);text-rendering:optimizeSpeed;min-height:100vh;padding-top:120px}.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border-color);backdrop-filter:blur(10px);padding:1rem 0;contain:layout style}.header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:.75rem;height:88px}.logo-link{display:inline-block;text-decoration:none}.logo{height:58px;width:58px;display:block;object-fit:contain}
