@@ -187,26 +187,26 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <h2 class="search-section-heading">💡 Example Queries</h2>
                 <p class="search-description">Search across MCP servers, D1 Manager, and R2 Manager documentation. Try these queries to explore features and capabilities across all solutions.</p>
                 
-                <h3 class="search-section-subheading">SQLite MCP Server Queries</h3>
-                <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
-                <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
-                
-                <h3 class="search-section-subheading">PostgreSQL MCP Server Queries</h3>
-                <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
-                <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
-                
-                <h3 class="search-section-subheading">Memory Journal MCP Server Queries</h3>
-                <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
-                <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
-                
                 <h3 class="search-section-subheading">D1 Database Manager Queries</h3>
                 <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
                 <button class="example-btn" data-query="What column management features are available in D1 Manager?">What column management features are available in D1 Manager?</button>
                 <button class="example-btn" data-query="How do I use the SQL query console with syntax highlighting?">How do I use the SQL query console with syntax highlighting?</button>
                 
+                <h3 class="search-section-subheading">Memory Journal MCP Server Queries</h3>
+                <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
+                <button class="example-btn" data-query="How do I generate Mermaid visualizations of entry relationships?">How do I generate Mermaid visualizations of entry relationships?</button>
+                
+                <h3 class="search-section-subheading">PostgreSQL MCP Server Queries</h3>
+                <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
+                <button class="example-btn" data-query="How do I use pgvector for semantic search?">How do I use pgvector for semantic search?</button>
+                
                 <h3 class="search-section-subheading">R2 Bucket Manager Queries</h3>
                 <button class="example-btn" data-query="How do I perform chunked uploads and manage large files?">How do I perform chunked uploads and manage large files?</button>
                 <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
+                
+                <h3 class="search-section-subheading">SQLite MCP Server Queries</h3>
+                <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
+                <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
                 
                 <h3 class="search-section-subheading">Security & Best Practices</h3>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks with parameter binding?">How do I prevent SQL injection attacks with parameter binding?</button>
@@ -216,26 +216,26 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <h3>About Our Documentation</h3>
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for three enterprise-grade Model Context Protocol (MCP) servers, D1 Database Manager, and R2 Bucket Manager. Together, these solutions offer 152+ specialized database tools (SQLite 73, PostgreSQL 63, Memory Journal 16), modern database management, and cloud storage for AI-native workflows.</p>
                     
-                    <h4 class="search-about-subheading">SQLite MCP Server (73 Tools)</h4>
-                    <p>Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features SQL injection protection, semantic vector search with embeddings, BM25 ranking, virtual tables, and comprehensive backup functionality.</p>
-                    
-                    <h4 class="search-about-subheading">PostgreSQL MCP Server (63 Tools)</h4>
-                    <p>Delivers enterprise-grade database operations with 63 specialized tools across 9 categories. Features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, full-text search, and backup planning.</p>
+                    <h4 class="search-about-subheading">D1 Database Manager v1.0.0</h4>
+                    <p>Modern web application for managing Cloudflare D1 databases with enterprise-grade authentication. Features complete CRUD operations, migration-based database renaming, visual schema designer, advanced table operations with bulk capabilities, column management (add, rename, modify, delete), foreign key dependency analysis with cascade visualization, row-level filtering with type-aware operators, SQL query console with syntax highlighting and CSV export, and dark/light theme support. Includes Docker deployment with multi-architecture support and Cloudflare Access Zero Trust authentication.</p>
                     
                     <h4 class="search-about-subheading">Memory Journal MCP Server v2.0.0 (16 Tools)</h4>
                     <p>Production-stable modular architecture with 16 MCP tools, 13 workflow prompts, and 8 resources. Features 96% code reduction, Git-based team collaboration, GitHub Projects/Issues/PRs integration, relationship mapping, and visual Mermaid diagrams. Perfect for personal knowledge management and tracking development progress.</p>
                     
-                    <h4 class="search-about-subheading">D1 Database Manager v1.0.0</h4>
-                    <p>Modern web application for managing Cloudflare D1 databases with enterprise-grade authentication. Features complete CRUD operations, migration-based database renaming, visual schema designer, advanced table operations with bulk capabilities, column management (add, rename, modify, delete), foreign key dependency analysis with cascade visualization, row-level filtering with type-aware operators, SQL query console with syntax highlighting and CSV export, and dark/light theme support. Includes Docker deployment with multi-architecture support and Cloudflare Access Zero Trust authentication.</p>
+                    <h4 class="search-about-subheading">PostgreSQL MCP Server (63 Tools)</h4>
+                    <p>Delivers enterprise-grade database operations with 63 specialized tools across 9 categories. Features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, full-text search, and backup planning.</p>
                     
                     <h4 class="search-about-subheading">R2 Bucket Manager v1.3.0</h4>
                     <p>Enterprise-grade cloud storage management for Cloudflare R2 with simplified deployment (no database required). Features multi-bucket download for disaster recovery, cross-bucket search with advanced filtering, bulk operations, chunked uploads, drag-and-drop, GitHub SSO authentication, folder hierarchies, signed URLs, and zero-trust access. Complement your databases with secure, scalable cloud storage.</p>
+                    
+                    <h4 class="search-about-subheading">SQLite MCP Server (73 Tools)</h4>
+                    <p>Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, and advanced text processing. Features SQL injection protection, semantic vector search with embeddings, BM25 ranking, virtual tables, and comprehensive backup functionality.</p>
                     
                     <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation from comprehensive guides, tutorials, and API references with source attribution and relevance scores.</p>
                     
                     <h4 class="search-about-subheading">Use Cases & Applications</h4>
-                    <p>SQLite MCP excels in embedded applications, edge computing, and rapid prototyping. PostgreSQL MCP is ideal for enterprise applications and data warehousing. Memory Journal MCP is perfect for knowledge management and sprint planning. D1 Manager simplifies Cloudflare D1 database operations with an intuitive web interface. R2 Manager provides enterprise cloud storage management.</p>
+                    <p>D1 Manager simplifies Cloudflare D1 database operations with an intuitive web interface. Memory Journal MCP is perfect for knowledge management and sprint planning. PostgreSQL MCP is ideal for enterprise applications and data warehousing. R2 Manager provides enterprise cloud storage management. SQLite MCP excels in embedded applications, edge computing, and rapid prototyping.</p>
                     
                     <p>Common use cases: AI-powered applications with vector embeddings, geospatial applications with mapping, statistical analysis, full-text search, secure database operations with SQL injection protection, JSON document storage, database management with visual tools, development work tracking, and Model Context Protocol integration with Claude Desktop and Cursor IDE.</p>
                     
