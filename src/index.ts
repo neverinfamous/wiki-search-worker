@@ -10,7 +10,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP, D1 Manager & R2 Documentation Search | AI-Powered</title>
-    <meta name="description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage. Find answers instantly.">
+    <meta name="description" content="AI-powered search for MCP servers, D1 Manager & R2 documentation. Find answers across SQLite, PostgreSQL, Memory Journal tools instantly.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, Cloudflare D1, R2 Bucket Manager, Cloudflare R2, cloud storage, database management, database search, AI search, vector search, JSON tools, SQL injection prevention, statistical analysis, performance tuning, journal entries, knowledge management, Model Context Protocol">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
@@ -18,13 +18,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP, D1 Manager & R2 Documentation Search | AI-Powered">
-    <meta property="og:description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage.">
+    <meta property="og:description" content="AI-powered search for MCP servers, D1 Manager & R2 documentation. Find answers across SQLite, PostgreSQL, Memory Journal tools instantly.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP, D1 Manager & R2 Documentation Search | AI-Powered">
-    <meta property="twitter:description" content="AI search for MCP servers, D1 Manager, and R2 documentation. SQLite (73 tools), PostgreSQL (63 tools), Memory Journal (16 tools), D1 database management, R2 storage.">
+    <meta property="twitter:description" content="AI-powered search for MCP servers, D1 Manager & R2 documentation. Find answers across SQLite, PostgreSQL, Memory Journal tools instantly.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
