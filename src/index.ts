@@ -10,7 +10,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Servers & Cloudflare Manager Documentation | AI Search</title>
-    <meta name="description" content="AI-powered search for MCP servers and Cloudflare management tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV documentation.">
+    <meta name="description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
     <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
@@ -18,13 +18,13 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare management tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV documentation.">
+    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare management tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV documentation.">
+    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -189,13 +189,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <h2 class="search-section-heading">💡 Example Queries</h2>
                 <p class="search-description">Search across MCP servers and Cloudflare management tools. Try these queries to explore features and capabilities.</p>
                 
-                <h3 class="search-section-subheading">Cloudflare Management Tools</h3>
+                <h3 class="search-section-subheading">Database & Storage Management</h3>
                 <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
                 <button class="example-btn" data-query="How do I perform chunked uploads and manage large files in R2?">How do I perform chunked uploads and manage large files in R2?</button>
                 <button class="example-btn" data-query="How do I use metadata and tags to organize KV keys?">How do I use metadata and tags to organize KV keys?</button>
                 <button class="example-btn" data-query="What are the backup and restore options for KV namespaces?">What are the backup and restore options for KV namespaces?</button>
                 
-                <h3 class="search-section-subheading">MCP Server Operations</h3>
+                <h3 class="search-section-subheading">MCP Server Features</h3>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
