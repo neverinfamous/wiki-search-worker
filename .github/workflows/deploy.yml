@@ -95,6 +95,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: Clone KV Manager wiki repository
+        run: |
+          git clone https://github.com/neverinfamous/kv-manager.wiki.git kv-manager-wiki-temp
+          
+      - name: Upload KV Manager wiki files to R2
+        run: |
+          cd kv-manager-wiki-temp
+          for file in *.md; do
+            echo "Uploading $file to R2 (kv-manager folder)..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/kv-manager/"$file" --file="$file" --remote
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
       - name: AutoRAG Sync Instructions
         run: |
@@ -118,6 +133,7 @@ jobs:
           echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
           echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
           echo "✅ R2 Manager wiki files synced to R2: sqlite-mcp-server-wiki/r2-manager/"
+          echo "✅ KV Manager wiki files synced to R2: sqlite-mcp-server-wiki/kv-manager/"
           echo "✅ AutoRAG index sync triggered"
           echo ""
           echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"

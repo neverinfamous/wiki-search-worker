@@ -9,7 +9,7 @@
     to manually trigger a sync in the Cloudflare dashboard or wait for automatic sync.
     
 .PARAMETER WikiName
-    Optional. Specify a single wiki to sync: sqlite, postgres, memory-journal, r2-manager, or d1-manager
+    Optional. Specify a single wiki to sync: sqlite, postgres, memory-journal, r2-manager, d1-manager, or kv-manager
     If not specified, syncs all wikis.
     
 .EXAMPLE
@@ -31,7 +31,7 @@
 #>
 
 param(
-    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'all')]
+    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'kv-manager', 'all')]
     [string]$WikiName = 'all'
 )
 
@@ -65,6 +65,11 @@ $wikis = @{
         Path = "$BASE_PATH\d1-manager.wiki"
         Folder = "d1-manager"
         DisplayName = "D1 Database Manager"
+    }
+    'kv-manager' = @{
+        Path = "$BASE_PATH\kv-manager.wiki"
+        Folder = "kv-manager"
+        DisplayName = "KV Manager"
     }
 }
 

@@ -34,7 +34,7 @@ This Cloudflare Worker provides an AI-powered search interface for the [SQLite M
 
 - 🤖 **AI-Enhanced Search** - Natural language answers with source attribution
 - ⚡ **Vector Search** - Fast semantic search across all documentation
-- 📚 **Complete Coverage** - Searches documentation across 4 projects (SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager)
+- 📚 **Complete Coverage** - Searches documentation across 5 projects (SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, KV Manager)
 - 🎯 **Context-Aware** - Understands questions and provides relevant examples
 - 🌙 **Dark Mode** - Automatic theme detection
 - 📱 **Mobile Responsive** - Works on all devices
@@ -249,6 +249,7 @@ routes = [
   - PostgreSQL MCP: `C:\Users\chris\Desktop\postgres-mcp.wiki` → `postgres/` folder
   - Memory Journal MCP: `C:\Users\chris\Desktop\memory-journal-mcp.wiki` → `memory-journal/` folder
   - R2 Bucket Manager: `C:\Users\chris\Desktop\R2-Manager-Worker.wiki` → `r2-manager/` folder
+  - KV Manager: `C:\Users\chris\Desktop\kv-manager.wiki` → `kv-manager/` folder
 - **Total Content**: 50+ markdown files across all projects
 - **Auto-Sync**: Every 6 hours automatically
 
@@ -322,6 +323,7 @@ $env:CLOUDFLARE_ACCOUNT_ID = "<REDACTED_ACCOUNT_ID>"
 
 # Sync specific wiki only
 .\sync-wikis-to-r2.ps1 -WikiName r2-manager
+.\sync-wikis-to-r2.ps1 -WikiName kv-manager
 .\sync-wikis-to-r2.ps1 -WikiName sqlite
 .\sync-wikis-to-r2.ps1 -WikiName postgres
 .\sync-wikis-to-r2.ps1 -WikiName memory-journal
@@ -382,6 +384,7 @@ sqlite-mcp-server-wiki/
 ├── postgres/        # PostgreSQL MCP Server wiki files
 ├── memory-journal/  # Memory Journal MCP wiki files
 ├── r2-manager/      # R2 Bucket Manager wiki files
+├── kv-manager/      # KV Manager wiki files
 └── your-project/    # Your new project wiki files
 ```
 
