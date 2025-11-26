@@ -41,7 +41,8 @@ Please include:
 - ✅ **HTTPS Only**: All traffic encrypted via Cloudflare
 - ✅ **DDoS Protection**: Cloudflare WAF with rate limiting
 - ✅ **Input Validation**: Search queries sanitized
-- ✅ **Private Repository**: Source code not publicly accessible
+- ✅ **Secret Scanning**: GitHub secret scanning with push protection enabled
+- ✅ **CodeQL Analysis**: Automated security vulnerability scanning
 - ✅ **Dependabot**: Automated dependency vulnerability scanning
 
 ### Best Practices
@@ -87,5 +88,5 @@ For general questions about security:
 
 ---
 
-**Last Updated**: October 2, 2025
+**Last Updated**: November 26, 2025
 
