@@ -5,7 +5,7 @@
 **Production URL**: https://search.adamic.tech  
 **Worker Name**: `sqlite-wiki-search`  
 **AI Search ID**: `sqlite-mcp-server-wiki`  
-**GitHub Repo**: https://github.com/neverinfamous/wiki-search-worker (Private)
+**GitHub Repo**: https://github.com/neverinfamous/wiki-search-worker
 
 Public AI-powered search interface for the SQLite MCP Server documentation using Cloudflare Workers + AI Search (formerly AutoRAG).
 
@@ -606,8 +606,8 @@ npm run deploy
 
 ## 📚 File Locations
 
-### Worker Code (Private Repository)
-- **GitHub**: https://github.com/neverinfamous/wiki-search-worker (Private)
+### Worker Code
+- **GitHub**: https://github.com/neverinfamous/wiki-search-worker
 - **Local**: `C:\Users\chris\Desktop\wiki-search-worker\`
 - **Main Worker**: `src/index.ts`
 - **Config**: `wrangler.toml`
@@ -616,7 +616,7 @@ npm run deploy
 - **Security**: `SECURITY.md`
 - **Deployment Guide**: `DEPLOYMENT.md`
 
-### Wiki Source (Public Repository)
+### Wiki Source
 - **GitHub**: https://github.com/neverinfamous/sqlite-mcp-server.wiki
 - **Local**: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki\`
 - **Files**: 19 markdown files
@@ -630,9 +630,9 @@ npm run deploy
 
 ## 🔗 Related Repositories
 
-- **[sqlite-mcp-server](https://github.com/neverinfamous/sqlite-mcp-server)** - Main project (Public)
-- **[sqlite-mcp-server.wiki](https://github.com/neverinfamous/sqlite-mcp-server.wiki)** - Wiki source (Public)
-- **[wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker)** - This worker (Private)
+- **[sqlite-mcp-server](https://github.com/neverinfamous/sqlite-mcp-server)** - Main project
+- **[sqlite-mcp-server.wiki](https://github.com/neverinfamous/sqlite-mcp-server.wiki)** - Wiki source
+- **[wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker)** - This worker
 
 ---
 
@@ -752,7 +752,7 @@ curl -X POST https://search.adamic.tech/api/search \
 ---
 
 **Project**: [SQLite MCP Server](https://github.com/neverinfamous/sqlite-mcp-server)  
-**Worker Repository**: [wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker) (Private)  
+**Worker Repository**: [wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker) 
 **Production URL**: https://search.adamic.tech  
 **Technology**: Cloudflare Workers + AI Search (formerly AutoRAG)  
 **CI/CD**: GitHub Actions  
