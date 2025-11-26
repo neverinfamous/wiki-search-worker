@@ -22,12 +22,12 @@ Go to your repository settings: **Settings → Secrets and variables → Actions
 
 Add these two secrets:
 
-| Secret Name | Value | Where to Find |
-|------------|-------|---------------|
-| `CLOUDFLARE_API_TOKEN` | Your Cloudflare API Token | Use: `<REDACTED_API_TOKEN>` |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Use: `<REDACTED_ACCOUNT_ID>` |
+| Secret Name | Where to Find |
+|------------|---------------|
+| `CLOUDFLARE_API_TOKEN` | Create at https://dash.cloudflare.com/profile/api-tokens |
+| `CLOUDFLARE_ACCOUNT_ID` | Found in your Cloudflare dashboard URL (after `/`) |
 
-**Note**: Using a properly scoped API token with Workers and R2 permissions.
+**Note**: Use a properly scoped API token with Workers and R2 permissions.
 
 **To create a new API token** (if needed):
 1. Go to https://dash.cloudflare.com/profile/api-tokens

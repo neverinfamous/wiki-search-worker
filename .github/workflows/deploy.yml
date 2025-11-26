@@ -120,7 +120,7 @@ jobs:
           echo ""
           echo "📝 R2 files have been updated, but AutoRAG needs manual sync."
           echo ""
-          echo "🔗 Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki"
+          echo "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki"
           echo "👆 Click the 'Sync Index' button"
           echo ""
           echo "⏱️  Or wait up to 6 hours for automatic sync"

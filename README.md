@@ -106,12 +106,20 @@ Every push to `main` branch automatically:
 
 ### GitHub Secrets Required
 
-| Secret Name | Value | Purpose |
-|------------|-------|---------|
-| `CLOUDFLARE_API_TOKEN` | `<REDACTED_API_TOKEN>` | API authentication |
-| `CLOUDFLARE_ACCOUNT_ID` | `<REDACTED_ACCOUNT_ID>` | Account identification |
+| Secret Name | Purpose |
+|------------|---------|
+| `CLOUDFLARE_API_TOKEN` | API authentication (see [Token Setup](#creating-an-api-token)) |
+| `CLOUDFLARE_ACCOUNT_ID` | Account identification (found in Cloudflare dashboard URL) |
 
 **Token Permissions**: Workers Scripts (Edit), R2 (Edit), Account Settings (Read)
+
+#### Creating an API Token
+
+1. Go to https://dash.cloudflare.com/profile/api-tokens
+2. Click **Create Token**
+3. Use the **Edit Cloudflare Workers** template
+4. Add **R2:Edit** permission
+5. Scope to your account
 
 ### Initial Setup (One-Time)
 
@@ -195,7 +203,7 @@ name = "sqlite-wiki-search"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
-account_id = "<REDACTED_ACCOUNT_ID>"
+# account_id loaded from CLOUDFLARE_ACCOUNT_ID env var or set here
 
 # AI binding for AutoRAG access
 [ai]
@@ -242,7 +250,6 @@ routes = [
 
 ### AI Search Details
 
-- **Account ID**: `<REDACTED_ACCOUNT_ID>`
 - **AI Search ID**: `sqlite-mcp-server-wiki`
 - **R2 Source Bucket**: `sqlite-mcp-server-wiki`
 - **Wiki Sources**:
@@ -268,8 +275,8 @@ routes = [
         "https://autorag.mcp.cloudflare.com/sse"
       ],
       "env": {
-        "CLOUDFLARE_API_TOKEN": "<REDACTED_API_TOKEN>",
-        "CLOUDFLARE_ACCOUNT_ID": "<REDACTED_ACCOUNT_ID>"
+        "CLOUDFLARE_API_TOKEN": "<your-api-token>",
+        "CLOUDFLARE_ACCOUNT_ID": "<your-account-id>"
       }
     }
   }
@@ -303,7 +310,7 @@ mcp_cloudflare-autorag_ai_search({
 - No action required for most updates
 
 **Manual Sync** (for immediate updates):
-1. Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki
+1. Go to: Cloudflare Dashboard → AI → AI Search → `sqlite-mcp-server-wiki`
 2. Click **"Sync Index"** button
 3. Wait for completion (~1-2 minutes)
 4. Verify with a test query
@@ -316,8 +323,8 @@ mcp_cloudflare-autorag_ai_search({
 
 ```powershell
 # Set required environment variables (one-time setup)
-$env:CLOUDFLARE_API_TOKEN = "<REDACTED_API_TOKEN>"
-$env:CLOUDFLARE_ACCOUNT_ID = "<REDACTED_ACCOUNT_ID>"
+$env:CLOUDFLARE_API_TOKEN = "<your-api-token>"
+$env:CLOUDFLARE_ACCOUNT_ID = "<your-account-id>"
 
 # Sync all wikis
 .\sync-wikis-to-r2.ps1
@@ -407,7 +414,7 @@ After adding the configuration:
 
 After files are in R2, sync the search index:
 
-1. Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki
+1. Go to: Cloudflare Dashboard → AI → AI Search → `sqlite-mcp-server-wiki`
 2. Click **"Sync Index"** button
 3. Wait 1-2 minutes for completion
 4. Test search at: https://search.adamic.tech

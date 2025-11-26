@@ -26,7 +26,7 @@
     
 .NOTES
     Requires: Wrangler CLI, CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID environment variables
-    After running: Go to https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki
+    After running: Go to Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki
     and click "Sync Index" button (or wait up to 6 hours for automatic sync)
 #>
 
@@ -191,7 +191,7 @@ if ($successCount -gt 0) {
     Write-Host ""
     Write-Host "📝 R2 files have been updated, but AutoRAG needs manual sync." -ForegroundColor White
     Write-Host ""
-    Write-Host "🔗 Go to: https://dash.cloudflare.com/<REDACTED_ACCOUNT_ID>/ai/ai-search/sqlite-mcp-server-wiki" -ForegroundColor Cyan
+    Write-Host "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki" -ForegroundColor Cyan
     Write-Host "👆 Click the 'Sync Index' button" -ForegroundColor White
     Write-Host ""
     Write-Host "⏱️  Or wait up to 6 hours for automatic sync" -ForegroundColor Gray
