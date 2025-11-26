@@ -350,6 +350,14 @@
             });
         });
 
+        // HTML escape function to prevent XSS
+        function escapeHtml(text) {
+            if (text == null) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Search function
         async function performSearch(query) {
             const loading = document.getElementById('loading');
@@ -384,7 +392,7 @@
                     results.innerHTML = `
                         <div class="result-card">
                             <div class="error">
-                                <strong>Error:</strong> ${data.error}
+                                <strong>Error:</strong> ${escapeHtml(data.error)}
                             </div>
                         </div>
                     `;
@@ -395,7 +403,7 @@
                 results.innerHTML = `
                     <div class="result-card">
                         <div class="error">
-                            <strong>Error:</strong> ${error.message}
+                            <strong>Error:</strong> ${escapeHtml(error.message)}
                         </div>
                     </div>
                 `;
@@ -417,7 +425,7 @@
                             <span class="result-time">${new Date(data.timestamp).toLocaleTimeString()}</span>
                         </div>
                         <div class="result-content">
-                            <p><strong>Query:</strong> ${query}</p>
+                            <p><strong>Query:</strong> ${escapeHtml(query)}</p>
                             <hr style="margin: 1rem 0; border: none; border-top: 1px solid #eee;">
                             ${formatAIResponse(data.data)}
                         </div>
@@ -435,8 +443,8 @@
                         <div class="result-content">
                             ${chunks.map(chunk => `
                                 <div class="source-item">
-                                    <h4>${chunk.filename || 'Document'}</h4>
-                                    <p>${formatContent(chunk.content)}</p>
+                                    <h4>${escapeHtml(chunk.filename || 'Document')}</h4>
+                                    <p>${escapeHtml(formatContent(chunk.content))}</p>
                                     <small style="color: #999;">Score: ${(chunk.score * 100).toFixed(1)}%</small>
                                 </div>
                             `).join('')}
@@ -449,21 +457,21 @@
         function formatAIResponse(data) {
             // Handle string response
             if (typeof data === 'string') {
-                return `<p>${data.replace(/\n/g, '<br>')}</p>`;
+                return `<p>${escapeHtml(data).replace(/\n/g, '<br>')}</p>`;
             }
             
             // Handle object with response field
             if (data.response) {
-                return `<p>${data.response.replace(/\n/g, '<br>')}</p>`;
+                return `<p>${escapeHtml(data.response).replace(/\n/g, '<br>')}</p>`;
             }
 
             // Handle array of content chunks
             if (Array.isArray(data)) {
-                return data.map(item => `<p>${JSON.stringify(item)}</p>`).join('');
+                return data.map(item => `<p>${escapeHtml(JSON.stringify(item))}</p>`).join('');
             }
 
             // Fallback
-            return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            return `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
         }
 
         function formatContent(content) {
