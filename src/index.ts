@@ -10,21 +10,21 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Servers & Cloudflare Manager Documentation | AI Search</title>
-    <meta name="description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
-    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
+    <meta name="description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, DO Manager, Durable Objects Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Cloudflare Durable Objects, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
+    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, R2, and KV docs.">
+    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -173,8 +173,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             
             <section class="search-card" id="search-section">
                 <h2 class="search-section-heading">Search All Documentation</h2>
-                <p class="search-description">Search comprehensive documentation for MCP servers and Cloudflare management tools. Enter queries below to find answers across SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Manager, R2 Manager, and KV Manager documentation.</p>
-                <input type="text" id="searchInput" placeholder="Ask about MCP servers, D1, R2, or KV Manager..." autocomplete="off" aria-label="Search documentation">
+                <p class="search-description">Search comprehensive documentation for MCP servers and Cloudflare management tools. Enter queries below to find answers across SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Manager, DO Manager, KV Manager, and R2 Manager documentation.</p>
+                <input type="text" id="searchInput" placeholder="Ask about MCP servers, D1, DO, KV, or R2 Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
@@ -191,9 +191,10 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 
                 <h3 class="search-section-subheading">Database & Storage Management</h3>
                 <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
-                <button class="example-btn" data-query="How do I perform chunked uploads and manage large files in R2?">How do I perform chunked uploads and manage large files in R2?</button>
+                <button class="example-btn" data-query="How do I manage Durable Objects instances and namespaces?">How do I manage Durable Objects instances and namespaces?</button>
                 <button class="example-btn" data-query="How do I use metadata and tags to organize KV keys?">How do I use metadata and tags to organize KV keys?</button>
-                <button class="example-btn" data-query="What are the backup and restore options for KV namespaces?">What are the backup and restore options for KV namespaces?</button>
+                <button class="example-btn" data-query="How do I perform chunked uploads and manage large files in R2?">How do I perform chunked uploads and manage large files in R2?</button>
+                <button class="example-btn" data-query="How do I run SQL queries on SQLite-backed Durable Objects?">How do I run SQL queries on SQLite-backed Durable Objects?</button>
                 
                 <h3 class="search-section-subheading">MCP Server Features</h3>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
@@ -207,12 +208,14 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three Model Context Protocol (MCP) servers and three Cloudflare management tools. Together, these solutions offer 152+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 152+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
                     
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager v2.0.0:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
                     
-                    <p><strong>KV Manager v1.0.0:</strong> Full-featured management platform for Cloudflare Workers KV namespaces. Features dual metadata system (KV Native 1024 bytes + D1 Custom unlimited), unlimited tag organization, cross-namespace search, bulk operations (delete, copy, TTL, tags), JSON/NDJSON import/export with collision handling, R2 backup and restore with batch operations, job history with event timelines and advanced filtering, Cloudflare Access authentication, and dark/light theme support. Built with React, TypeScript, and Tailwind CSS.</p>
+                    <p><strong>DO Manager v1.0.0:</strong> Full-featured management platform for Cloudflare Durable Objects with namespace auto-discovery, instance tracking, and SQL console for SQLite-backed DOs. Features Query Builder with pre-built templates, saved queries per namespace, batch operations (download, delete, backup), instance cloning with full storage copy, instance diff for side-by-side comparison, color tags for organization, R2 backup and restore, metrics dashboard with request volume and CPU time, health dashboard with stale instance detection and storage quota alerts, global cross-namespace search, and event-driven webhooks with HMAC verification. Includes Cloudflare Access Zero Trust authentication.</p>
+                    
+                    <p><strong>KV Manager v1.0.0:</strong> Full-featured management platform for Cloudflare Workers KV namespaces. Features dual metadata system (KV Native 1024 bytes + D1 Custom unlimited), unlimited tag organization, cross-namespace search, bulk operations (delete, copy, TTL, tags), JSON/NDJSON import/export with collision handling, R2 backup and restore with batch operations, job history with event timelines and advanced filtering, Cloudflare Access authentication, and dark/light theme support.</p>
                     
                     <p><strong>R2 Bucket Manager v2.0.0:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
                     
@@ -272,6 +275,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/d1-manager" target="_blank" rel="noopener">D1 Manager</a></li>
+                        <li><a href="https://github.com/neverinfamous/do-manager" target="_blank" rel="noopener">DO Manager</a></li>
                         <li><a href="https://github.com/neverinfamous/kv-manager" target="_blank" rel="noopener">KV Manager</a></li>
                         <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener">R2 Manager</a></li>
                     </ul>
@@ -571,8 +575,8 @@ export default {
 				return jsonResponse({
 					status: 'healthy',
 					service: 'MCP Servers & Cloudflare Managers Documentation Search',
-					version: '5.0.0',
-					projects: ['SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'KV Manager', 'R2 Manager'],
+					version: '5.1.0',
+					projects: ['SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
 					endpoints: {
 						search: '/api/search (POST)',
 						health: '/health (GET)',
@@ -582,6 +586,7 @@ export default {
 						postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
 						memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
 						d1Manager: 'https://github.com/neverinfamous/d1-manager',
+						doManager: 'https://github.com/neverinfamous/do-manager/wiki',
 						kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
 						r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker'
 					},
