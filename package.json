@@ -20,7 +20,7 @@
 	"author": "Adamic",
 	"license": "MIT",
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20251221.0",
+		"@cloudflare/workers-types": "^4.20251229.0",
 		"typescript": "^5.7.2",
 		"wrangler": "^4.56.0"
 	},
