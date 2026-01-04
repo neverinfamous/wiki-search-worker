@@ -220,7 +220,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
                     
                     <h4 class="search-about-subheading">MCP Servers</h4>
-                    <p><strong>Memory Journal MCP (16 Tools):</strong> Production-stable modular architecture with 16 MCP tools, 14 workflow prompts, and 13 resources. Features GitHub Actions CI/CD integration, Issues/PRs auto-linking, true Pyright strict compliance, Git-based team collaboration, relationship mapping, and visual Mermaid diagrams. Perfect for knowledge management and development tracking.</p>
+                    <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
                     
                     <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
                     
@@ -530,258 +530,258 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 </html>`;
 
 export interface Env {
-	AI: Ai;
-	// CORS origins you want to allow (set in wrangler.toml vars)
-	ALLOWED_ORIGINS?: string;
+    AI: Ai;
+    // CORS origins you want to allow (set in wrangler.toml vars)
+    ALLOWED_ORIGINS?: string;
 }
 
 interface SearchRequest {
-	query: string;
-	mode?: 'ai' | 'search'; // ai = AI-enhanced, search = standard vector search
-	max_results?: number;
+    query: string;
+    mode?: 'ai' | 'search'; // ai = AI-enhanced, search = standard vector search
+    max_results?: number;
 }
 
 interface SearchResponse {
-	success: boolean;
-	data?: any;
-	error?: string;
-	mode: string;
-	timestamp: string;
+    success: boolean;
+    data?: any;
+    error?: string;
+    mode: string;
+    timestamp: string;
 }
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		// Handle CORS preflight
-		if (request.method === 'OPTIONS') {
-			return handleCORS(request, env);
-		}
+    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+        // Handle CORS preflight
+        if (request.method === 'OPTIONS') {
+            return handleCORS(request, env);
+        }
 
-		// Handle different endpoints
-		const url = new URL(request.url);
-		const path = url.pathname;
+        // Handle different endpoints
+        const url = new URL(request.url);
+        const path = url.pathname;
 
-		try {
-			// Serve web interface at root
-			if (path === '/') {
-				return new Response(HTML_CONTENT, {
-					headers: {
-						'Content-Type': 'text/html; charset=utf-8',
-					},
-				});
-			}
+        try {
+            // Serve web interface at root
+            if (path === '/') {
+                return new Response(HTML_CONTENT, {
+                    headers: {
+                        'Content-Type': 'text/html; charset=utf-8',
+                    },
+                });
+            }
 
-			// Health check endpoint
-			if (path === '/health') {
-				return jsonResponse({
-					status: 'healthy',
-					service: 'MCP Servers & Cloudflare Managers Documentation Search',
-					version: '5.1.0',
-					projects: ['SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
-					endpoints: {
-						search: '/api/search (POST)',
-						health: '/health (GET)',
-					},
-					documentation: {
-						sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
-						postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
-						memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
-						d1Manager: 'https://github.com/neverinfamous/d1-manager',
-						doManager: 'https://github.com/neverinfamous/do-manager/wiki',
-						kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
-						r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker'
-					},
-				});
-			}
+            // Health check endpoint
+            if (path === '/health') {
+                return jsonResponse({
+                    status: 'healthy',
+                    service: 'MCP Servers & Cloudflare Managers Documentation Search',
+                    version: '5.1.0',
+                    projects: ['SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
+                    endpoints: {
+                        search: '/api/search (POST)',
+                        health: '/health (GET)',
+                    },
+                    documentation: {
+                        sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
+                        postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
+                        memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
+                        d1Manager: 'https://github.com/neverinfamous/d1-manager',
+                        doManager: 'https://github.com/neverinfamous/do-manager/wiki',
+                        kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
+                        r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker'
+                    },
+                });
+            }
 
-		// Search endpoint
-		if (path === '/api/search') {
-			if (request.method === 'POST') {
-				return await handleSearch(request, env);
-			} else if (request.method === 'GET') {
-				// For GET requests (e.g., from crawlers), return method info with noindex
-				return jsonResponse(
-					{
-						error: 'Method not allowed',
-						message: 'This endpoint requires POST method with JSON body',
-						usage: {
-							method: 'POST',
-							contentType: 'application/json',
-							body: {
-								query: 'string (required, 3-500 chars)',
-								mode: 'ai | search (optional, default: ai)',
-								max_results: 'number (optional, default: 5)'
-							}
-						},
-						documentation: 'https://adamic.tech/faq.html'
-					},
-					405,
-					{ 'X-Robots-Tag': 'noindex, nofollow' }
-				);
-			}
-		}
+            // Search endpoint
+            if (path === '/api/search') {
+                if (request.method === 'POST') {
+                    return await handleSearch(request, env);
+                } else if (request.method === 'GET') {
+                    // For GET requests (e.g., from crawlers), return method info with noindex
+                    return jsonResponse(
+                        {
+                            error: 'Method not allowed',
+                            message: 'This endpoint requires POST method with JSON body',
+                            usage: {
+                                method: 'POST',
+                                contentType: 'application/json',
+                                body: {
+                                    query: 'string (required, 3-500 chars)',
+                                    mode: 'ai | search (optional, default: ai)',
+                                    max_results: 'number (optional, default: 5)'
+                                }
+                            },
+                            documentation: 'https://adamic.tech/faq.html'
+                        },
+                        405,
+                        { 'X-Robots-Tag': 'noindex, nofollow' }
+                    );
+                }
+            }
 
-		// Not found
-		return jsonResponse(
-			{ error: 'Endpoint not found' },
-			404
-		);
-		} catch (error) {
-			console.error('Worker error:', error);
-			return jsonResponse(
-				{
-					success: false,
-					error: error instanceof Error ? error.message : 'Internal server error',
-				},
-				500
-			);
-		}
-	},
+            // Not found
+            return jsonResponse(
+                { error: 'Endpoint not found' },
+                404
+            );
+        } catch (error) {
+            console.error('Worker error:', error);
+            return jsonResponse(
+                {
+                    success: false,
+                    error: error instanceof Error ? error.message : 'Internal server error',
+                },
+                500
+            );
+        }
+    },
 };
 
 async function handleSearch(request: Request, env: Env): Promise<Response> {
-	try {
-		console.log('Search request received:', request.url);
-		
-		// Parse request body
-		const body = await request.json() as SearchRequest;
-		console.log('Search query:', body.query, 'Mode:', body.mode || 'ai');
-		
-		if (!body.query || typeof body.query !== 'string') {
-			return jsonResponse(
-				{
-					success: false,
-					error: 'Query parameter is required and must be a string',
-				},
-				400
-			);
-		}
+    try {
+        console.log('Search request received:', request.url);
 
-		// Validate query length
-		if (body.query.length < 3) {
-			return jsonResponse(
-				{
-					success: false,
-					error: 'Query must be at least 3 characters long',
-				},
-				400
-			);
-		}
+        // Parse request body
+        const body = await request.json() as SearchRequest;
+        console.log('Search query:', body.query, 'Mode:', body.mode || 'ai');
 
-		if (body.query.length > 500) {
-			return jsonResponse(
-				{
-					success: false,
-					error: 'Query must be less than 500 characters',
-				},
-				400
-			);
-		}
+        if (!body.query || typeof body.query !== 'string') {
+            return jsonResponse(
+                {
+                    success: false,
+                    error: 'Query parameter is required and must be a string',
+                },
+                400
+            );
+        }
 
-		const mode = body.mode || 'ai';
-		const maxResults = body.max_results || 5;
+        // Validate query length
+        if (body.query.length < 3) {
+            return jsonResponse(
+                {
+                    success: false,
+                    error: 'Query must be at least 3 characters long',
+                },
+                400
+            );
+        }
 
-		// Call AutoRAG based on mode
-		let result;
-		const startTime = Date.now();
+        if (body.query.length > 500) {
+            return jsonResponse(
+                {
+                    success: false,
+                    error: 'Query must be less than 500 characters',
+                },
+                400
+            );
+        }
 
-		if (mode === 'ai') {
-			// AI-enhanced search with generated response
-			result = await env.AI.autorag('sqlite-mcp-server-wiki').aiSearch({
-				query: body.query,
-				max_num_results: maxResults,
-				rewrite_query: true, // Improve search accuracy
-				ranking_options: {
-					score_threshold: 0.5, // Filter low-quality results (increased for faster, more relevant results)
-				},
-			});
-		} else {
-			// Standard vector search (returns raw chunks)
-			result = await env.AI.autorag('sqlite-mcp-server-wiki').search({
-				query: body.query,
-				max_num_results: maxResults,
-				rewrite_query: true,
-				ranking_options: {
-					score_threshold: 0.5, // Increased for faster, more relevant results
-				},
-			});
-		}
+        const mode = body.mode || 'ai';
+        const maxResults = body.max_results || 5;
 
-		const responseTime = Date.now() - startTime;
-		
-		// Log search results
-		const resultCount = mode === 'ai' 
-			? (result?.data?.length || 0) 
-			: (Array.isArray(result) ? result.length : 0);
-		console.log('Search completed:', {
-			query: body.query,
-			mode,
-			resultCount,
-			responseTime: `${responseTime}ms`
-		});
+        // Call AutoRAG based on mode
+        let result;
+        const startTime = Date.now();
 
-		const response: SearchResponse = {
-			success: true,
-			data: result,
-			mode,
-			timestamp: new Date().toISOString(),
-		};
+        if (mode === 'ai') {
+            // AI-enhanced search with generated response
+            result = await env.AI.autorag('sqlite-mcp-server-wiki').aiSearch({
+                query: body.query,
+                max_num_results: maxResults,
+                rewrite_query: true, // Improve search accuracy
+                ranking_options: {
+                    score_threshold: 0.5, // Filter low-quality results (increased for faster, more relevant results)
+                },
+            });
+        } else {
+            // Standard vector search (returns raw chunks)
+            result = await env.AI.autorag('sqlite-mcp-server-wiki').search({
+                query: body.query,
+                max_num_results: maxResults,
+                rewrite_query: true,
+                ranking_options: {
+                    score_threshold: 0.5, // Increased for faster, more relevant results
+                },
+            });
+        }
 
-		// Add response time header
-		return jsonResponse(response, 200, {
-			'X-Response-Time': `${responseTime}ms`,
-		});
-	} catch (error) {
-		console.error('Search error:', {
-			error: error instanceof Error ? error.message : 'Unknown error',
-			stack: error instanceof Error ? error.stack : undefined,
-			url: request.url
-		});
-		return jsonResponse(
-			{
-				success: false,
-				error: error instanceof Error ? error.message : 'Search failed',
-				mode: 'unknown',
-				timestamp: new Date().toISOString(),
-			},
-			500
-		);
-	}
+        const responseTime = Date.now() - startTime;
+
+        // Log search results
+        const resultCount = mode === 'ai'
+            ? (result?.data?.length || 0)
+            : (Array.isArray(result) ? result.length : 0);
+        console.log('Search completed:', {
+            query: body.query,
+            mode,
+            resultCount,
+            responseTime: `${responseTime}ms`
+        });
+
+        const response: SearchResponse = {
+            success: true,
+            data: result,
+            mode,
+            timestamp: new Date().toISOString(),
+        };
+
+        // Add response time header
+        return jsonResponse(response, 200, {
+            'X-Response-Time': `${responseTime}ms`,
+        });
+    } catch (error) {
+        console.error('Search error:', {
+            error: error instanceof Error ? error.message : 'Unknown error',
+            stack: error instanceof Error ? error.stack : undefined,
+            url: request.url
+        });
+        return jsonResponse(
+            {
+                success: false,
+                error: error instanceof Error ? error.message : 'Search failed',
+                mode: 'unknown',
+                timestamp: new Date().toISOString(),
+            },
+            500
+        );
+    }
 }
 
 function handleCORS(request: Request, env: Env): Response {
-	const origin = request.headers.get('Origin');
-	const allowedOrigins = env.ALLOWED_ORIGINS?.split(',') || ['*'];
-	
-	const headers: Record<string, string> = {
-		'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-		'Access-Control-Allow-Headers': 'Content-Type',
-		'Access-Control-Max-Age': '86400', // 24 hours
-	};
+    const origin = request.headers.get('Origin');
+    const allowedOrigins = env.ALLOWED_ORIGINS?.split(',') || ['*'];
 
-	if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
-		headers['Access-Control-Allow-Origin'] = origin || '*';
-	}
+    const headers: Record<string, string> = {
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '86400', // 24 hours
+    };
 
-	return new Response(null, {
-		status: 204,
-		headers,
-	});
+    if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
+        headers['Access-Control-Allow-Origin'] = origin || '*';
+    }
+
+    return new Response(null, {
+        status: 204,
+        headers,
+    });
 }
 
 function jsonResponse(data: any, status = 200, additionalHeaders?: Record<string, string>): Response {
-	const headers: Record<string, string> = {
-		'Content-Type': 'application/json',
-		...additionalHeaders,
-	};
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        ...additionalHeaders,
+    };
 
-	// Add CORS headers to all responses
-	headers['Access-Control-Allow-Origin'] = '*'; // Adjust based on your needs
-	headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-	headers['Access-Control-Allow-Headers'] = 'Content-Type';
+    // Add CORS headers to all responses
+    headers['Access-Control-Allow-Origin'] = '*'; // Adjust based on your needs
+    headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
+    headers['Access-Control-Allow-Headers'] = 'Content-Type';
 
-	return new Response(JSON.stringify(data, null, 2), {
-		status,
-		headers,
-	});
+    return new Response(JSON.stringify(data, null, 2), {
+        status,
+        headers,
+    });
 }
 
