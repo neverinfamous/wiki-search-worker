@@ -544,6 +544,23 @@ interface SearchRequest {
     query: string;
     mode?: 'ai' | 'search'; // ai = AI-enhanced, search = standard vector search
     max_results?: number;
+    rewrite?: boolean; // Optional: explicit control over query rewriting
+}
+
+/**
+ * Determines if a query is specific enough to skip LLM query rewriting.
+ * Specific queries (tool names, quoted terms, code patterns) typically
+ * don't benefit from rewriting and can save ~100-200ms inference time.
+ */
+function isSpecificQuery(query: string): boolean {
+    const specificPatterns = [
+        /^how (do|to) i/i,     // Clear how-to questions
+        /\w+_\w+/,             // Tool names (snake_case patterns)
+        /`[^`]+`/,             // Code backticks
+        /"[^"]+"/,             // Quoted exact terms
+        /\b(install|configure|setup|create|delete|list|get)\b/i, // Action verbs
+    ];
+    return specificPatterns.some(p => p.test(query));
 }
 
 interface SearchResponse {
@@ -685,6 +702,8 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 
         const mode = body.mode || 'ai';
         const maxResults = body.max_results || 5;
+        // Smart default: skip rewriting for queries that look specific enough
+        const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         // Call AutoRAG based on mode
         let result;
@@ -695,9 +714,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
             result = await env.AI.autorag('sqlite-mcp-server-wiki').aiSearch({
                 query: body.query,
                 max_num_results: maxResults,
-                rewrite_query: true, // Improve search accuracy
+                rewrite_query: shouldRewrite, // Conditional rewriting for performance
                 ranking_options: {
-                    score_threshold: 0.5, // Filter low-quality results (increased for faster, more relevant results)
+                    score_threshold: 0.5, // Filter low-quality results
                 },
             });
         } else {
@@ -705,9 +724,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
             result = await env.AI.autorag('sqlite-mcp-server-wiki').search({
                 query: body.query,
                 max_num_results: maxResults,
-                rewrite_query: true,
+                rewrite_query: shouldRewrite, // Conditional rewriting for performance
                 ranking_options: {
-                    score_threshold: 0.5, // Increased for faster, more relevant results
+                    score_threshold: 0.5, // Filter low-quality results
                 },
             });
         }
@@ -785,7 +804,7 @@ function jsonResponse(data: unknown, status = 200, additionalHeaders?: Record<st
     headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
     headers['Access-Control-Allow-Headers'] = 'Content-Type';
 
-    return new Response(JSON.stringify(data, null, 2), {
+    return new Response(JSON.stringify(data), {
         status,
         headers,
     });
