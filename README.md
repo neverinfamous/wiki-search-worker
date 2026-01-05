@@ -469,6 +469,14 @@ curl -X POST https://search.adamic.tech/api/search \
 - **Method**: POST
 - **Content-Type**: application/json
 
+**Request Body Parameters**:
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `query` | string | (required) | Search query (3-500 characters) |
+| `mode` | string | `"ai"` | `"ai"` for synthesized answers, `"search"` for raw chunks |
+| `max_results` | number | `5` | Maximum results to return (up to 50) |
+| `rewrite` | boolean | (auto) | Override automatic query rewriting. By default, the system uses smart detection to skip rewriting for specific queries (tool names, quoted terms, action verbs) to save ~100-200ms. |
+
 ### Search with AI (Recommended)
 
 Get natural language answers synthesized from the wiki:
