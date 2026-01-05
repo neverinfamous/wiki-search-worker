@@ -222,7 +222,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <h4 class="search-about-subheading">MCP Servers</h4>
                     <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
                     
-                    <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
+                    <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
                     
                     <p><strong>SQLite MCP (73 Tools):</strong> Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
                     
@@ -543,14 +543,14 @@ interface SearchRequest {
 
 interface SearchResponse {
     success: boolean;
-    data?: any;
+    data?: unknown;
     error?: string;
     mode: string;
     timestamp: string;
 }
 
 export default {
-    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    async fetch(request: Request, env: Env): Promise<Response> {
         // Handle CORS preflight
         if (request.method === 'OPTIONS') {
             return handleCORS(request, env);
@@ -643,7 +643,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         console.log('Search request received:', request.url);
 
         // Parse request body
-        const body = await request.json() as SearchRequest;
+        const body = await request.json<SearchRequest>();
         console.log('Search query:', body.query, 'Mode:', body.mode || 'ai');
 
         if (!body.query || typeof body.query !== 'string') {
@@ -710,13 +710,13 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 
         // Log search results
         const resultCount = mode === 'ai'
-            ? (result?.data?.length || 0)
+            ? ((result as { data?: unknown[] }).data?.length ?? 0)
             : (Array.isArray(result) ? result.length : 0);
         console.log('Search completed:', {
             query: body.query,
             mode,
             resultCount,
-            responseTime: `${responseTime}ms`
+            responseTime: `${String(responseTime)}ms`
         });
 
         const response: SearchResponse = {
@@ -728,7 +728,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 
         // Add response time header
         return jsonResponse(response, 200, {
-            'X-Response-Time': `${responseTime}ms`,
+            'X-Response-Time': `${String(responseTime)}ms`,
         });
     } catch (error) {
         console.error('Search error:', {
@@ -768,7 +768,7 @@ function handleCORS(request: Request, env: Env): Response {
     });
 }
 
-function jsonResponse(data: any, status = 200, additionalHeaders?: Record<string, string>): Response {
+function jsonResponse(data: unknown, status = 200, additionalHeaders?: Record<string, string>): Response {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
         ...additionalHeaders,
