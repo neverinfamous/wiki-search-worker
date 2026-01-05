@@ -35,7 +35,7 @@ This Cloudflare Worker provides an AI-powered search interface for the [SQLite M
 
 - 🤖 **AI-Enhanced Search** - Natural language answers with source attribution
 - ⚡ **Vector Search** - Fast semantic search across all documentation
-- 📚 **Complete Coverage** - Searches documentation across 5 projects (SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, KV Manager)
+- 📚 **Complete Coverage** - Searches documentation across 6 projects (MySQL MCP, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, R2 Bucket Manager, KV Manager)
 - 🎯 **Context-Aware** - Understands questions and provides relevant examples
 - 🌙 **Dark Mode** - Automatic theme detection
 - 📱 **Mobile Responsive** - Works on all devices
@@ -253,12 +253,13 @@ routes = [
 - **AI Search ID**: `sqlite-mcp-server-wiki`
 - **R2 Source Bucket**: `sqlite-mcp-server-wiki`
 - **Wiki Sources**:
+  - MySQL MCP: `C:\Users\chris\Desktop\mysql-mcp.wiki` → `mysql-mcp/` folder
   - SQLite MCP: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki` → `sqlite/` folder
   - PostgreSQL MCP: `C:\Users\chris\Desktop\postgres-mcp.wiki` → `postgres/` folder
   - Memory Journal MCP: `C:\Users\chris\Desktop\memory-journal-mcp.wiki` → `memory-journal/` folder
   - R2 Bucket Manager: `C:\Users\chris\Desktop\R2-Manager-Worker.wiki` → `r2-manager/` folder
   - KV Manager: `C:\Users\chris\Desktop\kv-manager.wiki` → `kv-manager/` folder
-- **Total Content**: 50+ markdown files across all projects
+- **Total Content**: 60+ markdown files across all projects
 - **Auto-Sync**: Every 6 hours automatically
 
 ### MCP Server Access

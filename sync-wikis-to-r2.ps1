@@ -31,7 +31,7 @@
 #>
 
 param(
-    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'kv-manager', 'all')]
+    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'kv-manager', 'mysql-mcp', 'all')]
     [string]$WikiName = 'all'
 )
 
@@ -70,6 +70,11 @@ $wikis = @{
         Path = "$BASE_PATH\kv-manager.wiki"
         Folder = "kv-manager"
         DisplayName = "KV Manager"
+    }
+    'mysql-mcp' = @{
+        Path = "$BASE_PATH\mysql-mcp.wiki"
+        Folder = "mysql-mcp"
+        DisplayName = "MySQL MCP Server"
     }
 }
 

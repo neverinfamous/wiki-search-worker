@@ -10,21 +10,21 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Servers & Cloudflare Manager Documentation | AI Search</title>
-    <meta name="description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
-    <meta name="keywords" content="MCP server, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, DO Manager, Durable Objects Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Cloudflare Durable Objects, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
+    <meta name="description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta name="keywords" content="MCP server, MySQL MCP, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, DO Manager, Durable Objects Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Cloudflare Durable Objects, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     <meta property="og:url" content="https://search.adamic.tech/">
     
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
@@ -173,7 +173,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             
             <section class="search-card" id="search-section">
                 <h2 class="search-section-heading">Search All Documentation</h2>
-                <p class="search-description">Search comprehensive documentation for MCP servers and Cloudflare management tools. Enter queries below to find answers across SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Manager, DO Manager, KV Manager, and R2 Manager documentation.</p>
+                <p class="search-description">Search comprehensive documentation for MCP servers and Cloudflare management tools. Enter queries below to find answers across MySQL MCP, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Manager, DO Manager, KV Manager, and R2 Manager documentation.</p>
                 <input type="text" id="searchInput" placeholder="Ask about MCP servers, D1, DO, KV, or R2 Manager..." autocomplete="off" aria-label="Search documentation">
                 <div class="mode-toggle" role="group" aria-label="Search mode">
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
@@ -197,6 +197,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <button class="example-btn" data-query="How do I run SQL queries on SQLite-backed Durable Objects?">How do I run SQL queries on SQLite-backed Durable Objects?</button>
                 
                 <h3 class="search-section-subheading">MCP Server Features</h3>
+                <button class="example-btn" data-query="How do I use tool filtering with MySQL MCP shortcuts?">How do I use tool filtering with MySQL MCP shortcuts?</button>
+                <button class="example-btn" data-query="How do I connect MySQL MCP to InnoDB Cluster?">How do I connect MySQL MCP to InnoDB Cluster?</button>
                 <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
@@ -208,7 +210,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for three Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 152+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 354+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
                     
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
@@ -220,6 +222,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
                     
                     <h4 class="search-about-subheading">MCP Servers</h4>
+                    <p><strong>MySQL MCP (191 Tools):</strong> Enterprise-grade MySQL MCP server with 191 specialized tools, 18 resources, and 19 prompts. Features OAuth 2.1 authentication, intelligent tool filtering (24 groups + shortcuts), MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
+                    
                     <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
                     
                     <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
@@ -271,6 +275,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <div class="footer-section">
                     <h2>Projects</h2>
                     <ul>
+                        <li><a href="https://github.com/neverinfamous/mysql-mcp" target="_blank" rel="noopener">MySQL MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP</a></li>
                         <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
@@ -575,13 +580,14 @@ export default {
                 return jsonResponse({
                     status: 'healthy',
                     service: 'MCP Servers & Cloudflare Managers Documentation Search',
-                    version: '5.1.0',
-                    projects: ['SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
+                    version: '5.2.0',
+                    projects: ['MySQL MCP', 'SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
                     endpoints: {
                         search: '/api/search (POST)',
                         health: '/health (GET)',
                     },
                     documentation: {
+                        mysqlMcp: 'https://github.com/neverinfamous/mysql-mcp/wiki',
                         sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
                         postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
                         memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',

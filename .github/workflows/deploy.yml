@@ -126,6 +126,21 @@ jobs:
           echo "⏱️  Or wait up to 6 hours for automatic sync"
           echo ""
 
+      - name: Clone MySQL MCP wiki repository
+        run: |
+          git clone https://github.com/neverinfamous/mysql-mcp.wiki.git mysql-mcp-wiki-temp
+          
+      - name: Upload MySQL MCP wiki files to R2
+        run: |
+          cd mysql-mcp-wiki-temp
+          for file in *.md; do
+            echo "Uploading $file to R2 (mysql-mcp folder)..."
+            npx wrangler r2 object put sqlite-mcp-server-wiki/mysql-mcp/"$file" --file="$file" --remote
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deployment Summary
         run: |
           echo "✅ Worker deployed to Cloudflare"
@@ -134,6 +149,7 @@ jobs:
           echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
           echo "✅ R2 Manager wiki files synced to R2: sqlite-mcp-server-wiki/r2-manager/"
           echo "✅ KV Manager wiki files synced to R2: sqlite-mcp-server-wiki/kv-manager/"
+          echo "✅ MySQL MCP wiki files synced to R2: sqlite-mcp-server-wiki/mysql-mcp/"
           echo "✅ AutoRAG index sync triggered"
           echo ""
           echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
