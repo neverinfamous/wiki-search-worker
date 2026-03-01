@@ -7,7 +7,7 @@ compatibility_flags = ["nodejs_compat"]
 # Enable workers.dev subdomain
 workers_dev = false
 
-# AI binding for AutoRAG access
+# AI binding for AI Search access
 [ai]
 binding = "AI"
 

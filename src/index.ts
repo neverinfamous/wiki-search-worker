@@ -14,29 +14,29 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta name="keywords" content="MCP server, MySQL MCP, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Database Manager, DO Manager, Durable Objects Manager, R2 Bucket Manager, KV Manager, Cloudflare D1, Cloudflare R2, Cloudflare KV, Cloudflare Durable Objects, Workers KV, cloud storage, database management, AI search, vector search, Model Context Protocol, Cloudflare Workers">
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
     <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     <meta property="og:url" content="https://search.adamic.tech/">
-    
+
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
     <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://adamic.tech/assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
-    
+
     <!-- External Stylesheets - Async Loading -->
     <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/main.css"></noscript>
     <link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css"></noscript>
-    
+
     <style>
 :root{--primary-color:#1d4ed8;--text-color:#1f2937;--text-muted:#4b5563;--border-color:#e5e7eb;--background:#fff;--background-alt:#f9fafb;--btn-text-color:#fff}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:16px;font-weight:400;line-height:1.6;background:var(--background);color:var(--text-color);text-rendering:optimizeSpeed;min-height:100vh;padding-top:120px}.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border-color);backdrop-filter:blur(10px);padding:1rem 0;contain:layout style}.header-content{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:.75rem;height:88px}.logo-link{display:inline-block;text-decoration:none}.logo{height:58px;width:58px;display:block;object-fit:contain}
 .main-nav{display:flex;align-items:center;gap:.4rem;margin-left:.5rem}.nav-link{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1.2rem;background:var(--background-alt);border:1px solid var(--border-color);border-radius:6px;color:var(--text-color);text-decoration:none;font-size:.875rem;font-weight:500;transition:all .2s;white-space:nowrap;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:0}.nav-link:hover{background:var(--primary-color);color:var(--btn-text-color);border-color:var(--primary-color)}.nav-link.active{background:var(--primary-color);color:var(--btn-text-color);border-color:var(--primary-color)}.nav-text{display:inline}.nav-icon{display:none}.site-tagline{color:var(--text-muted);font-size:.875rem;margin-left:auto;line-height:1.2;white-space:nowrap}
@@ -99,7 +99,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 </button>
             </nav>
             <div class="site-tagline">Adamic Support</div>
-            
+
             <!-- Hamburger Menu Button -->
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">
                 <span></span>
@@ -108,10 +108,10 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             </button>
         </div>
     </header>
-    
+
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    
+
     <!-- Mobile Navigation -->
     <nav class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-header">
@@ -157,20 +157,20 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             </button>
         </div>
     </nav>
-    
+
     <div class="container">
         <header class="page-header">
             <h1 id="page-top">🔍 Documentation Search</h1>
             <p>AI-Powered Search Across MCP Servers & Cloudflare Management Tools</p>
         </header>
-        
+
         <main>
             <div class="quick-nav">
                 <a href="#search-section">Search</a>
                 <a href="#examples-section">Examples</a>
                 <a href="#about-section">About</a>
             </div>
-            
+
             <section class="search-card" id="search-section">
                 <h2 class="search-section-heading">Search All Documentation</h2>
                 <p class="search-description">Search comprehensive documentation for MCP servers and Cloudflare management tools. Enter queries below to find answers across MySQL MCP, SQLite MCP, PostgreSQL MCP, Memory Journal MCP, D1 Manager, DO Manager, KV Manager, and R2 Manager documentation.</p>
@@ -181,21 +181,21 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 </div>
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
-            
+
             <div class="loading" id="loading" aria-live="polite"><div class="spinner"></div><p>Searching across MCP servers and Cloudflare management documentation...</p></div>
             <div class="results" id="results" aria-live="polite"></div>
-            
+
             <section class="examples" id="examples-section">
                 <h2 class="search-section-heading">💡 Example Queries</h2>
                 <p class="search-description">Search across MCP servers and Cloudflare management tools. Try these queries to explore features and capabilities.</p>
-                
+
                 <h3 class="search-section-subheading">Database & Storage Management</h3>
                 <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
                 <button class="example-btn" data-query="How do I manage Durable Objects instances and namespaces?">How do I manage Durable Objects instances and namespaces?</button>
                 <button class="example-btn" data-query="How do I use metadata and tags to organize KV keys?">How do I use metadata and tags to organize KV keys?</button>
                 <button class="example-btn" data-query="How do I perform chunked uploads and manage large files in R2?">How do I perform chunked uploads and manage large files in R2?</button>
                 <button class="example-btn" data-query="How do I run SQL queries on SQLite-backed Durable Objects?">How do I run SQL queries on SQLite-backed Durable Objects?</button>
-                
+
                 <h3 class="search-section-subheading">MCP Server Features</h3>
                 <button class="example-btn" data-query="How do I use tool filtering with MySQL MCP shortcuts?">How do I use tool filtering with MySQL MCP shortcuts?</button>
                 <button class="example-btn" data-query="How do I connect MySQL MCP to InnoDB Cluster?">How do I connect MySQL MCP to InnoDB Cluster?</button>
@@ -203,41 +203,41 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
                 <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
                 <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
-                
+
                 <h3 class="search-section-subheading">Security & Authentication</h3>
                 <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
                 <button class="example-btn" data-query="How do I prevent SQL injection attacks with parameter binding?">How do I prevent SQL injection attacks with parameter binding?</button>
-                
+
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 354+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
-                    
+
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
-                    
+
                     <p><strong>DO Manager:</strong> Full-featured management platform for Cloudflare Durable Objects v1.2.0 with cross-namespace instance migration (Copy Only, Copy + Delete, Copy + Freeze modes), freeze/unfreeze protection (read-only with snowflake indicator), namespace auto-discovery, instance tracking, and SQL console V2 for SQLite-backed DOs. Features automated database migrations, instance tags, Query Builder with pre-built templates, saved queries per namespace, batch operations (download, delete, backup), instance cloning with full storage copy, instance diff for side-by-side comparison, R2 backup and restore, metrics dashboard with request volume and CPU time, health dashboard with stale instance detection and storage quota alerts, global cross-namespace search, and event-driven webhooks with HMAC verification. Includes Cloudflare Access Zero Trust authentication.</p>
-                    
+
                     <p><strong>KV Manager:</strong> Full-featured management platform for Cloudflare Workers KV namespaces. Features dual metadata system (KV Native 1024 bytes + D1 Custom unlimited), unlimited tag organization, cross-namespace search, bulk operations (delete, copy, TTL, tags), JSON/NDJSON import/export with collision handling, R2 backup and restore with batch operations, job history with event timelines and advanced filtering, Cloudflare Access authentication, and dark/light theme support.</p>
-                    
+
                     <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
-                    
+
                     <h4 class="search-about-subheading">MCP Servers</h4>
                     <p><strong>MySQL MCP (191 Tools):</strong> Enterprise-grade MySQL MCP server with 191 specialized tools, 18 resources, and 19 prompts. Features OAuth 2.1 authentication, intelligent tool filtering (24 groups + shortcuts), MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
-                    
+
                     <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
-                    
+
                     <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
-                    
+
                     <p><strong>SQLite MCP (73 Tools):</strong> Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
-                    
+
                     <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation with source attribution and relevance scores.</p>
-                    
+
                     <h4 class="search-about-subheading">Getting Started</h4>
                     <p class="no-margin">All solutions are production-ready and available for instant deployment. MCP servers integrate with Claude Desktop and Cursor IDE. Cloudflare managers deploy to Workers or Docker. Use the search interface above to explore documentation for any topic across all solutions.</p>
                 </div>
             </section>
-            
+
             <div class="social-share">
                 <span class="social-share-label">Share this page:</span>
                 <a href="#" class="social-btn twitter" data-platform="twitter" title="Share on Twitter">
@@ -269,7 +269,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <span class="share-success">Copied!</span>
             </div>
         </main>
-        
+
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
@@ -308,7 +308,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <p>&copy; 2025 Adamic. All rights reserved.</p>
             </div>
         </footer>
-        
+
         <!-- Back to Top Button -->
         <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">⇈</button>
     </div>
@@ -339,25 +339,39 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 results.classList.add('show');
                 if (data.success) {
                     let content = '';
-                    if (currentMode === 'ai' && data.data && data.data.response) {
-                        // AI mode - show the synthesized response
+                    if (currentMode === 'ai' && data.data && data.data.choices && data.data.choices.length > 0) {
+                        // AI mode - show the chat completions response
+                        const aiResponse = data.data.choices[0].message ? data.data.choices[0].message.content : '';
                         content = '<div class="result-card">';
                         content += '<h3 class="search-result-header">✨ AI Answer</h3>';
-                        content += '<div class="result-content search-result-content">' + data.data.response + '</div>';
-                        
-                        // Show sources if available
-                        if (data.data.data && data.data.data.length > 0) {
+                        content += '<div class="result-content search-result-content">' + aiResponse + '</div>';
+
+                        // Show source chunks if available
+                        if (data.data.chunks && data.data.chunks.length > 0) {
                             content += '<hr class="search-result-divider">';
                             content += '<h4 class="search-sources-heading">📚 Sources:</h4>';
-                            data.data.data.forEach(function(source) {
+                            data.data.chunks.forEach(function(chunk) {
+                                const filename = chunk.item ? chunk.item.key : chunk.id;
                                 content += '<div class="search-source-item">';
-                                content += '<strong>' + source.filename + '</strong> <span class="search-source-score">(Score: ' + (source.score * 100).toFixed(1) + '%)</span>';
+                                content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
                                 content += '</div>';
                             });
                         }
                         content += '</div>';
+                    } else if (currentMode === 'search' && data.data && data.data.chunks) {
+                        // Raw search mode - show chunks with scores
+                        content = '<div class="result-card">';
+                        content += '<h3 class="search-result-header">📄 Search Results</h3>';
+                        data.data.chunks.forEach(function(chunk) {
+                            const filename = chunk.item ? chunk.item.key : chunk.id;
+                            content += '<div class="search-source-item" style="margin-bottom:1rem;padding:1rem;border:1px solid var(--border-color);border-radius:6px;">';
+                            content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
+                            content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + chunk.text + '</div>';
+                            content += '</div>';
+                        });
+                        content += '</div>';
                     } else {
-                        // Raw search mode or fallback
+                        // Fallback
                         content = '<div class="result-card"><div class="result-content"><pre>' + JSON.stringify(data.data, null, 2) + '</pre></div></div>';
                     }
                     results.innerHTML = content;
@@ -397,7 +411,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 const url = encodeURIComponent(window.location.href);
                 const title = encodeURIComponent('MCP Servers & Cloudflare Managers Documentation Search - AI-Powered');
                 const successMsg = document.querySelector('.share-success');
-                
+
                 if (platform === 'twitter') {
                     const twitterUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title;
                     window.open(twitterUrl, '_blank', 'width=600,height=400');
@@ -437,7 +451,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         const mobileNav = document.getElementById('mobile-nav');
         const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
         const mobileNavClose = document.getElementById('mobile-nav-close');
-        
+
         function toggleMobileNav() {
             hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
@@ -445,18 +459,18 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             mobileNavOverlay.style.display = isActive ? 'block' : 'none';
             document.body.style.overflow = isActive ? 'hidden' : '';
         }
-        
+
         function closeMobileNav() {
             hamburger.classList.remove('active');
             mobileNav.classList.remove('active');
             mobileNavOverlay.style.display = 'none';
             document.body.style.overflow = '';
         }
-        
+
         if (hamburger) hamburger.addEventListener('click', toggleMobileNav);
         if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
         if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
-        
+
         // Back to Top functionality - Always visible, smooth scroll to top
         const backToTopBtn = document.getElementById('backToTop');
         if (backToTopBtn) {
@@ -467,7 +481,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 });
             });
         }
-        
+
         // Close mobile nav when clicking any link without target attribute
         document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -476,22 +490,22 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 }
             });
         });
-        
+
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('theme-toggle');
         const themeToggleMobile = document.getElementById('theme-toggle-mobile');
         const themeIcon = document.getElementById('theme-icon');
         const themeIconMobile = document.getElementById('theme-icon-mobile');
-        
+
         const themeConfig = {
             light: { icon: '☀️', label: 'Theme: Light', title: 'Toggle theme (currently: Light)' },
             dark: { icon: '🌙', label: 'Theme: Dark', title: 'Toggle theme (currently: Dark)' }
         };
-        
+
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
         }
-        
+
         function updateThemeUI(theme) {
             // Fallback to 'dark' if theme is invalid (e.g., old 'system' value)
             const validTheme = themeConfig[theme] ? theme : 'dark';
@@ -507,16 +521,16 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 themeToggleMobile.setAttribute('title', config.title);
             }
         }
-        
+
         function toggleTheme() {
             const currentTheme = localStorage.getItem('theme') || 'dark';
             const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
+
             localStorage.setItem('theme', nextTheme);
             applyTheme(nextTheme);
             updateThemeUI(nextTheme);
         }
-        
+
         // Initialize theme UI
         let currentTheme = localStorage.getItem('theme') || 'dark';
         // Migrate old 'system' value to 'dark'
@@ -526,7 +540,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         }
         applyTheme(currentTheme);
         updateThemeUI(currentTheme);
-        
+
         // Add click handlers
         if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
         if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
@@ -554,13 +568,13 @@ interface SearchRequest {
  */
 function isSpecificQuery(query: string): boolean {
     const specificPatterns = [
-        /^how (do|to) i/i,     // Clear how-to questions
-        /\w+_\w+/,             // Tool names (snake_case patterns)
-        /`[^`]+`/,             // Code backticks
-        /"[^"]+"/,             // Quoted exact terms
+        /^how (do|to) i/i, // Clear how-to questions
+        /\w+_\w+/, // Tool names (snake_case patterns)
+        /`[^`]+`/, // Code backticks
+        /"[^"]+"/, // Quoted exact terms
         /\b(install|configure|setup|create|delete|list|get)\b/i, // Action verbs
     ];
-    return specificPatterns.some(p => p.test(query));
+    return specificPatterns.some((p) => p.test(query));
 }
 
 interface SearchResponse {
@@ -598,7 +612,16 @@ export default {
                     status: 'healthy',
                     service: 'MCP Servers & Cloudflare Managers Documentation Search',
                     version: '5.2.0',
-                    projects: ['MySQL MCP', 'SQLite MCP', 'PostgreSQL MCP', 'Memory Journal MCP', 'D1 Manager', 'DO Manager', 'KV Manager', 'R2 Manager'],
+                    projects: [
+                        'MySQL MCP',
+                        'SQLite MCP',
+                        'PostgreSQL MCP',
+                        'Memory Journal MCP',
+                        'D1 Manager',
+                        'DO Manager',
+                        'KV Manager',
+                        'R2 Manager',
+                    ],
                     endpoints: {
                         search: '/api/search (POST)',
                         health: '/health (GET)',
@@ -611,7 +634,7 @@ export default {
                         d1Manager: 'https://github.com/neverinfamous/d1-manager',
                         doManager: 'https://github.com/neverinfamous/do-manager/wiki',
                         kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
-                        r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker'
+                        r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker',
                     },
                 });
             }
@@ -632,22 +655,19 @@ export default {
                                 body: {
                                     query: 'string (required, 3-500 chars)',
                                     mode: 'ai | search (optional, default: ai)',
-                                    max_results: 'number (optional, default: 5)'
-                                }
+                                    max_results: 'number (optional, default: 5)',
+                                },
                             },
-                            documentation: 'https://adamic.tech/faq.html'
+                            documentation: 'https://adamic.tech/faq.html',
                         },
                         405,
-                        { 'X-Robots-Tag': 'noindex, nofollow' }
+                        { 'X-Robots-Tag': 'noindex, nofollow' },
                     );
                 }
             }
 
             // Not found
-            return jsonResponse(
-                { error: 'Endpoint not found' },
-                404
-            );
+            return jsonResponse({ error: 'Endpoint not found' }, 404);
         } catch (error) {
             console.error('Worker error:', error);
             return jsonResponse(
@@ -655,7 +675,7 @@ export default {
                     success: false,
                     error: error instanceof Error ? error.message : 'Internal server error',
                 },
-                500
+                500,
             );
         }
     },
@@ -675,7 +695,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     success: false,
                     error: 'Query parameter is required and must be a string',
                 },
-                400
+                400,
             );
         }
 
@@ -686,7 +706,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     success: false,
                     error: 'Query must be at least 3 characters long',
                 },
-                400
+                400,
             );
         }
 
@@ -696,7 +716,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     success: false,
                     error: 'Query must be less than 500 characters',
                 },
-                400
+                400,
             );
         }
 
@@ -705,43 +725,50 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         // Smart default: skip rewriting for queries that look specific enough
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
-        // Call AutoRAG based on mode
+        // Call AI Search based on mode
+        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
+        const searchOptions = {
+            retrieval: {
+                max_num_results: maxResults,
+                match_threshold: 0.5, // Filter low-quality results
+            },
+            query_rewrite: {
+                enabled: shouldRewrite, // Conditional rewriting for performance
+            },
+        };
+        const messages: Array<{ role: 'user'; content: string }> = [
+            { role: 'user', content: body.query },
+        ];
+
         let result;
         const startTime = Date.now();
 
         if (mode === 'ai') {
-            // AI-enhanced search with generated response
-            result = await env.AI.autorag('sqlite-mcp-server-wiki').aiSearch({
-                query: body.query,
-                max_num_results: maxResults,
-                rewrite_query: shouldRewrite, // Conditional rewriting for performance
-                ranking_options: {
-                    score_threshold: 0.5, // Filter low-quality results
-                },
+            // AI-enhanced search with chat completions response
+            result = await aiSearch.chatCompletions({
+                messages,
+                ai_search_options: searchOptions,
             });
         } else {
             // Standard vector search (returns raw chunks)
-            result = await env.AI.autorag('sqlite-mcp-server-wiki').search({
-                query: body.query,
-                max_num_results: maxResults,
-                rewrite_query: shouldRewrite, // Conditional rewriting for performance
-                ranking_options: {
-                    score_threshold: 0.5, // Filter low-quality results
-                },
+            result = await aiSearch.search({
+                messages,
+                ai_search_options: searchOptions,
             });
         }
 
         const responseTime = Date.now() - startTime;
 
         // Log search results
-        const resultCount = mode === 'ai'
-            ? ((result as { data?: unknown[] }).data?.length ?? 0)
-            : (Array.isArray(result) ? result.length : 0);
+        const resultCount =
+            mode === 'ai'
+                ? ((result as { chunks?: unknown[] }).chunks?.length ?? 0)
+                : ((result as { chunks?: unknown[] }).chunks?.length ?? 0);
         console.log('Search completed:', {
             query: body.query,
             mode,
             resultCount,
-            responseTime: `${String(responseTime)}ms`
+            responseTime: `${String(responseTime)}ms`,
         });
 
         const response: SearchResponse = {
@@ -759,7 +786,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         console.error('Search error:', {
             error: error instanceof Error ? error.message : 'Unknown error',
             stack: error instanceof Error ? error.stack : undefined,
-            url: request.url
+            url: request.url,
         });
         return jsonResponse(
             {
@@ -768,7 +795,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                 mode: 'unknown',
                 timestamp: new Date().toISOString(),
             },
-            500
+            500,
         );
     }
 }
@@ -793,7 +820,11 @@ function handleCORS(request: Request, env: Env): Response {
     });
 }
 
-function jsonResponse(data: unknown, status = 200, additionalHeaders?: Record<string, string>): Response {
+function jsonResponse(
+    data: unknown,
+    status = 200,
+    additionalHeaders?: Record<string, string>,
+): Response {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
         ...additionalHeaders,
@@ -809,4 +840,3 @@ function jsonResponse(data: unknown, status = 200, additionalHeaders?: Record<st
         headers,
     });
 }
-

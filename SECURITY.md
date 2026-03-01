@@ -16,6 +16,7 @@ If you discover a security vulnerability in this project, please report it by:
 2. **Subject**: [SECURITY] Wiki Search Worker Vulnerability
 
 Please include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -26,10 +27,10 @@ Please include:
 - **Initial Response**: Within 48 hours
 - **Status Update**: Within 7 days
 - **Fix Timeline**: Depends on severity
-  - Critical: Within 24-48 hours
-  - High: Within 1 week
-  - Medium: Within 2 weeks
-  - Low: Next release cycle
+    - Critical: Within 24-48 hours
+    - High: Within 1 week
+    - Medium: Within 2 weeks
+    - Low: Next release cycle
 
 ## Security Measures
 
@@ -58,6 +59,7 @@ Please include:
 ### Rate Limiting
 
 Two-tier rate limiting is implemented via Cloudflare WAF:
+
 - **Burst Protection**: 20 requests per 10 seconds
 - **Sustained Protection**: 100 requests per minute
 
@@ -83,10 +85,10 @@ Two-tier rate limiting is implemented via Cloudflare WAF:
 ## Contact
 
 For general questions about security:
+
 - Email: writenotenow@gmail.com
 - GitHub: @neverinfamous
 
 ---
 
 **Last Updated**: November 26, 2025
-
