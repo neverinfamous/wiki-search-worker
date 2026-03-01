@@ -1,157 +1,156 @@
 name: Deploy Wiki Search Worker & Sync AutoRAG
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:  # Allows manual triggering
+    push:
+        branches:
+            - main
+    workflow_dispatch: # Allows manual triggering
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy Worker and Sync AutoRAG
-    
-    steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v6
+    deploy:
+        runs-on: ubuntu-latest
+        name: Deploy Worker and Sync AutoRAG
 
-      # Step 2: Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '20'
-          cache: 'npm'
+        steps:
+            # Step 1: Checkout the repository
+            - name: Checkout repository
+              uses: actions/checkout@v6
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm ci
+            # Step 2: Setup Node.js
+            - name: Setup Node.js
+              uses: actions/setup-node@v6
+              with:
+                  node-version: '20'
+                  cache: 'npm'
 
-      # Step 4: Deploy Worker using Wrangler
-      - name: Deploy Worker to Cloudflare
-        run: npx wrangler deploy --env=""
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            # Step 3: Install dependencies
+            - name: Install dependencies
+              run: npm ci
 
-      # Step 5: Sync wiki files to R2 bucket
-      - name: Clone wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/sqlite-mcp-server.wiki.git wiki-temp
-          
-      - name: Upload SQLite wiki files to R2
-        run: |
-          cd wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (sqlite folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/sqlite/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            # Step 4: Deploy Worker using Wrangler
+            - name: Deploy Worker to Cloudflare
+              run: npx wrangler deploy --env=""
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Clone Postgres wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/postgres-mcp.wiki.git postgres-wiki-temp
-          
-      - name: Upload Postgres wiki files to R2
-        run: |
-          cd postgres-wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (postgres folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/postgres/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            # Step 5: Sync wiki files to R2 bucket
+            - name: Clone wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/sqlite-mcp-server.wiki.git wiki-temp
 
-      - name: Clone Memory Journal wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/memory-journal-mcp.wiki.git memory-journal-wiki-temp
-          
-      - name: Upload Memory Journal wiki files to R2
-        run: |
-          cd memory-journal-wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (memory-journal folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/memory-journal/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            - name: Upload SQLite wiki files to R2
+              run: |
+                  cd wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (sqlite folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/sqlite/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Clone R2 Manager wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/R2-Manager-Worker.wiki.git r2-manager-wiki-temp
-          
-      - name: Upload R2 Manager wiki files to R2
-        run: |
-          cd r2-manager-wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (r2-manager folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/r2-manager/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            - name: Clone Postgres wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/postgres-mcp.wiki.git postgres-wiki-temp
 
-      - name: Clone KV Manager wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/kv-manager.wiki.git kv-manager-wiki-temp
-          
-      - name: Upload KV Manager wiki files to R2
-        run: |
-          cd kv-manager-wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (kv-manager folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/kv-manager/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            - name: Upload Postgres wiki files to R2
+              run: |
+                  cd postgres-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (postgres folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/postgres/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
-      - name: AutoRAG Sync Instructions
-        run: |
-          echo ""
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "⚠️  MANUAL STEP REQUIRED: Sync AutoRAG Index"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo ""
-          echo "📝 R2 files have been updated, but AutoRAG needs manual sync."
-          echo ""
-          echo "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki"
-          echo "👆 Click the 'Sync Index' button"
-          echo ""
-          echo "⏱️  Or wait up to 6 hours for automatic sync"
-          echo ""
+            - name: Clone Memory Journal wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/memory-journal-mcp.wiki.git memory-journal-wiki-temp
 
-      - name: Clone MySQL MCP wiki repository
-        run: |
-          git clone https://github.com/neverinfamous/mysql-mcp.wiki.git mysql-mcp-wiki-temp
-          
-      - name: Upload MySQL MCP wiki files to R2
-        run: |
-          cd mysql-mcp-wiki-temp
-          for file in *.md; do
-            echo "Uploading $file to R2 (mysql-mcp folder)..."
-            npx wrangler r2 object put sqlite-mcp-server-wiki/mysql-mcp/"$file" --file="$file" --remote
-          done
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            - name: Upload Memory Journal wiki files to R2
+              run: |
+                  cd memory-journal-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (memory-journal folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/memory-journal/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Deployment Summary
-        run: |
-          echo "✅ Worker deployed to Cloudflare"
-          echo "✅ SQLite wiki files synced to R2: sqlite-mcp-server-wiki/sqlite/"
-          echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
-          echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
-          echo "✅ R2 Manager wiki files synced to R2: sqlite-mcp-server-wiki/r2-manager/"
-          echo "✅ KV Manager wiki files synced to R2: sqlite-mcp-server-wiki/kv-manager/"
-          echo "✅ MySQL MCP wiki files synced to R2: sqlite-mcp-server-wiki/mysql-mcp/"
-          echo "✅ AutoRAG index sync triggered"
-          echo ""
-          echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
-          echo "🔗 Custom Domain: https://search.adamic.tech"
+            - name: Clone R2 Manager wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/R2-Manager-Worker.wiki.git r2-manager-wiki-temp
 
+            - name: Upload R2 Manager wiki files to R2
+              run: |
+                  cd r2-manager-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (r2-manager folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/r2-manager/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+            - name: Clone KV Manager wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/kv-manager.wiki.git kv-manager-wiki-temp
+
+            - name: Upload KV Manager wiki files to R2
+              run: |
+                  cd kv-manager-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (kv-manager folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/kv-manager/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+            # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
+            - name: AutoRAG Sync Instructions
+              run: |
+                  echo ""
+                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                  echo "⚠️  MANUAL STEP REQUIRED: Sync AutoRAG Index"
+                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                  echo ""
+                  echo "📝 R2 files have been updated, but AutoRAG needs manual sync."
+                  echo ""
+                  echo "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki"
+                  echo "👆 Click the 'Sync Index' button"
+                  echo ""
+                  echo "⏱️  Or wait up to 6 hours for automatic sync"
+                  echo ""
+
+            - name: Clone MySQL MCP wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/mysql-mcp.wiki.git mysql-mcp-wiki-temp
+
+            - name: Upload MySQL MCP wiki files to R2
+              run: |
+                  cd mysql-mcp-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (mysql-mcp folder)..."
+                    npx wrangler r2 object put sqlite-mcp-server-wiki/mysql-mcp/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+            - name: Deployment Summary
+              run: |
+                  echo "✅ Worker deployed to Cloudflare"
+                  echo "✅ SQLite wiki files synced to R2: sqlite-mcp-server-wiki/sqlite/"
+                  echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
+                  echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
+                  echo "✅ R2 Manager wiki files synced to R2: sqlite-mcp-server-wiki/r2-manager/"
+                  echo "✅ KV Manager wiki files synced to R2: sqlite-mcp-server-wiki/kv-manager/"
+                  echo "✅ MySQL MCP wiki files synced to R2: sqlite-mcp-server-wiki/mysql-mcp/"
+                  echo "✅ AutoRAG index sync triggered"
+                  echo ""
+                  echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
+                  echo "🔗 Custom Domain: https://search.adamic.tech"

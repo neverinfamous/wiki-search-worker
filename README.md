@@ -1,10 +1,10 @@
 # Wiki Search Worker - Complete Documentation
 
-*Last Updated January 26, 2026*
+**Last Updated March 1, 2026**
 
-**Production URL**: https://search.adamic.tech  
-**Worker Name**: `sqlite-wiki-search`  
-**AI Search ID**: `sqlite-mcp-server-wiki`  
+**Production URL**: https://search.adamic.tech
+**Worker Name**: `sqlite-wiki-search`
+**AI Search ID**: `sqlite-mcp-server-wiki`
 **GitHub Repo**: https://github.com/neverinfamous/wiki-search-worker
 
 Public AI-powered search interface for the SQLite MCP Server documentation using Cloudflare Workers + AI Search (formerly AutoRAG).
@@ -92,10 +92,12 @@ Every push to `main` branch automatically:
 **File**: `.github/workflows/deploy.yml`
 
 **Triggers**:
+
 - Push to `main` branch
 - Manual workflow dispatch
 
 **Steps**:
+
 1. Checkout repository
 2. Setup Node.js 20.x
 3. Install dependencies (`npm ci`)
@@ -106,10 +108,10 @@ Every push to `main` branch automatically:
 
 ### GitHub Secrets Required
 
-| Secret Name | Purpose |
-|------------|---------|
-| `CLOUDFLARE_API_TOKEN` | API authentication (see [Token Setup](#creating-an-api-token)) |
-| `CLOUDFLARE_ACCOUNT_ID` | Account identification (found in Cloudflare dashboard URL) |
+| Secret Name             | Purpose                                                        |
+| ----------------------- | -------------------------------------------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | API authentication (see [Token Setup](#creating-an-api-token)) |
+| `CLOUDFLARE_ACCOUNT_ID` | Account identification (found in Cloudflare dashboard URL)     |
 
 **Token Permissions**: Workers Scripts (Edit), R2 (Edit), Account Settings (Read)
 
@@ -153,22 +155,26 @@ git push
 ### Setup
 
 Navigate to worker directory:
+
 ```bash
 cd C:\Users\chris\Desktop\wiki-search-worker
 ```
 
 Install dependencies:
+
 ```bash
 npm install
 ```
 
 Run locally:
+
 ```bash
 npm run dev
 # Worker available at http://localhost:8787
 ```
 
 Deploy to production:
+
 ```bash
 npm run deploy
 ```
@@ -225,20 +231,22 @@ routes = [
 
 ### Custom Domain
 
-**Domain**: `search.adamic.tech`  
-**DNS Record**: Automatically created by Cloudflare  
-**SSL**: Auto-provisioned with Let's Encrypt  
+**Domain**: `search.adamic.tech`
+**DNS Record**: Automatically created by Cloudflare
+**SSL**: Auto-provisioned with Let's Encrypt
 **CDN**: Enabled via Cloudflare proxy
 
 ### Rate Limiting (Cloudflare WAF)
 
 **Rule 1: Burst Protection**
+
 - Path: `/api/search`
 - Characteristic: IP Address
 - Limit: 20 requests per 10 seconds
 - Action: Block for 30 seconds
 
 **Rule 2: Sustained Protection**
+
 - Hostname: `search.adamic.tech`
 - Characteristic: IP Address
 - Limit: 100 requests per 1 minute
@@ -253,64 +261,66 @@ routes = [
 - **AI Search ID**: `sqlite-mcp-server-wiki`
 - **R2 Source Bucket**: `sqlite-mcp-server-wiki`
 - **Wiki Sources**:
-  - MySQL MCP: `C:\Users\chris\Desktop\mysql-mcp.wiki` → `mysql-mcp/` folder
-  - SQLite MCP: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki` → `sqlite/` folder
-  - PostgreSQL MCP: `C:\Users\chris\Desktop\postgres-mcp.wiki` → `postgres/` folder
-  - Memory Journal MCP: `C:\Users\chris\Desktop\memory-journal-mcp.wiki` → `memory-journal/` folder
-  - R2 Bucket Manager: `C:\Users\chris\Desktop\R2-Manager-Worker.wiki` → `r2-manager/` folder
-  - KV Manager: `C:\Users\chris\Desktop\kv-manager.wiki` → `kv-manager/` folder
+    - MySQL MCP: `C:\Users\chris\Desktop\mysql-mcp.wiki` → `mysql-mcp/` folder
+    - SQLite MCP: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki` → `sqlite/` folder
+    - PostgreSQL MCP: `C:\Users\chris\Desktop\postgres-mcp.wiki` → `postgres/` folder
+    - Memory Journal MCP: `C:\Users\chris\Desktop\memory-journal-mcp.wiki` → `memory-journal/` folder
+    - R2 Bucket Manager: `C:\Users\chris\Desktop\R2-Manager-Worker.wiki` → `r2-manager/` folder
+    - KV Manager: `C:\Users\chris\Desktop\kv-manager.wiki` → `kv-manager/` folder
 - **Total Content**: 60+ markdown files across all projects
 - **Auto-Sync**: Every 6 hours automatically
 
 ### MCP Server Access
 
 **Enable in Cursor/Claude Desktop** (`mcp.json`):
+
 ```json
 {
-  "mcpServers": {
-    "cloudflare-autorag": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote@latest",
-        "https://autorag.mcp.cloudflare.com/sse"
-      ],
-      "env": {
-        "CLOUDFLARE_API_TOKEN": "<your-api-token>",
-        "CLOUDFLARE_ACCOUNT_ID": "<your-account-id>"
-      }
+    "mcpServers": {
+        "cloudflare-autorag": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote@latest", "https://autorag.mcp.cloudflare.com/sse"],
+            "env": {
+                "CLOUDFLARE_API_TOKEN": "<your-api-token>",
+                "CLOUDFLARE_ACCOUNT_ID": "<your-account-id>"
+            }
+        }
     }
-  }
 }
 ```
 
 **Available MCP Tools**:
+
 ```javascript
 // List all AI Search instances
-mcp_cloudflare-autorag_list_rags()
+mcp_cloudflare - autorag_list_rags();
 
 // Search the index
-mcp_cloudflare-autorag_search({
-  rag_id: "sqlite-mcp-server-wiki",
-  query: "How do I use JSON helper tools?"
-})
+mcp_cloudflare -
+    autorag_search({
+        rag_id: 'sqlite-mcp-server-wiki',
+        query: 'How do I use JSON helper tools?',
+    });
 
 // AI-enhanced search
-mcp_cloudflare-autorag_ai_search({
-  rag_id: "sqlite-mcp-server-wiki",
-  query: "What statistical analysis tools are available?"
-})
+mcp_cloudflare -
+    autorag_ai_search({
+        rag_id: 'sqlite-mcp-server-wiki',
+        query: 'What statistical analysis tools are available?',
+    });
 ```
 
 ### Syncing Content
 
 **When to sync**: After wiki updates are pushed to R2
 
-**Auto-Sync**: 
+**Auto-Sync**:
+
 - Happens automatically every 6 hours
 - No action required for most updates
 
 **Manual Sync** (for immediate updates):
+
 1. Go to: Cloudflare Dashboard → AI → AI Search → `sqlite-mcp-server-wiki`
 2. Click **"Sync Index"** button
 3. Wait for completion (~1-2 minutes)
@@ -368,18 +378,18 @@ Edit `.github/workflows/deploy.yml` and add these steps before "Step 6":
 ```yaml
 - name: Clone Your Project wiki repository
   run: |
-    git clone https://github.com/yourusername/your-project.wiki.git your-project-wiki-temp
-    
+      git clone https://github.com/yourusername/your-project.wiki.git your-project-wiki-temp
+
 - name: Upload Your Project wiki files to R2
   run: |
-    cd your-project-wiki-temp
-    for file in *.md; do
-      echo "Uploading $file to R2 (your-project folder)..."
-      npx wrangler r2 object put sqlite-mcp-server-wiki/your-project/"$file" --file="$file" --remote
-    done
+      cd your-project-wiki-temp
+      for file in *.md; do
+        echo "Uploading $file to R2 (your-project folder)..."
+        npx wrangler r2 object put sqlite-mcp-server-wiki/your-project/"$file" --file="$file" --remote
+      done
   env:
-    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 ```
 
 Update the deployment summary to include your new wiki.
@@ -387,6 +397,7 @@ Update the deployment summary to include your new wiki.
 ### 3. Configure R2 Bucket Folder Structure
 
 The R2 bucket uses this structure:
+
 ```
 sqlite-mcp-server-wiki/
 ├── sqlite/          # SQLite MCP Server wiki files
@@ -402,11 +413,13 @@ sqlite-mcp-server-wiki/
 After adding the configuration:
 
 **Option A: Local Sync (Fast)**
+
 ```powershell
 .\sync-wikis-to-r2.ps1 -WikiName your-project
 ```
 
 **Option B: GitHub Actions (Automatic)**
+
 - Commit and push your changes
 - GitHub Actions will automatically sync all wikis
 - Check Actions tab for progress
@@ -423,6 +436,7 @@ After files are in R2, sync the search index:
 ### 6. Update Documentation
 
 Update these files to document the new wiki:
+
 - `wiki-search-worker/README.md` - Add to wiki sources list
 - `adamic-blog/README.md` - Add to supported projects
 - Both files: Update feature counts and descriptions
@@ -447,24 +461,26 @@ curl -X POST https://search.adamic.tech/api/search \
 
 ### R2 Bucket Configuration
 
-**Bucket Name**: `sqlite-mcp-server-wiki`  
-**Region**: Automatic (Cloudflare's global network)  
-**Public Access**: No (AI Search has direct binding)  
-**File Format**: Markdown (`.md`) files only  
+**Bucket Name**: `sqlite-mcp-server-wiki`
+**Region**: Automatic (Cloudflare's global network)
+**Public Access**: No (AI Search has direct binding)
+**File Format**: Markdown (`.md`) files only
 **Auto-Upload**: Via GitHub Actions on every push
 
 ## 📡 API Endpoints
 
 ### Web Interface (Primary)
+
 - **URL**: https://search.adamic.tech
-- **Features**: 
-  - AI-Enhanced mode with natural language synthesis
-  - Vector Search mode for raw document chunks
-  - Example queries
-  - Social sharing
-  - Dark mode support
+- **Features**:
+    - AI-Enhanced mode with natural language synthesis
+    - Vector Search mode for raw document chunks
+    - Example queries
+    - Social sharing
+    - Dark mode support
 
 ### API Endpoint
+
 - **URL**: https://search.adamic.tech/api/search
 - **Method**: POST
 - **Content-Type**: application/json
@@ -488,6 +504,7 @@ curl -X POST https://search.adamic.tech/api/search \
 ```
 
 **Response format**:
+
 ```json
 {
   "success": true,
@@ -515,6 +532,7 @@ curl -X POST https://search.adamic.tech/api/search \
 ```
 
 ### Health Check
+
 ```bash
 curl https://search.adamic.tech/health
 ```
@@ -526,6 +544,7 @@ curl https://search.adamic.tech/health
 ### Updating Search Content
 
 **When wiki is updated**:
+
 1. Navigate to: Cloudflare Dashboard → AI → AutoRAG
 2. Select `sqlite-mcp-server-wiki`
 3. Click **Sync** button
@@ -533,6 +552,7 @@ curl https://search.adamic.tech/health
 5. Test search with updated query
 
 **Verify sync**:
+
 ```bash
 curl -X POST https://search.adamic.tech/api/search \
   -H "Content-Type: application/json" \
@@ -542,12 +562,14 @@ curl -X POST https://search.adamic.tech/api/search \
 ### Redeploying the Worker
 
 **When code changes**:
+
 ```bash
 cd C:\Users\chris\Desktop\sqlite-mcp-server\wiki-search-worker
 npm run deploy
 ```
 
 **When dependencies update**:
+
 ```bash
 npm install
 npm audit fix
@@ -557,11 +579,13 @@ npm run deploy
 ### Monitoring
 
 **Check worker logs**:
+
 1. Cloudflare Dashboard → Workers & Pages
 2. Select `sqlite-wiki-search`
 3. View **Logs** tab
 
 **Analytics location**:
+
 - Dashboard → Workers & Pages → sqlite-wiki-search → Metrics
 - Rate limiting: Security → WAF → Rate limiting rules
 
@@ -570,31 +594,41 @@ npm run deploy
 ## 🛠️ Troubleshooting
 
 ### Issue: Worker not updating after deploy
-**Solution**: 
+
+**Solution**:
+
 - Clear Cloudflare cache: Caching → Configuration → Purge Everything
 - Check deployment logs for errors
 - Verify `wrangler.toml` configuration
 
 ### Issue: Search returns outdated results
+
 **Solution**:
+
 - Sync AutoRAG in dashboard (AI → AutoRAG → Sync)
 - Verify wiki source files are updated
 - Check AutoRAG sync timestamp
 
 ### Issue: Rate limiting blocking legitimate users
+
 **Solution**:
+
 1. Check WAF logs: Security → Events
 2. Adjust rate limits if needed
 3. Add IP exceptions in WAF if necessary
 
 ### Issue: CORS errors
+
 **Solution**:
+
 - Check `ALLOWED_ORIGINS` in `wrangler.toml`
 - Currently set to `"*"` for public access
 - Modify `src/index.ts` CORS headers if needed
 
 ### Issue: TypeScript errors after changes
+
 **Solution**:
+
 ```bash
 # Add types back to tsconfig.json if removed
 # File: tsconfig.json
@@ -606,7 +640,9 @@ npm run deploy
 ```
 
 ### Issue: NPM audit vulnerabilities
+
 **Solution**:
+
 - Check `package.json` for `overrides` section
 - Current override: `esbuild` to `^0.25.10`
 - Run `npm audit fix` for automated fixes
@@ -616,6 +652,7 @@ npm run deploy
 ## 📚 File Locations
 
 ### Worker Code
+
 - **GitHub**: https://github.com/neverinfamous/wiki-search-worker
 - **Local**: `C:\Users\chris\Desktop\wiki-search-worker\`
 - **Main Worker**: `src/index.ts`
@@ -626,12 +663,14 @@ npm run deploy
 - **Deployment Guide**: `DEPLOYMENT.md`
 
 ### Wiki Source
+
 - **GitHub**: https://github.com/neverinfamous/sqlite-mcp-server.wiki
 - **Local**: `C:\Users\chris\Desktop\sqlite-mcp-server.wiki\`
 - **Files**: 19 markdown files
 - **Main entry**: `Home.md`
 
 ### Documentation
+
 - **This file**: `C:\Users\chris\Desktop\docs_images\wiki_autorag.md`
 - **Main Project**: https://github.com/neverinfamous/sqlite-mcp-server
 
@@ -648,6 +687,7 @@ npm run deploy
 ## 📖 Additional Documentation
 
 **In wiki-search-worker repository**:
+
 - `README.md` - Project overview and quick start
 - `DEPLOYMENT.md` - Complete deployment guide
 - `SECURITY.md` - Security policy and reporting
@@ -655,6 +695,7 @@ npm run deploy
 - `CREATE_API_TOKEN.md` - Detailed token instructions
 
 **Features**:
+
 - Dependabot configuration for automated updates
 - GitHub Actions for CI/CD
 - Comprehensive security policy
@@ -663,21 +704,23 @@ npm run deploy
 ## 🎯 Integration Examples
 
 ### JavaScript
+
 ```javascript
 const result = await fetch('https://search.adamic.tech/api/search', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ 
-    query: 'statistical analysis tools',
-    mode: 'ai' // or 'search' for raw results
-  })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        query: 'statistical analysis tools',
+        mode: 'ai', // or 'search' for raw results
+    }),
 });
 const data = await result.json();
 console.log(data.data.response); // AI-synthesized answer
-console.log(data.data.data);     // Source documents
+console.log(data.data.data); // Source documents
 ```
 
 ### Python
+
 ```python
 import requests
 
@@ -698,6 +741,7 @@ for source in result['data']['data']:
 ```
 
 ### cURL with Mode Selection
+
 ```bash
 # AI mode (synthesized answer)
 curl -X POST https://search.adamic.tech/api/search \
@@ -715,19 +759,22 @@ curl -X POST https://search.adamic.tech/api/search \
 ## 💰 Cost & Performance
 
 ### Cloudflare Costs
+
 - **Workers**: Free tier includes 100,000 requests/day
 - **AutoRAG**: Pay-as-you-go pricing
-  - AI-Enhanced queries: ~$0.01 per query (synthesis cost)
-  - Vector search only: ~$0.001 per query
+    - AI-Enhanced queries: ~$0.01 per query (synthesis cost)
+    - Vector search only: ~$0.001 per query
 - **Bandwidth**: Included in Workers free tier
 
 ### Performance Metrics
+
 - **Cold start**: ~100-200ms
 - **AI search**: ~1-3 seconds (includes synthesis)
 - **Vector search**: ~200-500ms (raw results)
 - **Edge locations**: 300+ worldwide
 
 ### Rate Limits (Current)
+
 - **Burst**: 15 requests per 10 seconds per IP
 - **Sustained**: 60 requests per minute per IP
 - **Protection**: Prevents abuse while allowing normal usage
@@ -760,13 +807,12 @@ curl -X POST https://search.adamic.tech/api/search \
 
 ---
 
-**Project**: [SQLite MCP Server](https://github.com/neverinfamous/sqlite-mcp-server)  
-**Worker Repository**: [wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker) 
-**Production URL**: https://search.adamic.tech  
-**Technology**: Cloudflare Workers + AI Search (formerly AutoRAG)  
-**CI/CD**: GitHub Actions  
-**Security**: Dependabot + Rate Limiting + WAF  
-**Maintained by**: [@neverinfamous](https://github.com/neverinfamous)  
-**Organization**: [Adamic](https://adamic.tech)  
+**Project**: [SQLite MCP Server](https://github.com/neverinfamous/sqlite-mcp-server)
+**Worker Repository**: [wiki-search-worker](https://github.com/neverinfamous/wiki-search-worker)
+**Production URL**: https://search.adamic.tech
+**Technology**: Cloudflare Workers + AI Search (formerly AutoRAG)
+**CI/CD**: GitHub Actions
+**Security**: Dependabot + Rate Limiting + WAF
+**Maintained by**: [@neverinfamous](https://github.com/neverinfamous)
+**Organization**: [Adamic](https://adamic.tech)
 **License**: MIT
-

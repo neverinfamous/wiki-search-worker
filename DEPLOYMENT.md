@@ -22,14 +22,15 @@ Go to your repository settings: **Settings → Secrets and variables → Actions
 
 Add these two secrets:
 
-| Secret Name | Where to Find |
-|------------|---------------|
-| `CLOUDFLARE_API_TOKEN` | Create at https://dash.cloudflare.com/profile/api-tokens |
-| `CLOUDFLARE_ACCOUNT_ID` | Found in your Cloudflare dashboard URL (after `/`) |
+| Secret Name             | Where to Find                                            |
+| ----------------------- | -------------------------------------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | Create at https://dash.cloudflare.com/profile/api-tokens |
+| `CLOUDFLARE_ACCOUNT_ID` | Found in your Cloudflare dashboard URL (after `/`)       |
 
 **Note**: Use a properly scoped API token with Workers and R2 permissions.
 
 **To create a new API token** (if needed):
+
 1. Go to https://dash.cloudflare.com/profile/api-tokens
 2. Click **Create Token**
 3. Use the **Edit Cloudflare Workers** template
@@ -39,6 +40,7 @@ Add these two secrets:
 ### 2. Enable GitHub Actions
 
 The workflow is already configured in `.github/workflows/deploy.yml`. It will automatically run on:
+
 - Every push to `main` branch
 - Manual trigger via GitHub Actions tab
 
@@ -55,10 +57,10 @@ You can also trigger deployment manually:
 ### Check Deployment Status
 
 - **GitHub Actions**: See deployment logs in the Actions tab
-- **Cloudflare Dashboard**: 
-  - Worker: https://dash.cloudflare.com/workers
-  - R2 Bucket: https://dash.cloudflare.com/r2/overview
-  - AI Search: https://dash.cloudflare.com/ai/ai-search
+- **Cloudflare Dashboard**:
+    - Worker: https://dash.cloudflare.com/workers
+    - R2 Bucket: https://dash.cloudflare.com/r2/overview
+    - AI Search: https://dash.cloudflare.com/ai/ai-search
 
 ### AutoRAG Sync Frequency
 
@@ -69,11 +71,13 @@ You can also trigger deployment manually:
 ## 🚀 What Gets Deployed
 
 ### Worker Files
+
 - `src/index.ts` - Main worker code
 - `wrangler.toml` - Worker configuration
 - All dependencies from `package.json`
 
 ### Wiki Files (to R2)
+
 - All `.md` files from `sqlite-mcp-server.wiki` repository
 - Uploaded to `sqlite-mcp-server-wiki` R2 bucket
 - AutoRAG automatically indexes changes
@@ -81,16 +85,19 @@ You can also trigger deployment manually:
 ## 🛠️ Troubleshooting
 
 ### Worker Not Deploying
+
 - Check GitHub Actions logs for errors
 - Verify API token has Workers:Edit permission
 - Ensure `wrangler.toml` is correctly configured
 
 ### R2 Upload Failing
+
 - Verify API token has R2:Edit permission
 - Check R2 bucket exists: `sqlite-mcp-server-wiki`
 - Ensure account ID is correct
 
 ### AutoRAG Not Updating
+
 - Wait 5-10 minutes for sync to complete
 - Manually trigger sync in Cloudflare dashboard
 - Check AI Search Jobs tab for sync status
@@ -114,4 +121,3 @@ npm run deploy
 - Never commit tokens to the repository
 - Tokens are scoped to minimum required permissions
 - The repository is private for additional security
-
