@@ -73,7 +73,7 @@ GitHub Wiki → GitHub Actions → R2 Bucket → AI Search Index → Worker → 
 - **AI Engine**: Cloudflare AI Search with Workers AI binding
 - **Search Backend**: Vector database with automatic indexing
 - **Language**: TypeScript
-- **Build Tool**: Wrangler v4.40.3
+- **Build Tool**: Wrangler CLI
 - **CI/CD**: GitHub Actions
 
 ---
