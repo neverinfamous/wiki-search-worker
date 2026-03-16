@@ -1,7 +1,5 @@
 # Wiki Search Worker - Complete Documentation
 
-**Last Updated March 10, 2026**
-
 **Production URL**: https://search.adamic.tech
 **Worker Name**: `sqlite-wiki-search`
 **AI Search ID**: `sqlite-mcp-server-wiki`
