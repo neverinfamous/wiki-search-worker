@@ -1,7 +1,5 @@
 # Wiki Search Worker - Complete Documentation
 
-**Last Updated March 10, 2026**
-
 **Production URL**: https://search.adamic.tech
 **Worker Name**: `sqlite-wiki-search`
 **AI Search ID**: `sqlite-mcp-server-wiki`
@@ -644,7 +642,7 @@ npm run deploy
 **Solution**:
 
 - Check `package.json` for `overrides` section
-- Current override: `esbuild` to `^0.25.10`
+- Current overrides: `esbuild` to `^0.25.10`, `undici` to `^7.24.4`
 - Run `npm audit fix` for automated fixes
 
 ---

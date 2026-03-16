@@ -1,6 +1,6 @@
 {
     "name": "sqlite-wiki-search-worker",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Public search interface for MCP Server Wiki using Cloudflare AI Search",
     "main": "src/index.ts",
     "scripts": {
@@ -22,14 +22,15 @@
     "author": "Adamic",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260124.0",
+        "@cloudflare/workers-types": "^4.20260316.1",
         "@eslint/js": "^10.0.1",
         "eslint": "^10.0.2",
         "typescript": "^5.7.2",
         "typescript-eslint": "^8.53.1",
-        "wrangler": "^4.60.0"
+        "wrangler": "^4.74.0"
     },
     "overrides": {
-        "esbuild": "^0.25.10"
+        "esbuild": "^0.25.10",
+        "undici": "^7.24.4"
     }
 }
