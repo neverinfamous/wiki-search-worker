@@ -9,16 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.1) - 2026-03-16
 
+### Changed
+
+- Bumped Cloudflare tooling (`@cloudflare/workers-types`, `wrangler`) in devDependencies.
+- Added `undici` to npm overrides to specify required secure version.
+
 ### Fixed
 
 - Fixed outdated Wrangler version reference in documentation.
-- Tightened ESLint highlight wording.
+- Tightened ESLint configuration warnings.
+- Removed outdated "Last Updated" line from README header.
 
-### Changed
-
-- Bumped production-dependencies group.
-
-## [1.1.0] - 2026-03-10
+## [1.1.0](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.0) - 2026-03-10
 
 ### Changed
 
