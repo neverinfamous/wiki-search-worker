@@ -725,9 +725,11 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         // Smart default: skip rewriting for queries that look specific enough
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
-        // Call AI Search based on mode
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
+        const aiSearch = (
+            env as Env & {
+                AI_SEARCH_NAMESPACES: AiSearchNamespace;
+            }
+        ).AI_SEARCH_NAMESPACES.get('sqlite-mcp-server-wiki');
         const searchOptions = {
             retrieval: {
                 max_num_results: maxResults,
