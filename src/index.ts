@@ -549,7 +549,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 </html>`;
 
 export interface Env {
-    AI: Ai;
+    AI_SEARCH_NAMESPACES: AiSearchNamespace;
     // CORS origins you want to allow (set in wrangler.toml vars)
     ALLOWED_ORIGINS?: string;
 }
@@ -725,9 +725,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         // Smart default: skip rewriting for queries that look specific enough
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
-        // Call AI Search based on mode
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
+        const aiSearch = env.AI_SEARCH_NAMESPACES.get('sqlite-mcp-server-wiki');
         const searchOptions = {
             retrieval: {
                 max_num_results: maxResults,
