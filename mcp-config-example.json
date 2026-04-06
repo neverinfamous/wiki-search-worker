@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "cloudflare-autorag": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote@latest", "https://autorag.mcp.cloudflare.com/sse"],
+            "env": {
+                "CLOUDFLARE_API_TOKEN": "your-cloudflare-api-token",
+                "CLOUDFLARE_ACCOUNT_ID": "your-cloudflare-account-id"
+            }
+        }
+    }
+}
