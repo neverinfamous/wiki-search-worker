@@ -549,7 +549,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 </html>`;
 
 export interface Env {
-    AI_SEARCH_NAMESPACES: AiSearchNamespace;
+    AI: Ai;
     // CORS origins you want to allow (set in wrangler.toml vars)
     ALLOWED_ORIGINS?: string;
 }
@@ -725,7 +725,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         // Smart default: skip rewriting for queries that look specific enough
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
-        const aiSearch = env.AI_SEARCH_NAMESPACES.get('sqlite-mcp-server-wiki');
+        // Call AI Search based on mode
+        // eslint-disable-next-line @typescript-eslint/no-deprecated -- Justified: Cloudflare CI tokens lack specific 'AI Search' scope for standalone namespaces binding
+        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
         const searchOptions = {
             retrieval: {
                 max_num_results: maxResults,

@@ -7,11 +7,12 @@ compatibility_flags = ["nodejs_compat"]
 # Enable workers.dev subdomain
 workers_dev = false
 
-# AI Search Standalone Binding
-[[ai_search_namespaces]]
-binding = "AI_SEARCH_NAMESPACES"
-namespace = "default"
-# Environment variables
+# AI binding
+# NOTE: Using legacy [ai] binding instead of standalone [[ai_search_namespaces]]
+# because current GitHub Actions / Cloudflare integration API tokens lack
+# explicit 'AI Search' namespace permissions required for the standalone binding.
+[ai]
+binding = "AI"
 [vars]
 # Comma-separated list of allowed origins for CORS
 # Use "*" to allow all origins (not recommended for production)
