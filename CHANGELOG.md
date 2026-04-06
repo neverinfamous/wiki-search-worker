@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.1...HEAD)
+## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.2...HEAD)
+
+## [1.1.2](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.2) - 2026-04-06
+
+### Changed
+
+- **Dependency Updates**:
+    - `@cloudflare/workers-types`: `4.20260316.1` -> `4.20260405.1`
+    - `eslint`: `10.0.3` -> `10.2.0`
+    - `typescript`: `5.9.3` -> `6.0.2`
+    - `typescript-eslint`: `8.57.0` -> `8.58.0`
+    - `wrangler`: `4.74.0` -> `4.80.0`
+    - `flatted`: `3.4.1` -> `3.4.2`
+    - `picomatch`: `4.0.3` -> `4.0.4`
+
+### Security
+
+- Fixed High severity Prototype Pollution via parse() in NodeJS flatted by forcing `flatted` to `3.4.2`
+- Fixed Moderate severity Method Injection in POSIX Character Classes causes incorrect Glob Matching by forcing `picomatch` to `4.0.4`
+- Fixed Moderate severity Zero-step sequence causes process hang and memory exhaustion by forcing `brace-expansion` fix via `npm audit fix`
 
 ## [1.1.1](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.1) - 2026-03-16
 

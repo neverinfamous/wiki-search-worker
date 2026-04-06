@@ -1,6 +1,6 @@
 {
     "name": "sqlite-wiki-search-worker",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Public search interface for MCP Server Wiki using Cloudflare AI Search",
     "main": "src/index.ts",
     "scripts": {

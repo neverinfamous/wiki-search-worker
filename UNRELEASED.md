@@ -1,16 +1,1 @@
 ## [Unreleased]
-
-### Changed
-- **Dependency Updates**:
-  - `@cloudflare/workers-types`: `4.20260316.1` -> `4.20260405.1`
-  - `eslint`: `10.0.3` -> `10.2.0`
-  - `typescript`: `5.9.3` -> `6.0.2`
-  - `typescript-eslint`: `8.57.0` -> `8.58.0`
-  - `wrangler`: `4.74.0` -> `4.80.0`
-  - `flatted`: `3.4.1` -> `3.4.2`
-  - `picomatch`: `4.0.3` -> `4.0.4`
-
-### Security
-- Fixed High severity Prototype Pollution via parse() in NodeJS flatted by forcing `flatted` to `3.4.2`
-- Fixed Moderate severity Method Injection in POSIX Character Classes causes incorrect Glob Matching by forcing `picomatch` to `4.0.4`
-- Fixed Moderate severity Zero-step sequence causes process hang and memory exhaustion by forcing `brace-expansion` fix via `npm audit fix`
