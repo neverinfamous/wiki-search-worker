@@ -726,6 +726,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         // Call AI Search based on mode
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
         const searchOptions = {
             retrieval: {
