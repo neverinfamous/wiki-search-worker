@@ -277,7 +277,7 @@ routes = [
     "mcpServers": {
         "cloudflare-autorag": {
             "command": "npx",
-            "args": ["-y", "mcp-remote@latest", "https://autorag.mcp.cloudflare.com/sse"],
+            "args": ["-y", "mcp-remote@0.1.0", "https://autorag.mcp.cloudflare.com/sse"],
             "env": {
                 "CLOUDFLARE_API_TOKEN": "<your-api-token>",
                 "CLOUDFLARE_ACCOUNT_ID": "<your-account-id>"
