@@ -7,10 +7,13 @@ compatibility_flags = ["nodejs_compat"]
 # Enable workers.dev subdomain
 workers_dev = false
 
-# AI binding for AI Search access
+# AI binding
 [ai]
 binding = "AI"
 
+# AI Search Standalone Binding
+[[ai_search_namespaces]]
+binding = "AI_SEARCH_NAMESPACES"
 # Environment variables
 [vars]
 # Comma-separated list of allowed origins for CORS
