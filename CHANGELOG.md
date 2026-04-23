@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.2...HEAD)
+## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.3...HEAD)
+
+## [1.1.3](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.3) - 2026-04-22
+
+### Changed
+
+- **AI Search Binding Configuration**: Switched the Worker to use the legacy `env.AI.aiSearch()` binding configured via `[ai]` in `wrangler.toml` to avoid CI/deployment issues caused by token scope limitations with the newer binding strategy.
+- **Dependency Updates**: Updated `wrangler` to `4.84.1`, `@cloudflare/workers-types` to `4.20260423.1`, `typescript` to `6.0.3`, `typescript-eslint` to `8.59.0`, and `eslint` to `10.2.1`.
 
 ## [1.1.2](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.2) - 2026-04-06
 
