@@ -22,12 +22,12 @@
     "author": "Adamic",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260423.1",
+        "@cloudflare/workers-types": "^4.20260504.1",
         "@eslint/js": "^10.0.1",
-        "eslint": "^10.2.1",
+        "eslint": "^10.3.0",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.59.0",
-        "wrangler": "^4.84.1"
+        "typescript-eslint": "^8.59.1",
+        "wrangler": "^4.87.0"
     },
     "overrides": {
         "esbuild": "^0.25.10",
