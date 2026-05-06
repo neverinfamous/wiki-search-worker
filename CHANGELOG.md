@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.4...HEAD)
+## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.5...HEAD)
+
+## [1.1.5](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.5) - 2026-05-06
+
+### Changed
+
+- **GitHub Actions**: Updated Node.js version from 20 to 24 in the deployment workflow to satisfy Wrangler v4.88.0+ requirements.
 
 ## [1.1.4](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.4) - 2026-05-06
 
