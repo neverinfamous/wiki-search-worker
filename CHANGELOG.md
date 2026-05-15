@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.5...HEAD)
+## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.6...HEAD)
+
+## [1.1.6](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.6) - 2026-05-15
+
+### Changed
+
+- **Dependency Updates**: Bumped npm dependencies to latest versions (`@cloudflare/workers-types`, `typescript-eslint`, `wrangler`).
 
 ## [1.1.5](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.5) - 2026-05-06
 
