@@ -8,11 +8,12 @@ compatibility_flags = ["nodejs_compat"]
 workers_dev = false
 
 # AI binding
-# NOTE: Using legacy [ai] binding instead of standalone [[ai_search_namespaces]]
-# because current GitHub Actions / Cloudflare integration API tokens lack
-# explicit 'AI Search' namespace permissions required for the standalone binding.
 [ai]
 binding = "AI"
+
+[[ai_search_namespaces]]
+binding = "WIKI_SEARCH"
+namespace = "adamic-blog-search"
 [vars]
 # Comma-separated list of allowed origins for CORS
 # Use "*" to allow all origins (not recommended for production)

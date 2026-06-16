@@ -550,6 +550,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 
 export interface Env {
     AI: Ai;
+    WIKI_SEARCH: any;
     // CORS origins you want to allow (set in wrangler.toml vars)
     ALLOWED_ORIGINS?: string;
 }
@@ -726,9 +727,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         // Call AI Search based on mode
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- Justified: Cloudflare CI tokens lack specific 'AI Search' scope for standalone namespaces binding
-        const aiSearch = env.AI.aiSearch().get('adamic-blog-search');
+        const aiSearch = env.WIKI_SEARCH;
         const searchOptions = {
+            instance_ids: ['blog-index'],
             retrieval: {
                 max_num_results: maxResults,
                 match_threshold: 0.5, // Filter low-quality results
