@@ -358,7 +358,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                             data.data.chunks.forEach(function(chunk) {
                                 const filename = chunk.item ? chunk.item.key : chunk.id;
                                 content += '<div class="search-source-item">';
-                                content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
+                                content += '<strong>' + escapeHtml(filename) + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
                                 content += '</div>';
                             });
                         }
@@ -370,7 +370,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         data.data.chunks.forEach(function(chunk) {
                             const filename = chunk.item ? chunk.item.key : chunk.id;
                             content += '<div class="search-source-item" style="margin-bottom:1rem;padding:1rem;border:1px solid var(--border-color);border-radius:6px;">';
-                            content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
+                            content += '<strong>' + escapeHtml(filename) + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
                             content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + escapeHtml(chunk.text) + '</div>';
                             content += '</div>';
                         });

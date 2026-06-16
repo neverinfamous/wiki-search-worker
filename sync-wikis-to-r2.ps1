@@ -83,6 +83,16 @@ $wikis = @{
     }
 }
 
+# Check required environment variables
+if (-not $env:CLOUDFLARE_API_TOKEN) {
+    Write-Host "Error: CLOUDFLARE_API_TOKEN environment variable not set" -ForegroundColor Red
+    exit 1
+}
+if (-not $env:CLOUDFLARE_ACCOUNT_ID) {
+    Write-Host "Error: CLOUDFLARE_ACCOUNT_ID environment variable not set" -ForegroundColor Red
+    exit 1
+}
+
 # Check if wrangler is available
 if (-not (Get-Command wrangler -ErrorAction SilentlyContinue)) {
     Write-Host "Error: Wrangler CLI not found" -ForegroundColor Red
