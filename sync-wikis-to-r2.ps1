@@ -149,7 +149,7 @@ foreach ($wikiKey in $wikisToSync.Keys) {
             Write-Host "   Uploading: $($file.Name)..." -NoNewline -ForegroundColor Gray
             
             # Upload to R2 using wrangler
-            $result = npx wrangler r2 object put "$BUCKET_NAME/$r2Path" --file="$($file.FullName)" --remote 2>&1
+            $result = wrangler r2 object put "$BUCKET_NAME/$r2Path" --file="$($file.FullName)" --remote 2>&1
             
             if ($LASTEXITCODE -eq 0) {
                 Write-Host " Done" -ForegroundColor Green
