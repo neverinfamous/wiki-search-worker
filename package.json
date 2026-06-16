@@ -22,17 +22,20 @@
     "author": "Adamic",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260423.1",
+        "@cloudflare/workers-types": "^4.20260615.1",
         "@eslint/js": "^10.0.1",
-        "eslint": "^10.2.1",
+        "eslint": "^10.5.0",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.59.0",
-        "wrangler": "^4.84.1"
+        "typescript-eslint": "^8.61.0",
+        "wrangler": "^4.100.0"
     },
     "overrides": {
-        "esbuild": "^0.25.10",
+        "esbuild": "^0.28.1",
         "undici": "^7.24.4",
         "flatted": "3.4.2",
-        "picomatch": "4.0.4"
+        "picomatch": "4.0.4",
+        "ws": "^8.21.0",
+        "wrangler>esbuild": "^0.28.1",
+        "wrangler>miniflare>ws": "^8.21.0"
     }
 }

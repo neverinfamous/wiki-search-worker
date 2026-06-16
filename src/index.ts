@@ -548,9 +548,14 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 </body>
 </html>`;
 
+export interface AiSearchBinding {
+    chatCompletions(options: Record<string, unknown>): Promise<unknown>;
+    search(options: Record<string, unknown>): Promise<unknown>;
+}
+
 export interface Env {
     AI: Ai;
-    WIKI_SEARCH: any;
+    WIKI_SEARCH: AiSearchBinding;
     // CORS origins you want to allow (set in wrangler.toml vars)
     ALLOWED_ORIGINS?: string;
 }
@@ -742,7 +747,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
             { role: 'user', content: body.query },
         ];
 
-        let result;
+        let result: unknown;
         const startTime = Date.now();
 
         if (mode === 'ai') {
