@@ -9,7 +9,8 @@
         "deploy:production": "wrangler deploy --env production",
         "tail": "wrangler tail",
         "lint": "eslint src",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "check": "pnpm run lint && pnpm run typecheck"
     },
     "keywords": [
         "cloudflare",

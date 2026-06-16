@@ -305,7 +305,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved.</p>
+                <p>&copy; 2026 Adamic. All rights reserved.</p>
             </div>
         </footer>
 
@@ -313,6 +313,11 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">⇈</button>
     </div>
     <script>
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
         let currentMode = 'ai';
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -344,7 +349,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         const aiResponse = data.data.choices[0].message ? data.data.choices[0].message.content : '';
                         content = '<div class="result-card">';
                         content += '<h3 class="search-result-header">✨ AI Answer</h3>';
-                        content += '<div class="result-content search-result-content">' + aiResponse + '</div>';
+                        content += '<div class="result-content search-result-content">' + escapeHtml(aiResponse) + '</div>';
 
                         // Show source chunks if available
                         if (data.data.chunks && data.data.chunks.length > 0) {
@@ -366,7 +371,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                             const filename = chunk.item ? chunk.item.key : chunk.id;
                             content += '<div class="search-source-item" style="margin-bottom:1rem;padding:1rem;border:1px solid var(--border-color);border-radius:6px;">';
                             content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
-                            content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + chunk.text + '</div>';
+                            content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + escapeHtml(chunk.text) + '</div>';
                             content += '</div>';
                         });
                         content += '</div>';
@@ -376,12 +381,12 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     }
                     results.innerHTML = content;
                 } else {
-                    results.innerHTML = '<div class="result-card"><div class="error">Error: ' + data.error + '</div></div>';
+                    results.innerHTML = '<div class="result-card"><div class="error">Error: ' + escapeHtml(data.error) + '</div></div>';
                 }
             } catch (error) {
                 loading.classList.remove('show');
                 results.classList.add('show');
-                results.innerHTML = '<div class="result-card"><div class="error">Error: ' + error.message + '</div></div>';
+                results.innerHTML = '<div class="result-card"><div class="error">Error: ' + escapeHtml(error.message) + '</div></div>';
             } finally {
                 searchBtn.disabled = false;
             }
@@ -614,35 +619,41 @@ export default {
 
             // Health check endpoint
             if (path === '/health') {
-                return jsonResponse({
-                    status: 'healthy',
-                    service: 'MCP Servers & Cloudflare Managers Documentation Search',
-                    version: '5.2.0',
-                    projects: [
-                        'MySQL MCP',
-                        'SQLite MCP',
-                        'PostgreSQL MCP',
-                        'Memory Journal MCP',
-                        'D1 Manager',
-                        'DO Manager',
-                        'KV Manager',
-                        'R2 Manager',
-                    ],
-                    endpoints: {
-                        search: '/api/search (POST)',
-                        health: '/health (GET)',
+                return jsonResponse(
+                    {
+                        status: 'healthy',
+                        service: 'MCP Servers & Cloudflare Managers Documentation Search',
+                        version: '5.2.0',
+                        projects: [
+                            'MySQL MCP',
+                            'SQLite MCP',
+                            'PostgreSQL MCP',
+                            'Memory Journal MCP',
+                            'D1 Manager',
+                            'DO Manager',
+                            'KV Manager',
+                            'R2 Manager',
+                        ],
+                        endpoints: {
+                            search: '/api/search (POST)',
+                            health: '/health (GET)',
+                        },
+                        documentation: {
+                            mysqlMcp: 'https://github.com/neverinfamous/mysql-mcp/wiki',
+                            sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
+                            postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
+                            memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
+                            d1Manager: 'https://github.com/neverinfamous/d1-manager',
+                            doManager: 'https://github.com/neverinfamous/do-manager/wiki',
+                            kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
+                            r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker',
+                        },
                     },
-                    documentation: {
-                        mysqlMcp: 'https://github.com/neverinfamous/mysql-mcp/wiki',
-                        sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
-                        postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
-                        memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
-                        d1Manager: 'https://github.com/neverinfamous/d1-manager',
-                        doManager: 'https://github.com/neverinfamous/do-manager/wiki',
-                        kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
-                        r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker',
-                    },
-                });
+                    200,
+                    undefined,
+                    request.headers.get('Origin'),
+                    env.ALLOWED_ORIGINS,
+                );
             }
 
             // Search endpoint
@@ -668,12 +679,20 @@ export default {
                         },
                         405,
                         { 'X-Robots-Tag': 'noindex, nofollow' },
+                        request.headers.get('Origin'),
+                        env.ALLOWED_ORIGINS,
                     );
                 }
             }
 
             // Not found
-            return jsonResponse({ error: 'Endpoint not found' }, 404);
+            return jsonResponse(
+                { error: 'Endpoint not found' },
+                404,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
+            );
         } catch (error) {
             console.error('Worker error:', error);
             return jsonResponse(
@@ -682,6 +701,9 @@ export default {
                     error: error instanceof Error ? error.message : 'Internal server error',
                 },
                 500,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
     },
@@ -702,6 +724,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query parameter is required and must be a string',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -713,6 +738,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query must be at least 3 characters long',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -723,6 +751,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query must be less than 500 characters',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -786,9 +817,13 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         };
 
         // Add response time header
-        return jsonResponse(response, 200, {
-            'X-Response-Time': `${String(responseTime)}ms`,
-        });
+        return jsonResponse(
+            response,
+            200,
+            { 'X-Response-Time': `${String(responseTime)}ms` },
+            request.headers.get('Origin'),
+            env.ALLOWED_ORIGINS,
+        );
     } catch (error) {
         console.error('Search error:', {
             error: error instanceof Error ? error.message : 'Unknown error',
@@ -803,6 +838,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                 timestamp: new Date().toISOString(),
             },
             500,
+            undefined,
+            request.headers.get('Origin'),
+            env.ALLOWED_ORIGINS,
         );
     }
 }
@@ -831,14 +869,19 @@ function jsonResponse(
     data: unknown,
     status = 200,
     additionalHeaders?: Record<string, string>,
+    origin?: string | null,
+    allowedOriginsRaw?: string,
 ): Response {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
         ...additionalHeaders,
     };
 
-    // Add CORS headers to all responses
-    headers['Access-Control-Allow-Origin'] = '*'; // Adjust based on your needs
+    // Add CORS headers respecting ALLOWED_ORIGINS configuration
+    const allowedOrigins = allowedOriginsRaw?.split(',') || ['*'];
+    if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
+        headers['Access-Control-Allow-Origin'] = origin || '*';
+    }
     headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
     headers['Access-Control-Allow-Headers'] = 'Content-Type';
 
