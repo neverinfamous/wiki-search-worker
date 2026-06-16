@@ -1,6 +1,7 @@
 ## [Unreleased]
 
 ### Fixed
+- Fixed broken adamic.tech logo on the search page by replacing it with an inline base64 image data URI. (`87af5fd`)
 - **search**: Fixed `AiSearchError: Account not authorized to use AI Search` by migrating from the legacy `[ai]` instance binding to the modern `[[ai_search_namespaces]]` binding (`WIKI_SEARCH`) and specifying `instance_ids` in search options.
 
 ### Changed
