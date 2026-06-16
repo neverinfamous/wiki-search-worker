@@ -12,3 +12,6 @@ overrides:
   "ws": "^8.21.0"
   "wrangler>esbuild": "^0.28.1"
   "miniflare>ws": "^8.21.0"
+
+packages:
+  - "."
