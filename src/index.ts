@@ -210,7 +210,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 354+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 750+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
 
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
@@ -222,13 +222,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
 
                     <h4 class="search-about-subheading">MCP Servers</h4>
-                    <p><strong>MySQL MCP (191 Tools):</strong> Enterprise-grade MySQL MCP server with 191 specialized tools, 18 resources, and 19 prompts. Features OAuth 2.1 authentication, intelligent tool filtering (24 groups + shortcuts), MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
+                    <p><strong>MySQL MCP:</strong> Enterprise-grade MySQL MCP server with 220+ specialized tools. Features OAuth 2.1 authentication, intelligent tool filtering, MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
 
-                    <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
+                    <p><strong>Memory Journal MCP:</strong> Adaptive memory system featuring 40+ MCP tools and resources with causal graph modeling. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
 
-                    <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
+                    <p><strong>PostgreSQL MCP:</strong> Enterprise-grade database operations with 230+ specialized tools. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
 
-                    <p><strong>SQLite MCP (73 Tools):</strong> Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
+                    <p><strong>DB-MCP (SQLite):</strong> Transforms SQLite into a powerful, AI-ready database engine with 250+ specialized tools (Native and WASM) spanning JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
 
                     <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation with source attribution and relevance scores.</p>
@@ -727,7 +727,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
 
         // Call AI Search based on mode
         // eslint-disable-next-line @typescript-eslint/no-deprecated -- Justified: Cloudflare CI tokens lack specific 'AI Search' scope for standalone namespaces binding
-        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
+        const aiSearch = env.AI.aiSearch().get('adamic-blog-search');
         const searchOptions = {
             retrieval: {
                 max_num_results: maxResults,

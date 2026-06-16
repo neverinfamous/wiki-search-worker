@@ -26,23 +26,23 @@
     
 .NOTES
     Requires: Wrangler CLI, CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID environment variables
-    After running: Go to Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki
+    After running: Go to Cloudflare Dashboard → AI → AI Search → adamic-blog-search
     and click "Sync Index" button (or wait up to 6 hours for automatic sync)
 #>
 
 param(
-    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'kv-manager', 'mysql-mcp', 'all')]
+    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'do-manager', 'kv-manager', 'mysql-mcp', 'all')]
     [string]$WikiName = 'all'
 )
 
 # Configuration
-$BUCKET_NAME = "sqlite-mcp-server-wiki"
+$BUCKET_NAME = "adamic-blog-search"
 $BASE_PATH = "C:\Users\chris\Desktop"
 
 # Wiki configurations
 $wikis = @{
     'sqlite' = @{
-        Path = "$BASE_PATH\sqlite-mcp-server.wiki"
+        Path = "$BASE_PATH\db-mcp.wiki"
         Folder = "sqlite"
         DisplayName = "SQLite MCP Server"
     }
@@ -65,6 +65,11 @@ $wikis = @{
         Path = "$BASE_PATH\d1-manager.wiki"
         Folder = "d1-manager"
         DisplayName = "D1 Database Manager"
+    }
+    'do-manager' = @{
+        Path = "$BASE_PATH\do-manager.wiki"
+        Folder = "do-manager"
+        DisplayName = "DO Manager"
     }
     'kv-manager' = @{
         Path = "$BASE_PATH\kv-manager.wiki"
@@ -196,7 +201,7 @@ if ($successCount -gt 0) {
     Write-Host ""
     Write-Host "📝 R2 files have been updated, but AutoRAG needs manual sync." -ForegroundColor White
     Write-Host ""
-    Write-Host "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki" -ForegroundColor Cyan
+    Write-Host "🔗 Go to: Cloudflare Dashboard → AI → AI Search → adamic-blog-search" -ForegroundColor Cyan
     Write-Host "👆 Click the 'Sync Index' button" -ForegroundColor White
     Write-Host ""
     Write-Host "⏱️  Or wait up to 6 hours for automatic sync" -ForegroundColor Gray
