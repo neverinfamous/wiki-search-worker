@@ -1,4 +1,4 @@
-name = "sqlite-wiki-search"
+name = "adamic-blog-search"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
