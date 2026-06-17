@@ -202,22 +202,63 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer powerful database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
 
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
-                    <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
+                    <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Drizzle ORM:</strong> Introspect, push, check, and export schemas.</li>
+                        <li><strong>Automated Backups:</strong> Scheduled R2 backups via cron triggers.</li>
+                        <li><strong>Enterprise Features:</strong> Time Travel recovery, Read Replication, and Zero Trust auth.</li>
+                        <li><strong>Performance:</strong> 60-70% faster ER diagrams and full client-side caching.</li>
+                    </ul>
 
-                    <p><strong>DO Manager:</strong> Full-featured management platform for Cloudflare Durable Objects with cross-namespace instance migration (Copy Only, Copy + Delete, Copy + Freeze modes), freeze/unfreeze protection (read-only with snowflake indicator), namespace auto-discovery, instance tracking, and SQL console V2 for SQLite-backed DOs. Features automated database migrations, instance tags, Query Builder with pre-built templates, saved queries per namespace, batch operations (download, delete, backup), instance cloning with full storage copy, instance diff for side-by-side comparison, R2 backup and restore, metrics dashboard with request volume and CPU time, health dashboard with stale instance detection and storage quota alerts, global cross-namespace search, and event-driven webhooks with HMAC verification. Includes Cloudflare Access Zero Trust authentication.</p>
+                    <p><strong>DO Manager:</strong> Full-featured management platform for Cloudflare Durable Objects.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Migration & Freeze:</strong> Cross-namespace migration and read-only freeze protection.</li>
+                        <li><strong>Instance Tools:</strong> SQL console V2, tags, cloning, diffs, and batch operations.</li>
+                        <li><strong>Health Dashboard:</strong> Stale instance detection, quotas, and CPU metrics.</li>
+                    </ul>
 
-                    <p><strong>KV Manager:</strong> Full-featured management platform for Cloudflare Workers KV namespaces. Features dual metadata system (KV Native 1024 bytes + D1 Custom unlimited), unlimited tag organization, cross-namespace search, bulk operations (delete, copy, TTL, tags), JSON/NDJSON import/export with collision handling, R2 backup and restore with batch operations, job history with event timelines and advanced filtering, Cloudflare Access authentication, and dark/light theme support.</p>
+                    <p><strong>KV Manager:</strong> Full-featured management platform for Cloudflare Workers KV namespaces.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Dual Metadata:</strong> KV Native (1024 bytes) + D1 Custom (unlimited size).</li>
+                        <li><strong>Bulk Operations:</strong> Delete, copy, TTL, and tag management.</li>
+                        <li><strong>Data Mobility:</strong> JSON/NDJSON import/export and R2 backup/restore.</li>
+                    </ul>
 
-                    <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
+                    <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>AI Search:</strong> Connect R2 buckets to Cloudflare AI Search for semantic discovery.</li>
+                        <li><strong>Security:</strong> API rate limiting, upload integrity verification, and Zero Trust access.</li>
+                        <li><strong>Bulk Transfers:</strong> Multi-bucket ZIP download and cross-bucket search.</li>
+                    </ul>
 
                     <h4 class="search-about-subheading">MCP Servers</h4>
-                    <p><strong>MySQL MCP:</strong> Enterprise-grade MySQL MCP server with specialized tools. Features OAuth 2.1 authentication, intelligent tool filtering, MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
+                    <p><strong>MySQL MCP:</strong> Enterprise-grade MySQL operations.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Smart Tools:</strong> 24 tool groups with intelligent filtering.</li>
+                        <li><strong>Ecosystem:</strong> MySQL Router, ProxySQL, and Shell integrations.</li>
+                        <li><strong>Enterprise Auth:</strong> OAuth 2.1 compliance.</li>
+                    </ul>
 
-                    <p><strong>Memory Journal MCP:</strong> Adaptive memory system featuring specialized MCP tools and resources with causal graph modeling. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
+                    <p><strong>Memory Journal MCP:</strong> Adaptive context management for AI assistants.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Knowledge Graphs:</strong> Causal modeling with Mermaid diagram exports.</li>
+                        <li><strong>Portability:</strong> Pure JS stack with zero native dependencies.</li>
+                        <li><strong>Integrations:</strong> GitHub Issues, PRs, and semantic vector search.</li>
+                    </ul>
 
-                    <p><strong>PostgreSQL MCP:</strong> Enterprise-grade database operations with specialized tools. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
+                    <p><strong>PostgreSQL MCP:</strong> Enterprise-grade database intelligence.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>AI-Native:</strong> Vector similarity search via pgvector.</li>
+                        <li><strong>Optimization:</strong> AI-powered index tuning with hypopg.</li>
+                        <li><strong>Spatial/GIS:</strong> Advanced geospatial operations with PostGIS.</li>
+                    </ul>
 
-                    <p><strong>DB-MCP (SQLite):</strong> Transforms SQLite into a powerful, AI-ready database engine with specialized tools spanning JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
+                    <p><strong>DB-MCP (SQLite):</strong> Powerful, AI-ready embedded database engine.</p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-color);">
+                        <li><strong>Semantic Search:</strong> Native vector storage with AI embeddings.</li>
+                        <li><strong>Analytics:</strong> Statistical analysis, JSON operations, and FTS5.</li>
+                        <li><strong>Geospatial:</strong> SpatiaLite integration for GIS calculations.</li>
+                    </ul>
 
                     <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation with source attribution and relevance scores.</p>
