@@ -10,5 +10,6 @@
 - **feat**: Applied adversarial docs marketer guidelines by overhauling the AI Search page's About Section for high scannability. (`cff4e51`)
 
 ### Fixed
+- Resolved missing build script in package.json causing CI failures, and fixed duplicate type casting logic in search result processing. (`3871864`)
 - Fixed missing favicon by adding `/favicon.ico` redirect to adamic.tech assets and injecting `site.webmanifest`. (`409bf9e`)
 - Implemented adversarial-seo protocol by adding canonical URLs, JSON-LD structured data, and hardened external links. (`409bf9e`)
