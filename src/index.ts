@@ -23,7 +23,10 @@ export default {
             }
 
             if (path === '/favicon.ico') {
-                return Response.redirect('https://adamic.tech/assets/images/favicons/favicon.ico', 301);
+                return Response.redirect(
+                    'https://adamic.tech/assets/images/favicons/favicon.ico',
+                    301,
+                );
             }
 
             if (path === '/health') {
@@ -31,7 +34,7 @@ export default {
                     {
                         status: 'healthy',
                         service: 'MCP Servers & Cloudflare Managers Documentation Search',
-                        version: '1.1.7',
+                        version: '1.2.0',
                         projects: [
                             'MySQL MCP',
                             'SQLite MCP',

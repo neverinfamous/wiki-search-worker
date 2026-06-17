@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.1.7...HEAD)
+## [Unreleased](https://github.com/neverinfamous/wiki-search-worker/compare/v1.2.0...HEAD)
+
+## [1.2.0](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.2.0) - 2026-06-17
+
+### Security
+
+- **Boundary Validation**: Added runtime `zod` validation for API endpoints to prevent blind casting of external payloads. (`90c9bc4`)
+
+### Changed
+
+- **Architecture**: Split massive `index.ts` monolith into focused handlers (`search`, `cors`), schemas, and a dedicated UI template. (`90c9bc4`)
+- **Observability**: Implemented centralized structured logging and typed application error classes for safe client responses. (`90c9bc4`)
+- **Dependency Updates**: Updated `pnpm` dependencies to address security vulnerabilities and patch platform limits. (`9fa26bb`)
+- **feat**: Applied adversarial docs marketer guidelines by overhauling the AI Search page's About Section for high scannability. (`cff4e51`)
+
+### Fixed
+
+- Resolved missing build script in package.json causing CI failures, and fixed duplicate type casting logic in search result processing. (`3871864`)
+- Fixed missing favicon by adding `/favicon.ico` redirect to adamic.tech assets and injecting `site.webmanifest`. (`409bf9e`)
+- Implemented adversarial-seo protocol by adding canonical URLs, JSON-LD structured data, and hardened external links. (`409bf9e`)
 
 ## [1.1.7](https://github.com/neverinfamous/wiki-search-worker/releases/tag/v1.1.7) - 2026-06-16
 

@@ -24,7 +24,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         }
 
         const parseResult = SearchRequestSchema.safeParse(rawBody);
-        
+
         if (!parseResult.success) {
             throw new ValidationError(`Validation failed: ${parseResult.error.message}`);
         }
@@ -75,7 +75,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const searchResult = result as { chunks?: unknown[] };
         const resultCount = searchResult.chunks?.length ?? 0;
-        
+
         logger.info('api', 'Search completed', {
             query: body.query,
             mode,
@@ -99,7 +99,10 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         );
     } catch (error) {
         if (error instanceof ValidationError) {
-            logger.warn('api', 'Validation error', { message: error.message, context: error.context });
+            logger.warn('api', 'Validation error', {
+                message: error.message,
+                context: error.context,
+            });
             return jsonResponse(
                 {
                     success: false,

@@ -13,7 +13,7 @@ export const logger = {
     },
     error(module: string, message: string, context?: Record<string, unknown>) {
         log('ERROR', module, message, context);
-    }
+    },
 };
 
 function log(level: LogLevel, module: string, message: string, context?: Record<string, unknown>) {
@@ -23,7 +23,7 @@ function log(level: LogLevel, module: string, message: string, context?: Record<
         level,
         module,
         message,
-        ...context
+        ...context,
     };
 
     if (level === 'ERROR') {
