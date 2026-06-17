@@ -182,23 +182,20 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <p class="search-description">Search across MCP servers and Cloudflare management tools. Try these queries to explore features and capabilities.</p>
 
                 <h3 class="search-section-subheading">Database & Storage Management</h3>
-                <button class="example-btn" data-query="How do I create and manage D1 databases with bulk operations?">How do I create and manage D1 databases with bulk operations?</button>
-                <button class="example-btn" data-query="How do I manage Durable Objects instances and namespaces?">How do I manage Durable Objects instances and namespaces?</button>
-                <button class="example-btn" data-query="How do I use metadata and tags to organize KV keys?">How do I use metadata and tags to organize KV keys?</button>
-                <button class="example-btn" data-query="How do I perform chunked uploads and manage large files in R2?">How do I perform chunked uploads and manage large files in R2?</button>
-                <button class="example-btn" data-query="How do I run SQL queries on SQLite-backed Durable Objects?">How do I run SQL queries on SQLite-backed Durable Objects?</button>
+                <button class="example-btn" data-query="Explore enterprise capabilities of D1 Manager">Explore enterprise capabilities of D1 Manager</button>
+                <button class="example-btn" data-query="Discover best practices for Cloudflare DO Management">Discover best practices for Cloudflare DO Management</button>
+                <button class="example-btn" data-query="Learn about organization workflows in KV Manager">Learn about organization workflows in KV Manager</button>
+                <button class="example-btn" data-query="Explore advanced file management in R2 Manager">Explore advanced file management in R2 Manager</button>
 
                 <h3 class="search-section-subheading">MCP Server Features</h3>
-                <button class="example-btn" data-query="How do I use tool filtering with MySQL MCP shortcuts?">How do I use tool filtering with MySQL MCP shortcuts?</button>
-                <button class="example-btn" data-query="How do I connect MySQL MCP to InnoDB Cluster?">How do I connect MySQL MCP to InnoDB Cluster?</button>
-                <button class="example-btn" data-query="How do I create and link journal entries with relationships?">How do I create and link journal entries with relationships?</button>
-                <button class="example-btn" data-query="How do I optimize PostgreSQL query performance?">How do I optimize PostgreSQL query performance?</button>
-                <button class="example-btn" data-query="How do I use JSON helper tools for data normalization?">How do I use JSON helper tools for data normalization?</button>
-                <button class="example-btn" data-query="How do I set up vector search with embeddings in SQLite?">How do I set up vector search with embeddings in SQLite?</button>
+                <button class="example-btn" data-query="Find documentation on MySQL MCP tool filtering">Find documentation on MySQL MCP tool filtering</button>
+                <button class="example-btn" data-query="Explore PostgreSQL MCP query optimization">Explore PostgreSQL MCP query optimization</button>
+                <button class="example-btn" data-query="How to integrate Memory Journal with GitHub">How to integrate Memory Journal with GitHub</button>
+                <button class="example-btn" data-query="Learn about vector search with SQLite MCP">Learn about vector search with SQLite MCP</button>
 
                 <h3 class="search-section-subheading">Security & Authentication</h3>
-                <button class="example-btn" data-query="How do I set up GitHub SSO authentication with Cloudflare Access?">How do I set up GitHub SSO authentication with Cloudflare Access?</button>
-                <button class="example-btn" data-query="How do I prevent SQL injection attacks with parameter binding?">How do I prevent SQL injection attacks with parameter binding?</button>
+                <button class="example-btn" data-query="Understand Cloudflare Access Zero Trust features">Understand Cloudflare Access Zero Trust features</button>
+                <button class="example-btn" data-query="Explore database security and connection protocols">Explore database security and connection protocols</button>
 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
@@ -207,7 +204,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
 
-                    <p><strong>DO Manager:</strong> Full-featured management platform for Cloudflare Durable Objects v1.2.0 with cross-namespace instance migration (Copy Only, Copy + Delete, Copy + Freeze modes), freeze/unfreeze protection (read-only with snowflake indicator), namespace auto-discovery, instance tracking, and SQL console V2 for SQLite-backed DOs. Features automated database migrations, instance tags, Query Builder with pre-built templates, saved queries per namespace, batch operations (download, delete, backup), instance cloning with full storage copy, instance diff for side-by-side comparison, R2 backup and restore, metrics dashboard with request volume and CPU time, health dashboard with stale instance detection and storage quota alerts, global cross-namespace search, and event-driven webhooks with HMAC verification. Includes Cloudflare Access Zero Trust authentication.</p>
+                    <p><strong>DO Manager:</strong> Full-featured management platform for Cloudflare Durable Objects with cross-namespace instance migration (Copy Only, Copy + Delete, Copy + Freeze modes), freeze/unfreeze protection (read-only with snowflake indicator), namespace auto-discovery, instance tracking, and SQL console V2 for SQLite-backed DOs. Features automated database migrations, instance tags, Query Builder with pre-built templates, saved queries per namespace, batch operations (download, delete, backup), instance cloning with full storage copy, instance diff for side-by-side comparison, R2 backup and restore, metrics dashboard with request volume and CPU time, health dashboard with stale instance detection and storage quota alerts, global cross-namespace search, and event-driven webhooks with HMAC verification. Includes Cloudflare Access Zero Trust authentication.</p>
 
                     <p><strong>KV Manager:</strong> Full-featured management platform for Cloudflare Workers KV namespaces. Features dual metadata system (KV Native 1024 bytes + D1 Custom unlimited), unlimited tag organization, cross-namespace search, bulk operations (delete, copy, TTL, tags), JSON/NDJSON import/export with collision handling, R2 backup and restore with batch operations, job history with event timelines and advanced filtering, Cloudflare Access authentication, and dark/light theme support.</p>
 
