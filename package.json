@@ -1,6 +1,6 @@
 {
     "name": "sqlite-wiki-search-worker",
-    "version": "1.1.7",
+    "version": "1.2.0",
     "description": "Public search interface for MCP Server Wiki using Cloudflare AI Search",
     "main": "src/index.ts",
     "scripts": {
@@ -10,7 +10,8 @@
         "tail": "wrangler tail",
         "lint": "eslint src",
         "typecheck": "tsc --noEmit",
-        "check": "pnpm run lint && pnpm run typecheck"
+        "build": "echo \"No build required\"",
+        "check": "pnpm run lint && pnpm run typecheck && pnpm run build"
     },
     "keywords": [
         "cloudflare",
@@ -34,5 +35,8 @@
     "resolutions": {
         "esbuild": "^0.28.1",
         "ws": "^8.21.0"
+    },
+    "dependencies": {
+        "zod": "^4.4.3"
     }
 }

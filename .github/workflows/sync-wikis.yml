@@ -18,14 +18,14 @@ jobs:
                     - { repo: 'd1-manager.wiki.git', folder: 'd1-manager' }
                     - { repo: 'do-manager.wiki.git', folder: 'do-manager' }
             fail-fast: false
-        
+
         name: Sync ${{ matrix.wiki.folder }}
         steps:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '22'
-                  
+
             - name: Install Wrangler
               run: npm install -g wrangler
 

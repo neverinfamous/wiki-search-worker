@@ -1,0 +1,36 @@
+/**
+ * Centralized structured logger
+ */
+
+export type LogLevel = 'INFO' | 'WARN' | 'ERROR';
+
+export const logger = {
+    info(module: string, message: string, context?: Record<string, unknown>) {
+        log('INFO', module, message, context);
+    },
+    warn(module: string, message: string, context?: Record<string, unknown>) {
+        log('WARN', module, message, context);
+    },
+    error(module: string, message: string, context?: Record<string, unknown>) {
+        log('ERROR', module, message, context);
+    },
+};
+
+function log(level: LogLevel, module: string, message: string, context?: Record<string, unknown>) {
+    const timestamp = new Date().toISOString();
+    const payload = {
+        timestamp,
+        level,
+        module,
+        message,
+        ...context,
+    };
+
+    if (level === 'ERROR') {
+        console.error(JSON.stringify(payload));
+    } else if (level === 'WARN') {
+        console.warn(JSON.stringify(payload));
+    } else {
+        console.log(JSON.stringify(payload));
+    }
+}
