@@ -32,8 +32,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         const body = parseResult.data;
         logger.info('api', `Search query`, { query: body.query, mode: body.mode });
 
-        const mode = body.mode || 'ai';
-        const maxResults = body.max_results || 5;
+        const mode = body.mode;
+        const maxResults = body.max_results;
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         const aiSearch = env.WIKI_SEARCH;
@@ -127,7 +127,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         return jsonResponse(
             {
                 success: false,
-                error: msg,
+                error: 'An internal server error occurred processing the search',
                 mode: 'unknown',
                 timestamp: new Date().toISOString(),
             },

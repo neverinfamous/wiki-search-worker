@@ -22,12 +22,13 @@ export default {
                 });
             }
 
-            const iconPaths = ['/favicon.ico', '/apple-touch-icon.png', '/apple-touch-icon-precomposed.png'];
+            const iconPaths = [
+                '/favicon.ico',
+                '/apple-touch-icon.png',
+                '/apple-touch-icon-precomposed.png',
+            ];
             if (iconPaths.includes(path)) {
-                return Response.redirect(
-                    `https://adamic.tech/assets/images/favicons${path}`,
-                    301,
-                );
+                return Response.redirect(`https://adamic.tech/assets/images/favicons${path}`, 301);
             }
 
             if (path === '/health') {
@@ -88,7 +89,7 @@ export default {
             return jsonResponse(
                 {
                     success: false,
-                    error: msg,
+                    error: 'An internal server error occurred',
                 },
                 500,
                 undefined,

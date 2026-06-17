@@ -2,7 +2,7 @@ import { Env } from '../types.js';
 
 export function handleCORS(request: Request, env: Env): Response {
     const origin = request.headers.get('Origin');
-    const allowedOrigins = env.ALLOWED_ORIGINS?.split(',') || ['*'];
+    const allowedOrigins = env.ALLOWED_ORIGINS?.split(',').map((s) => s.trim()) || ['*'];
 
     const headers: Record<string, string> = {
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -32,7 +32,7 @@ export function jsonResponse(
         ...additionalHeaders,
     };
 
-    const allowedOrigins = allowedOriginsRaw?.split(',') || ['*'];
+    const allowedOrigins = allowedOriginsRaw?.split(',').map((s) => s.trim()) || ['*'];
     if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
         headers['Access-Control-Allow-Origin'] = origin || '*';
     }

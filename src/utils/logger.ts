@@ -19,11 +19,11 @@ export const logger = {
 function log(level: LogLevel, module: string, message: string, context?: Record<string, unknown>) {
     const timestamp = new Date().toISOString();
     const payload = {
+        ...context,
         timestamp,
         level,
         module,
         message,
-        ...context,
     };
 
     if (level === 'ERROR') {

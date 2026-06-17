@@ -429,7 +429,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         content += '</div>';
                     } else {
                         // Fallback
-                        content = '<div class="result-card"><div class="result-content"><pre>' + JSON.stringify(data.data, null, 2) + '</pre></div></div>';
+                        content = '<div class="result-card"><div class="result-content"><pre>' + escapeHtml(JSON.stringify(data.data, null, 2)) + '</pre></div></div>';
                     }
                     results.innerHTML = content;
                 } else {
