@@ -1,42 +1,43 @@
 {
-    "name": "sqlite-wiki-search-worker",
-    "version": "1.1.6",
-    "description": "Public search interface for MCP Server Wiki using Cloudflare AI Search",
-    "main": "src/index.ts",
-    "scripts": {
-        "dev": "wrangler dev",
-        "deploy": "wrangler deploy --env=\"\"",
-        "deploy:production": "wrangler deploy --env production",
-        "tail": "wrangler tail",
-        "lint": "eslint src",
-        "typecheck": "tsc --noEmit",
-        "check": "pnpm run lint && pnpm run typecheck"
-    },
-    "keywords": [
-        "cloudflare",
-        "workers",
-        "ai-search",
-        "sqlite",
-        "mcp",
-        "search"
-    ],
-    "author": "Adamic",
-    "license": "MIT",
-    "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260615.1",
-        "@eslint/js": "^10.0.1",
-        "eslint": "^10.5.0",
-        "typescript": "^6.0.3",
-        "typescript-eslint": "^8.61.0",
-        "wrangler": "^4.100.0"
-    },
-    "overrides": {
-        "esbuild": "^0.28.1",
-        "undici": "^7.24.4",
-        "flatted": "3.4.2",
-        "picomatch": "4.0.4",
-        "ws": "^8.21.0",
-        "wrangler>esbuild": "^0.28.1",
-        "wrangler>miniflare>ws": "^8.21.0"
-    }
+    "name":  "sqlite-wiki-search-worker",
+    "version":  "1.1.6",
+    "description":  "Public search interface for MCP Server Wiki using Cloudflare AI Search",
+    "main":  "src/index.ts",
+    "scripts":  {
+                    "dev":  "wrangler dev",
+                    "deploy":  "wrangler deploy --env=\"\"",
+                    "deploy:production":  "wrangler deploy --env production",
+                    "tail":  "wrangler tail",
+                    "lint":  "eslint src",
+                    "typecheck":  "tsc --noEmit",
+                    "check":  "pnpm run lint \u0026\u0026 pnpm run typecheck"
+                },
+    "keywords":  [
+                     "cloudflare",
+                     "workers",
+                     "ai-search",
+                     "sqlite",
+                     "mcp",
+                     "search"
+                 ],
+    "author":  "Adamic",
+    "license":  "MIT",
+    "devDependencies":  {
+                            "@cloudflare/workers-types":  "^4.20260615.1",
+                            "@eslint/js":  "^10.0.1",
+                            "eslint":  "^10.5.0",
+                            "typescript":  "^6.0.3",
+                            "typescript-eslint":  "^8.61.0",
+                            "wrangler":  "^4.100.0"
+                        },
+    "overrides":  {
+                      "esbuild":  "^0.28.1",
+                      "undici":  "^7.24.4",
+                      "flatted":  "3.4.2",
+                      "picomatch":  "4.0.4",
+                      "ws":  "^8.21.0",
+                      "wrangler\u003eesbuild":  "^0.28.1",
+                      "wrangler\u003eminiflare\u003ews":  "^8.21.0"
+                  },
+    "packageManager":  "pnpm@10.11.1"
 }
