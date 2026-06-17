@@ -24,6 +24,13 @@ ALLOWED_ORIGINS = "*"
 [env.production]
 vars = { ALLOWED_ORIGINS = "https://adamic.tech" }
 
+[env.production.ai]
+binding = "AI"
+
+[[env.production.ai_search_namespaces]]
+binding = "WIKI_SEARCH"
+namespace = "adamic-blog-search"
+
 # Custom domain routes
 routes = [
   { pattern = "search.adamic.tech/*", zone_name = "adamic.tech" },
