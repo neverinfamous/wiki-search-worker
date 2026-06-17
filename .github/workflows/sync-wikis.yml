@@ -5,7 +5,8 @@ on:
 
 jobs:
     sync:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04
+        permissions: {}
         strategy:
             matrix:
                 wiki:
@@ -22,21 +23,35 @@ jobs:
         name: Sync ${{ matrix.wiki.folder }}
         steps:
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
               with:
                   node-version: '22'
 
             - name: Install Wrangler
-              run: npm install -g wrangler
+              run: npm install -g wrangler@3.114.4
 
             - name: Clone wiki
               run: git clone https://github.com/neverinfamous/${{ matrix.wiki.repo }} wiki-temp
 
-            - name: Upload to R2 (Parallel batch)
+            - name: Validate wiki content
               run: |
                   cd wiki-temp
-                  # Parallelize wrangler uploads within the job using xargs
-                  ls *.md | xargs -n 1 -P 5 -I {} sh -c 'echo "Uploading {}..."; wrangler r2 object put adamic-blog-search/${{ matrix.wiki.folder }}/"{}" --file="{}" --remote >/dev/null 2>&1'
+                  if grep -rlE '<script|<iframe|javascript:' *.md 2>/dev/null; then
+                      echo "Suspicious content detected"
+                      exit 1
+                  fi
+
+            - name: Upload to R2
+              run: |
+                  cd wiki-temp
+                  for f in *.md; do
+                      if [ ! -e "$f" ]; then continue; fi
+                      echo "Uploading $f..."
+                      if ! wrangler r2 object put "adamic-blog-search/${{ matrix.wiki.folder }}/${f}" --file="${f}" --remote >/dev/null 2>&1; then
+                          echo "Failed to upload $f"
+                          exit 1
+                      fi
+                  done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

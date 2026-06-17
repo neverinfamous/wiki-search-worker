@@ -11,24 +11,35 @@ on:
 
 jobs:
     deploy:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04
         name: Deploy Worker
+        permissions:
+            contents: read
+        concurrency:
+            group: deploy-${{ github.ref }}
+            cancel-in-progress: true
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
               with:
                   node-version: '22'
 
             - name: Setup pnpm
-              uses: pnpm/action-setup@v4
+              uses: pnpm/action-setup@a3252b7582c2a18d9b4671e2a04d44b1a82eee61 # v4.0.0
               with:
                   version: 10.11.1
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
+
+            - name: Security Audit
+              run: pnpm audit --audit-level=high
+
+            - name: Typecheck and Lint
+              run: pnpm run check
 
             - name: Deploy Worker to Cloudflare
               run: pnpm exec wrangler deploy --env=""

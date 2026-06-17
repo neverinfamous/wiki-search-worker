@@ -8,7 +8,7 @@ export const SearchRequestSchema = z.object({
     mode: z.enum(['ai', 'search']).optional().default('ai'),
     max_results: z.number().int().min(1).max(50).optional().default(5),
     rewrite: z.boolean().optional(),
-});
+}).strict();
 
 export type SearchRequest = z.infer<typeof SearchRequestSchema>;
 

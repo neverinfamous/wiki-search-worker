@@ -30,7 +30,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         }
 
         const body = parseResult.data;
-        logger.info('api', `Search query`, { query: body.query, mode: body.mode });
+        const truncatedQuery = body.query.length > 30 ? body.query.substring(0, 30) + '...' : body.query;
+        logger.info('api', `Search query`, { query: truncatedQuery, mode: body.mode });
 
         const mode = body.mode;
         const maxResults = body.max_results;
@@ -106,7 +107,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
             return jsonResponse(
                 {
                     success: false,
-                    error: error.message,
+                    error: 'Invalid request: check query, mode, and max_results fields.',
                     mode: 'unknown',
                     timestamp: new Date().toISOString(),
                 },

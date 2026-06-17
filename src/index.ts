@@ -18,6 +18,10 @@ export default {
                 return new Response(HTML_CONTENT, {
                     headers: {
                         'Content-Type': 'text/html; charset=utf-8',
+                        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'",
+                        'X-Content-Type-Options': 'nosniff',
+                        'X-Frame-Options': 'DENY',
+                        'Referrer-Policy': 'strict-origin-when-cross-origin',
                     },
                 });
             }
@@ -53,7 +57,7 @@ export default {
                         },
                     },
                     200,
-                    undefined,
+                    { 'X-Robots-Tag': 'noindex, nofollow' },
                     request.headers.get('Origin'),
                     env.ALLOWED_ORIGINS,
                 );
