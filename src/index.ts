@@ -290,7 +290,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <ul>
                         <li><a href="https://search.adamic.tech">AI Search</a></li>
                         <li><a href="https://adamic.tech/articles/">Articles</a></li>
-                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
                         <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
                     </ul>
                 </div>
@@ -675,7 +674,7 @@ export default {
                                     max_results: 'number (optional, default: 5)',
                                 },
                             },
-                            documentation: 'https://adamic.tech/faq.html',
+                            documentation: 'https://adamic.tech/',
                         },
                         405,
                         { 'X-Robots-Tag': 'noindex, nofollow' },
