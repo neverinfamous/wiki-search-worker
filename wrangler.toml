@@ -18,24 +18,15 @@ namespace = "adamic-blog-search"
 # Comma-separated list of allowed origins for CORS
 # Use "*" to allow all origins (not recommended for production)
 # Example: "https://adamic.tech,https://docs.adamic.tech"
-ALLOWED_ORIGINS = "*"
+ALLOWED_ORIGINS = "https://adamic.tech"
 
-# Production configuration
-[env.production]
-vars = { ALLOWED_ORIGINS = "https://adamic.tech" }
+[[routes]]
+pattern = "search.adamic.tech/*"
+zone_name = "adamic.tech"
 
-[env.production.ai]
-binding = "AI"
-
-[[env.production.ai_search_namespaces]]
-binding = "WIKI_SEARCH"
-namespace = "adamic-blog-search"
-
-# Custom domain routes
-routes = [
-  { pattern = "search.adamic.tech/*", zone_name = "adamic.tech" },
-  { pattern = "adamic.tech/wiki-search/*", zone_name = "adamic.tech" }
-]
+[[routes]]
+pattern = "adamic.tech/wiki-search/*"
+zone_name = "adamic.tech"
 
 # Workers Logs configuration
 [observability]
