@@ -2,7 +2,7 @@
  * Public Search Interface Template
  */
 
-export const HTML_CONTENT = `<!DOCTYPE html>
+export const renderTemplate = (siteKey?: string) => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,6 +79,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         applyTheme(savedTheme);
     })();
     </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -194,6 +195,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
                 </div>
+                ${siteKey ? `<div class="cf-turnstile" data-sitekey="${siteKey}" data-theme="auto" style="margin-bottom: 1.5rem;"></div>` : ''}
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
 
@@ -386,10 +388,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             results.classList.remove('show');
             searchBtn.disabled = true;
             try {
+                const turnstileTokenInput = document.querySelector('[name="cf-turnstile-response"]');
+                const turnstileToken = turnstileTokenInput ? turnstileTokenInput.value : undefined;
+                
                 const response = await fetch('/api/search', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query, mode: currentMode, max_results: 5 })
+                    body: JSON.stringify({ query, mode: currentMode, max_results: 5, turnstileToken })
                 });
                 const data = await response.json();
                 loading.classList.remove('show');

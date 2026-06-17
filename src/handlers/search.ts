@@ -33,6 +33,46 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         const truncatedQuery = body.query.length > 30 ? body.query.substring(0, 30) + '...' : body.query;
         logger.info('api', `Search query`, { query: truncatedQuery, mode: body.mode });
 
+        const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
+
+        if (env.RATE_LIMITER) {
+            const { success } = await env.RATE_LIMITER.limit({ key: ip });
+            if (!success) {
+                return jsonResponse(
+                    {
+                        success: false,
+                        error: 'Too many requests. Please try again later.',
+                        mode: body.mode,
+                        timestamp: new Date().toISOString(),
+                    },
+                    429,
+                    undefined,
+                    request.headers.get('Origin'),
+                    env.ALLOWED_ORIGINS
+                );
+            }
+        }
+
+        if (env.TURNSTILE_SECRET_KEY) {
+            if (!body.turnstileToken) {
+                throw new ValidationError('Turnstile validation is required');
+            }
+            const formData = new FormData();
+            formData.append('secret', env.TURNSTILE_SECRET_KEY);
+            formData.append('response', body.turnstileToken);
+            formData.append('remoteip', ip);
+
+            const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+                body: formData,
+                method: 'POST',
+            });
+
+            const outcome = await result.json();
+            if (!outcome || typeof outcome !== 'object' || !('success' in outcome) || !outcome.success) {
+                throw new ValidationError('Turnstile validation failed');
+            }
+        }
+
         const mode = body.mode;
         const maxResults = body.max_results;
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);

@@ -19,6 +19,12 @@ namespace = "adamic-blog-search"
 # Use "*" to allow all origins (not recommended for production)
 # Example: "https://adamic.tech,https://docs.adamic.tech"
 ALLOWED_ORIGINS = "https://adamic.tech"
+TURNSTILE_SITE_KEY = "1x00000000000000000000AA" # Dummy test key
+
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 10 }
 
 [[routes]]
 pattern = "search.adamic.tech/*"
