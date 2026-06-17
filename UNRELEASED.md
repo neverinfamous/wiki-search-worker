@@ -9,6 +9,7 @@
 - **deps**: Mitigated critical `esbuild` and `ws` CVEs (remote code execution and memory exhaustion DoS) by enforcing exact nested resolutions in `pnpm-workspace.yaml`. (`7382b01`)
 
 ### Changed
+- **Dependency Updates**: Updated `typescript-eslint` to `8.61.1`, `@cloudflare/workers-types` to `4.20260616.1`, and `wrangler` to `4.101.0`. (`bd296bf`)
 - **deps**: Updated `@cloudflare/workers-types` to `4.20260615.1`. (`7382b01`)
 - **src**: Added explicit interface typing (`AiSearchBinding`) and strictly typed environment variables in `index.ts` to remediate TypeScript compilation errors. (`7382b01`)
 - **search**: Updated Cloudflare AI Search index binding from `sqlite-mcp-server-wiki` to the standardized `adamic-blog-search` namespace and provisioned an auto-syncing `blog-index` instance.
