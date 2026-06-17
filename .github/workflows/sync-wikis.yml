@@ -1,0 +1,42 @@
+name: Sync Wiki Indexes
+
+on:
+    workflow_dispatch: # Manual trigger only
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                wiki:
+                    - { repo: 'sqlite-mcp-server.wiki.git', folder: 'sqlite' }
+                    - { repo: 'postgres-mcp.wiki.git', folder: 'postgres' }
+                    - { repo: 'memory-journal-mcp.wiki.git', folder: 'memory-journal' }
+                    - { repo: 'R2-Manager-Worker.wiki.git', folder: 'r2-manager' }
+                    - { repo: 'kv-manager.wiki.git', folder: 'kv-manager' }
+                    - { repo: 'mysql-mcp.wiki.git', folder: 'mysql-mcp' }
+                    - { repo: 'd1-manager.wiki.git', folder: 'd1-manager' }
+                    - { repo: 'do-manager.wiki.git', folder: 'do-manager' }
+            fail-fast: false
+        
+        name: Sync ${{ matrix.wiki.folder }}
+        steps:
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  
+            - name: Install Wrangler
+              run: npm install -g wrangler
+
+            - name: Clone wiki
+              run: git clone https://github.com/neverinfamous/${{ matrix.wiki.repo }} wiki-temp
+
+            - name: Upload to R2 (Parallel batch)
+              run: |
+                  cd wiki-temp
+                  # Parallelize wrangler uploads within the job using xargs
+                  ls *.md | xargs -n 1 -P 5 -I {} sh -c 'echo "Uploading {}..."; wrangler r2 object put adamic-blog-search/${{ matrix.wiki.folder }}/"{}" --file="{}" --remote >/dev/null 2>&1'
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
