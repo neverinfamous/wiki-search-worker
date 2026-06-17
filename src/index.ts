@@ -61,7 +61,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
     <header class="site-header">
         <div class="header-content">
             <a href="https://adamic.tech/" class="logo-link">
-                <img src="https://adamic.tech/assets/images/logo.webp" alt="Adamic Logo" class="logo" width="58" height="58">
+                <img src="data:image/webp;base64,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" alt="Adamic Logo" class="logo" width="58" height="58">
             </a>
             <nav class="main-nav">
                 <a href="https://adamic.tech/" class="nav-link" title="Home">
@@ -75,10 +75,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
                     <span class="nav-text">AI Search</span>
                     <span class="nav-icon">🔍</span>
-                </a>
-                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
-                    <span class="nav-text">FAQ</span>
-                    <span class="nav-icon">❓</span>
                 </a>
                 <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
                     <span class="nav-text">Contact</span>
@@ -130,10 +126,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
                 <span class="nav-text">AI Search</span>
                 <span class="nav-icon">🔍</span>
-            </a>
-            <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
-                <span class="nav-text">FAQ</span>
-                <span class="nav-icon">❓</span>
             </a>
             <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
                 <span class="nav-text">Contact</span>
@@ -210,7 +202,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 
                 <div class="about-box" id="about-section">
                     <h3>About Our Documentation</h3>
-                    <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 354+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
+                    <p>This AI-powered search interface provides unified access to comprehensive documentation for four Model Context Protocol (MCP) servers and four Cloudflare management tools. Together, these solutions offer 750+ specialized database tools, modern cloud resource management, and enterprise authentication for AI-native workflows.</p>
 
                     <h4 class="search-about-subheading">Cloudflare Management Tools</h4>
                     <p><strong>D1 Database Manager:</strong> Enterprise-ready web application for managing Cloudflare D1 databases with Drizzle ORM integration (introspect, push, check, export), scheduled R2 backups via cron triggers, comprehensive metrics dashboard with D1 analytics, and unified backup &amp; restore hub. Features 60-70% faster ER diagram loading, Time Travel point-in-time recovery, Read Replication, visual foreign key editor, cascade impact simulator, FTS5 full-text search, SQL formatter, and comprehensive client-side caching. Includes Docker deployment and Cloudflare Access Zero Trust authentication.</p>
@@ -222,13 +214,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <p><strong>R2 Bucket Manager:</strong> Enterprise cloud storage management for Cloudflare R2 with Job History tracking, AI Search integration, API rate limiting, and upload integrity verification. Features multi-bucket download, cross-bucket search, TypeScript strict mode, GitHub SSO authentication, and zero-trust access.</p>
 
                     <h4 class="search-about-subheading">MCP Servers</h4>
-                    <p><strong>MySQL MCP (191 Tools):</strong> Enterprise-grade MySQL MCP server with 191 specialized tools, 18 resources, and 19 prompts. Features OAuth 2.1 authentication, intelligent tool filtering (24 groups + shortcuts), MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
+                    <p><strong>MySQL MCP:</strong> Enterprise-grade MySQL MCP server with 220+ specialized tools. Features OAuth 2.1 authentication, intelligent tool filtering, MySQL Router/ProxySQL/Shell integrations, spatial/GIS operations, document store, and InnoDB Cluster support. Install via npm or Docker.</p>
 
-                    <p><strong>Memory Journal MCP (27 Tools):</strong> Complete TypeScript rewrite with 27 MCP tools, 14 workflow prompts, and 14 resources. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
+                    <p><strong>Memory Journal MCP:</strong> Adaptive memory system featuring 40+ MCP tools and resources with causal graph modeling. Features Pure JS Stack (no native dependencies), backup/restore tools, health diagnostics, semantic vector search, knowledge graphs, and GitHub integration. Install via npm or Docker.</p>
 
-                    <p><strong>PostgreSQL MCP (63 Tools):</strong> Enterprise-grade database operations with 63 specialized tools across 9 categories. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
+                    <p><strong>PostgreSQL MCP:</strong> Enterprise-grade database operations with 230+ specialized tools. Features intelligent tool filtering for client compatibility, real-time performance monitoring with pg_stat_statements, AI-powered index tuning with hypopg, vector similarity search via pgvector, advanced geospatial operations with PostGIS, comprehensive JSON/JSONB operations, statistical analysis, and full-text search.</p>
 
-                    <p><strong>SQLite MCP (73 Tools):</strong> Transforms SQLite into a powerful, AI-ready database engine with 73 specialized tools across 14 categories including JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
+                    <p><strong>DB-MCP (SQLite):</strong> Transforms SQLite into a powerful, AI-ready database engine with 250+ specialized tools (Native and WASM) spanning JSON operations, statistical analysis, vector search, geospatial operations with SpatiaLite, full-text search with FTS5, SQL injection protection, semantic vector search with embeddings, and comprehensive backup functionality.</p>
 
                     <h4 class="search-about-subheading">Search Technology</h4>
                     <p>This interface uses Cloudflare's AI Search technology to provide intelligent, context-aware answers from all documentation repositories. The system employs semantic vector search to understand your questions and retrieve relevant documentation with source attribution and relevance scores.</p>
@@ -290,7 +282,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <ul>
                         <li><a href="https://search.adamic.tech">AI Search</a></li>
                         <li><a href="https://adamic.tech/articles/">Articles</a></li>
-                        <li><a href="https://adamic.tech/faq.html">FAQ</a></li>
                         <li><a href="https://adamic.tech/sitemap.html">Site Map</a></li>
                     </ul>
                 </div>
@@ -305,7 +296,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Adamic. All rights reserved.</p>
+                <p>&copy; 2026 Adamic. All rights reserved.</p>
             </div>
         </footer>
 
@@ -313,6 +304,11 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
         <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">⇈</button>
     </div>
     <script>
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
         let currentMode = 'ai';
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -344,7 +340,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         const aiResponse = data.data.choices[0].message ? data.data.choices[0].message.content : '';
                         content = '<div class="result-card">';
                         content += '<h3 class="search-result-header">✨ AI Answer</h3>';
-                        content += '<div class="result-content search-result-content">' + aiResponse + '</div>';
+                        content += '<div class="result-content search-result-content">' + escapeHtml(aiResponse) + '</div>';
 
                         // Show source chunks if available
                         if (data.data.chunks && data.data.chunks.length > 0) {
@@ -353,7 +349,7 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                             data.data.chunks.forEach(function(chunk) {
                                 const filename = chunk.item ? chunk.item.key : chunk.id;
                                 content += '<div class="search-source-item">';
-                                content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
+                                content += '<strong>' + escapeHtml(filename) + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
                                 content += '</div>';
                             });
                         }
@@ -365,8 +361,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                         data.data.chunks.forEach(function(chunk) {
                             const filename = chunk.item ? chunk.item.key : chunk.id;
                             content += '<div class="search-source-item" style="margin-bottom:1rem;padding:1rem;border:1px solid var(--border-color);border-radius:6px;">';
-                            content += '<strong>' + filename + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
-                            content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + chunk.text + '</div>';
+                            content += '<strong>' + escapeHtml(filename) + '</strong> <span class="search-source-score">(Score: ' + (chunk.score * 100).toFixed(1) + '%)</span>';
+                            content += '<div class="result-content" style="margin-top:0.5rem;font-size:0.9rem;">' + escapeHtml(chunk.text) + '</div>';
                             content += '</div>';
                         });
                         content += '</div>';
@@ -376,12 +372,12 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     }
                     results.innerHTML = content;
                 } else {
-                    results.innerHTML = '<div class="result-card"><div class="error">Error: ' + data.error + '</div></div>';
+                    results.innerHTML = '<div class="result-card"><div class="error">Error: ' + escapeHtml(data.error) + '</div></div>';
                 }
             } catch (error) {
                 loading.classList.remove('show');
                 results.classList.add('show');
-                results.innerHTML = '<div class="result-card"><div class="error">Error: ' + error.message + '</div></div>';
+                results.innerHTML = '<div class="result-card"><div class="error">Error: ' + escapeHtml(error.message) + '</div></div>';
             } finally {
                 searchBtn.disabled = false;
             }
@@ -548,8 +544,14 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
 </body>
 </html>`;
 
+export interface AiSearchBinding {
+    chatCompletions(options: Record<string, unknown>): Promise<unknown>;
+    search(options: Record<string, unknown>): Promise<unknown>;
+}
+
 export interface Env {
     AI: Ai;
+    WIKI_SEARCH: AiSearchBinding;
     // CORS origins you want to allow (set in wrangler.toml vars)
     ALLOWED_ORIGINS?: string;
 }
@@ -608,35 +610,41 @@ export default {
 
             // Health check endpoint
             if (path === '/health') {
-                return jsonResponse({
-                    status: 'healthy',
-                    service: 'MCP Servers & Cloudflare Managers Documentation Search',
-                    version: '5.2.0',
-                    projects: [
-                        'MySQL MCP',
-                        'SQLite MCP',
-                        'PostgreSQL MCP',
-                        'Memory Journal MCP',
-                        'D1 Manager',
-                        'DO Manager',
-                        'KV Manager',
-                        'R2 Manager',
-                    ],
-                    endpoints: {
-                        search: '/api/search (POST)',
-                        health: '/health (GET)',
+                return jsonResponse(
+                    {
+                        status: 'healthy',
+                        service: 'MCP Servers & Cloudflare Managers Documentation Search',
+                        version: '5.2.0',
+                        projects: [
+                            'MySQL MCP',
+                            'SQLite MCP',
+                            'PostgreSQL MCP',
+                            'Memory Journal MCP',
+                            'D1 Manager',
+                            'DO Manager',
+                            'KV Manager',
+                            'R2 Manager',
+                        ],
+                        endpoints: {
+                            search: '/api/search (POST)',
+                            health: '/health (GET)',
+                        },
+                        documentation: {
+                            mysqlMcp: 'https://github.com/neverinfamous/mysql-mcp/wiki',
+                            sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
+                            postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
+                            memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
+                            d1Manager: 'https://github.com/neverinfamous/d1-manager',
+                            doManager: 'https://github.com/neverinfamous/do-manager/wiki',
+                            kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
+                            r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker',
+                        },
                     },
-                    documentation: {
-                        mysqlMcp: 'https://github.com/neverinfamous/mysql-mcp/wiki',
-                        sqlite: 'https://github.com/neverinfamous/sqlite-mcp-server/wiki',
-                        postgres: 'https://github.com/neverinfamous/postgres-mcp/wiki',
-                        memoryJournal: 'https://github.com/neverinfamous/memory-journal-mcp/wiki',
-                        d1Manager: 'https://github.com/neverinfamous/d1-manager',
-                        doManager: 'https://github.com/neverinfamous/do-manager/wiki',
-                        kvManager: 'https://github.com/neverinfamous/kv-manager/wiki',
-                        r2Manager: 'https://github.com/neverinfamous/R2-Manager-Worker',
-                    },
-                });
+                    200,
+                    undefined,
+                    request.headers.get('Origin'),
+                    env.ALLOWED_ORIGINS,
+                );
             }
 
             // Search endpoint
@@ -658,16 +666,24 @@ export default {
                                     max_results: 'number (optional, default: 5)',
                                 },
                             },
-                            documentation: 'https://adamic.tech/faq.html',
+                            documentation: 'https://adamic.tech/',
                         },
                         405,
                         { 'X-Robots-Tag': 'noindex, nofollow' },
+                        request.headers.get('Origin'),
+                        env.ALLOWED_ORIGINS,
                     );
                 }
             }
 
             // Not found
-            return jsonResponse({ error: 'Endpoint not found' }, 404);
+            return jsonResponse(
+                { error: 'Endpoint not found' },
+                404,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
+            );
         } catch (error) {
             console.error('Worker error:', error);
             return jsonResponse(
@@ -676,6 +692,9 @@ export default {
                     error: error instanceof Error ? error.message : 'Internal server error',
                 },
                 500,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
     },
@@ -696,6 +715,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query parameter is required and must be a string',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -707,6 +729,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query must be at least 3 characters long',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -717,6 +742,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                     error: 'Query must be less than 500 characters',
                 },
                 400,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
         }
 
@@ -726,9 +754,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         // Call AI Search based on mode
-        // eslint-disable-next-line @typescript-eslint/no-deprecated -- Justified: Cloudflare CI tokens lack specific 'AI Search' scope for standalone namespaces binding
-        const aiSearch = env.AI.aiSearch().get('sqlite-mcp-server-wiki');
+        const aiSearch = env.WIKI_SEARCH;
         const searchOptions = {
+            instance_ids: ['blog-index'],
             retrieval: {
                 max_num_results: maxResults,
                 match_threshold: 0.5, // Filter low-quality results
@@ -741,7 +769,7 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
             { role: 'user', content: body.query },
         ];
 
-        let result;
+        let result: unknown;
         const startTime = Date.now();
 
         if (mode === 'ai') {
@@ -780,9 +808,13 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
         };
 
         // Add response time header
-        return jsonResponse(response, 200, {
-            'X-Response-Time': `${String(responseTime)}ms`,
-        });
+        return jsonResponse(
+            response,
+            200,
+            { 'X-Response-Time': `${String(responseTime)}ms` },
+            request.headers.get('Origin'),
+            env.ALLOWED_ORIGINS,
+        );
     } catch (error) {
         console.error('Search error:', {
             error: error instanceof Error ? error.message : 'Unknown error',
@@ -797,6 +829,9 @@ async function handleSearch(request: Request, env: Env): Promise<Response> {
                 timestamp: new Date().toISOString(),
             },
             500,
+            undefined,
+            request.headers.get('Origin'),
+            env.ALLOWED_ORIGINS,
         );
     }
 }
@@ -825,14 +860,19 @@ function jsonResponse(
     data: unknown,
     status = 200,
     additionalHeaders?: Record<string, string>,
+    origin?: string | null,
+    allowedOriginsRaw?: string,
 ): Response {
     const headers: Record<string, string> = {
         'Content-Type': 'application/json',
         ...additionalHeaders,
     };
 
-    // Add CORS headers to all responses
-    headers['Access-Control-Allow-Origin'] = '*'; // Adjust based on your needs
+    // Add CORS headers respecting ALLOWED_ORIGINS configuration
+    const allowedOrigins = allowedOriginsRaw?.split(',') || ['*'];
+    if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
+        headers['Access-Control-Allow-Origin'] = origin || '*';
+    }
     headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
     headers['Access-Control-Allow-Headers'] = 'Content-Type';
 

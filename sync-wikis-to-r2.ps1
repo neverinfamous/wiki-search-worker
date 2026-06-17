@@ -26,23 +26,23 @@
     
 .NOTES
     Requires: Wrangler CLI, CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID environment variables
-    After running: Go to Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki
+    After running: Go to Cloudflare Dashboard → AI → AI Search → adamic-blog-search
     and click "Sync Index" button (or wait up to 6 hours for automatic sync)
 #>
 
 param(
-    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'kv-manager', 'mysql-mcp', 'all')]
+    [ValidateSet('sqlite', 'postgres', 'memory-journal', 'r2-manager', 'd1-manager', 'do-manager', 'kv-manager', 'mysql-mcp', 'all')]
     [string]$WikiName = 'all'
 )
 
 # Configuration
-$BUCKET_NAME = "sqlite-mcp-server-wiki"
+$BUCKET_NAME = "adamic-blog-search"
 $BASE_PATH = "C:\Users\chris\Desktop"
 
 # Wiki configurations
 $wikis = @{
     'sqlite' = @{
-        Path = "$BASE_PATH\sqlite-mcp-server.wiki"
+        Path = "$BASE_PATH\db-mcp.wiki"
         Folder = "sqlite"
         DisplayName = "SQLite MCP Server"
     }
@@ -66,6 +66,11 @@ $wikis = @{
         Folder = "d1-manager"
         DisplayName = "D1 Database Manager"
     }
+    'do-manager' = @{
+        Path = "$BASE_PATH\do-manager.wiki"
+        Folder = "do-manager"
+        DisplayName = "DO Manager"
+    }
     'kv-manager' = @{
         Path = "$BASE_PATH\kv-manager.wiki"
         Folder = "kv-manager"
@@ -78,29 +83,26 @@ $wikis = @{
     }
 }
 
-# Check environment variables
+# Check required environment variables
 if (-not $env:CLOUDFLARE_API_TOKEN) {
-    Write-Host "❌ Error: CLOUDFLARE_API_TOKEN environment variable not set" -ForegroundColor Red
-    Write-Host "Set it with: `$env:CLOUDFLARE_API_TOKEN='your-token'" -ForegroundColor Yellow
+    Write-Host "Error: CLOUDFLARE_API_TOKEN environment variable not set" -ForegroundColor Red
     exit 1
 }
-
 if (-not $env:CLOUDFLARE_ACCOUNT_ID) {
-    Write-Host "❌ Error: CLOUDFLARE_ACCOUNT_ID environment variable not set" -ForegroundColor Red
-    Write-Host "Set it with: `$env:CLOUDFLARE_ACCOUNT_ID='your-account-id'" -ForegroundColor Yellow
+    Write-Host "Error: CLOUDFLARE_ACCOUNT_ID environment variable not set" -ForegroundColor Red
     exit 1
 }
 
 # Check if wrangler is available
 if (-not (Get-Command wrangler -ErrorAction SilentlyContinue)) {
-    Write-Host "❌ Error: Wrangler CLI not found" -ForegroundColor Red
+    Write-Host "Error: Wrangler CLI not found" -ForegroundColor Red
     Write-Host "Install with: npm install -g wrangler" -ForegroundColor Yellow
     exit 1
 }
 
 Write-Host ""
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host "📚 Wiki to R2 Sync Script" -ForegroundColor Cyan
+Write-Host "Wiki to R2 Sync Script" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 
@@ -108,10 +110,10 @@ Write-Host ""
 $wikisToSync = @{}
 if ($WikiName -eq 'all') {
     $wikisToSync = $wikis
-    Write-Host "🎯 Syncing all wikis" -ForegroundColor Green
+    Write-Host "Syncing all wikis" -ForegroundColor Green
 } else {
     $wikisToSync[$WikiName] = $wikis[$WikiName]
-    Write-Host "🎯 Syncing only: $($wikis[$WikiName].DisplayName)" -ForegroundColor Green
+    Write-Host "Syncing only: $($wikis[$WikiName].DisplayName)" -ForegroundColor Green
 }
 Write-Host ""
 
@@ -126,13 +128,13 @@ foreach ($wikiKey in $wikisToSync.Keys) {
     $folder = $wiki.Folder
     $displayName = $wiki.DisplayName
     
-    Write-Host "📂 Processing: $displayName" -ForegroundColor Yellow
+    Write-Host "Processing: $displayName" -ForegroundColor Yellow
     Write-Host "   Path: $wikiPath" -ForegroundColor Gray
     Write-Host "   R2 Folder: $BUCKET_NAME/$folder/" -ForegroundColor Gray
     
     # Check if wiki directory exists
     if (-not (Test-Path $wikiPath)) {
-        Write-Host "   ⚠️  Warning: Wiki directory not found, skipping" -ForegroundColor Red
+        Write-Host "   Warning: Wiki directory not found, skipping" -ForegroundColor Red
         Write-Host ""
         continue
     }
@@ -141,12 +143,12 @@ foreach ($wikiKey in $wikisToSync.Keys) {
     $mdFiles = Get-ChildItem -Path $wikiPath -Filter "*.md"
     
     if ($mdFiles.Count -eq 0) {
-        Write-Host "   ⚠️  Warning: No markdown files found" -ForegroundColor Yellow
+        Write-Host "   Warning: No markdown files found" -ForegroundColor Yellow
         Write-Host ""
         continue
     }
     
-    Write-Host "   📄 Found $($mdFiles.Count) markdown files" -ForegroundColor Cyan
+    Write-Host "   Found $($mdFiles.Count) markdown files" -ForegroundColor Cyan
     
     # Upload each file
     foreach ($file in $mdFiles) {
@@ -154,21 +156,21 @@ foreach ($wikiKey in $wikisToSync.Keys) {
         $r2Path = "$folder/$($file.Name)"
         
         try {
-            Write-Host "   ↗️  Uploading: $($file.Name)..." -NoNewline -ForegroundColor Gray
+            Write-Host "   Uploading: $($file.Name)..." -NoNewline -ForegroundColor Gray
             
             # Upload to R2 using wrangler
-            $result = npx wrangler r2 object put "$BUCKET_NAME/$r2Path" --file="$($file.FullName)" --remote 2>&1
+            $result = wrangler r2 object put "$BUCKET_NAME/$r2Path" --file="$($file.FullName)" --remote 2>&1
             
             if ($LASTEXITCODE -eq 0) {
-                Write-Host " ✅" -ForegroundColor Green
+                Write-Host " Done" -ForegroundColor Green
                 $successCount++
             } else {
-                Write-Host " ❌" -ForegroundColor Red
+                Write-Host " Failed" -ForegroundColor Red
                 Write-Host "      Error: $result" -ForegroundColor Red
                 $failCount++
             }
         } catch {
-            Write-Host " ❌" -ForegroundColor Red
+            Write-Host " Failed" -ForegroundColor Red
             Write-Host "      Error: $_" -ForegroundColor Red
             $failCount++
         }
@@ -179,27 +181,27 @@ foreach ($wikiKey in $wikisToSync.Keys) {
 
 # Summary
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host "📊 Sync Summary" -ForegroundColor Cyan
+Write-Host "Sync Summary" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "   Total files processed: $totalFiles" -ForegroundColor White
-Write-Host "   ✅ Successful uploads: $successCount" -ForegroundColor Green
+Write-Host "   Successful uploads: $successCount" -ForegroundColor Green
 if ($failCount -gt 0) {
-    Write-Host "   ❌ Failed uploads: $failCount" -ForegroundColor Red
+    Write-Host "   Failed uploads: $failCount" -ForegroundColor Red
 }
 Write-Host ""
 
 if ($successCount -gt 0) {
     Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Yellow
-    Write-Host "⚠️  NEXT STEP: Sync AutoRAG Index" -ForegroundColor Yellow
+    Write-Host "NEXT STEP: Sync AutoRAG Index" -ForegroundColor Yellow
     Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "📝 R2 files have been updated, but AutoRAG needs manual sync." -ForegroundColor White
+    Write-Host "R2 files have been updated, but AutoRAG needs manual sync." -ForegroundColor White
     Write-Host ""
-    Write-Host "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki" -ForegroundColor Cyan
-    Write-Host "👆 Click the 'Sync Index' button" -ForegroundColor White
+    Write-Host "Go to: Cloudflare Dashboard -> AI -> AI Search -> adamic-blog-search" -ForegroundColor Cyan
+    Write-Host "Click the 'Sync Index' button" -ForegroundColor White
     Write-Host ""
-    Write-Host "⏱️  Or wait up to 6 hours for automatic sync" -ForegroundColor Gray
+    Write-Host "Or wait up to 6 hours for automatic sync" -ForegroundColor Gray
     Write-Host ""
 }
 

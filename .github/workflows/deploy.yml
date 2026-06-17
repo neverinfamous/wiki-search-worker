@@ -1,4 +1,4 @@
-name: Deploy Wiki Search Worker & Sync AutoRAG
+name: Deploy Wiki Search Worker & Sync Wiki Index
 
 on:
     push:
@@ -9,7 +9,7 @@ on:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-        name: Deploy Worker and Sync AutoRAG
+        name: Deploy Worker and Sync Wiki Index
 
         steps:
             # Step 1: Checkout the repository
@@ -21,20 +21,23 @@ jobs:
               uses: actions/setup-node@v6
               with:
                   node-version: '24'
-                  cache: 'npm'
 
-            # Step 3: Install dependencies
+            # Step 3: Setup pnpm
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+
+            # Step 4: Install dependencies
             - name: Install dependencies
-              run: npm ci
+              run: pnpm install --frozen-lockfile
 
-            # Step 4: Deploy Worker using Wrangler
+            # Step 5: Deploy Worker using Wrangler
             - name: Deploy Worker to Cloudflare
-              run: npx wrangler deploy --env=""
+              run: pnpm exec wrangler deploy --env=""
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-            # Step 5: Sync wiki files to R2 bucket
+            # Step 6: Sync wiki files to R2 bucket
             - name: Clone wiki repository
               run: |
                   git clone https://github.com/neverinfamous/sqlite-mcp-server.wiki.git wiki-temp
@@ -44,7 +47,7 @@ jobs:
                   cd wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (sqlite folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/sqlite/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/sqlite/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -59,7 +62,7 @@ jobs:
                   cd postgres-wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (postgres folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/postgres/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/postgres/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -74,7 +77,7 @@ jobs:
                   cd memory-journal-wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (memory-journal folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/memory-journal/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/memory-journal/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -89,7 +92,7 @@ jobs:
                   cd r2-manager-wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (r2-manager folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/r2-manager/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/r2-manager/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -104,27 +107,11 @@ jobs:
                   cd kv-manager-wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (kv-manager folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/kv-manager/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/kv-manager/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-            # Step 6: Trigger AutoRAG sync (manual sync via dashboard)
-            - name: AutoRAG Sync Instructions
-              run: |
-                  echo ""
-                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-                  echo "⚠️  MANUAL STEP REQUIRED: Sync AutoRAG Index"
-                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-                  echo ""
-                  echo "📝 R2 files have been updated, but AutoRAG needs manual sync."
-                  echo ""
-                  echo "🔗 Go to: Cloudflare Dashboard → AI → AI Search → sqlite-mcp-server-wiki"
-                  echo "👆 Click the 'Sync Index' button"
-                  echo ""
-                  echo "⏱️  Or wait up to 6 hours for automatic sync"
-                  echo ""
 
             - name: Clone MySQL MCP wiki repository
               run: |
@@ -135,22 +122,70 @@ jobs:
                   cd mysql-mcp-wiki-temp
                   for file in *.md; do
                     echo "Uploading $file to R2 (mysql-mcp folder)..."
-                    npx wrangler r2 object put sqlite-mcp-server-wiki/mysql-mcp/"$file" --file="$file" --remote
+                    npx wrangler r2 object put adamic-blog-search/mysql-mcp/"$file" --file="$file" --remote
                   done
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+            - name: Clone D1 Manager wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/d1-manager.wiki.git d1-manager-wiki-temp
+
+            - name: Upload D1 Manager wiki files to R2
+              run: |
+                  cd d1-manager-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (d1-manager folder)..."
+                    npx wrangler r2 object put adamic-blog-search/d1-manager/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+            - name: Clone DO Manager wiki repository
+              run: |
+                  git clone https://github.com/neverinfamous/do-manager.wiki.git do-manager-wiki-temp
+
+            - name: Upload DO Manager wiki files to R2
+              run: |
+                  cd do-manager-wiki-temp
+                  for file in *.md; do
+                    echo "Uploading $file to R2 (do-manager folder)..."
+                    npx wrangler r2 object put adamic-blog-search/do-manager/"$file" --file="$file" --remote
+                  done
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+            # Step 7: Trigger index sync (manual sync via dashboard)
+            - name: Index Sync Instructions
+              run: |
+                  echo ""
+                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                  echo "⚠️  MANUAL STEP REQUIRED: Sync Search Index"
+                  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+                  echo ""
+                  echo "📝 R2 files have been updated, but the search index needs manual sync."
+                  echo ""
+                  echo "🔗 Go to: Cloudflare Dashboard → AI → AI Search → adamic-blog-search"
+                  echo "👆 Click the 'Sync Index' button"
+                  echo ""
+                  echo "⏱️  Or wait up to 6 hours for automatic sync"
+                  echo ""
+
             - name: Deployment Summary
               run: |
                   echo "✅ Worker deployed to Cloudflare"
-                  echo "✅ SQLite wiki files synced to R2: sqlite-mcp-server-wiki/sqlite/"
-                  echo "✅ Postgres wiki files synced to R2: sqlite-mcp-server-wiki/postgres/"
-                  echo "✅ Memory Journal wiki files synced to R2: sqlite-mcp-server-wiki/memory-journal/"
-                  echo "✅ R2 Manager wiki files synced to R2: sqlite-mcp-server-wiki/r2-manager/"
-                  echo "✅ KV Manager wiki files synced to R2: sqlite-mcp-server-wiki/kv-manager/"
-                  echo "✅ MySQL MCP wiki files synced to R2: sqlite-mcp-server-wiki/mysql-mcp/"
-                  echo "✅ AutoRAG index sync triggered"
+                  echo "✅ SQLite wiki files synced to R2: adamic-blog-search/sqlite/"
+                  echo "✅ Postgres wiki files synced to R2: adamic-blog-search/postgres/"
+                  echo "✅ Memory Journal wiki files synced to R2: adamic-blog-search/memory-journal/"
+                  echo "✅ R2 Manager wiki files synced to R2: adamic-blog-search/r2-manager/"
+                  echo "✅ KV Manager wiki files synced to R2: adamic-blog-search/kv-manager/"
+                  echo "✅ MySQL MCP wiki files synced to R2: adamic-blog-search/mysql-mcp/"
+                  echo "✅ D1 Manager wiki files synced to R2: adamic-blog-search/d1-manager/"
+                  echo "✅ DO Manager wiki files synced to R2: adamic-blog-search/do-manager/"
+                  echo "✅ Search index sync triggered"
                   echo ""
                   echo "🔗 Worker URL: https://sqlite-wiki-search.adamic.workers.dev"
                   echo "🔗 Custom Domain: https://search.adamic.tech"
