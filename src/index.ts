@@ -22,9 +22,10 @@ export default {
                 });
             }
 
-            if (path === '/favicon.ico') {
+            const iconPaths = ['/favicon.ico', '/apple-touch-icon.png', '/apple-touch-icon-precomposed.png'];
+            if (iconPaths.includes(path)) {
                 return Response.redirect(
-                    'https://adamic.tech/assets/images/favicons/favicon.ico',
+                    `https://adamic.tech/assets/images/favicons${path}`,
                     301,
                 );
             }
