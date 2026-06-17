@@ -34,5 +34,8 @@
     "resolutions": {
         "esbuild": "^0.28.1",
         "ws": "^8.21.0"
+    },
+    "dependencies": {
+        "zod": "^4.4.3"
     }
 }
