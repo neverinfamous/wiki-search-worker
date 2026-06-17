@@ -37,7 +37,7 @@ param(
 
 # Configuration
 $BUCKET_NAME = "adamic-blog-search"
-$BASE_PATH = "C:\Users\chris\Desktop"
+$BASE_PATH = (Resolve-Path "..").Path
 
 # Wiki configurations
 $wikis = @{

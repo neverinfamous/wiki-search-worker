@@ -1,18 +1,18 @@
 # Automated Deployment Pipeline
 
-This repository uses GitHub Actions to automatically deploy the Wiki Search Worker and sync the AutoRAG index whenever changes are pushed to the `main` branch.
+This repository uses GitHub Actions to automatically deploy the Wiki Search Worker and sync the AI Search index whenever changes are pushed to the `main` branch.
 
 ## 🔄 Automated Pipeline Flow
 
 ```
-GitHub Push → Deploy Worker → Sync Wiki to R2 → Trigger AutoRAG Refresh
+GitHub Push → Deploy Worker → Sync Wiki to R2 → Trigger AI Search Refresh
 ```
 
 ### What Happens Automatically:
 
 1. **Worker Deployment**: Cloudflare Worker code is deployed to `search.adamic.tech`
-2. **R2 Sync**: Latest wiki `.md` files are uploaded to the `sqlite-mcp-server-wiki` R2 bucket
-3. **AutoRAG Index**: Triggers a manual sync to refresh the AI Search index
+2. **R2 Sync**: Latest wiki `.md` files are uploaded to the `adamic-blog-search` R2 bucket
+3. **AI Search Index**: Triggers a manual sync to refresh the AI Search index
 
 ## ⚙️ Setup Instructions
 
@@ -49,7 +49,7 @@ The workflow is already configured in `.github/workflows/deploy.yml`. It will au
 You can also trigger deployment manually:
 
 1. Go to **Actions** tab in your GitHub repository
-2. Select **Deploy Wiki Search Worker & Sync AutoRAG**
+2. Select **Deploy Wiki Search Worker & Sync AI Search**
 3. Click **Run workflow** → **Run workflow**
 
 ## 🔍 Monitoring
@@ -62,7 +62,7 @@ You can also trigger deployment manually:
     - R2 Bucket: https://dash.cloudflare.com/r2/overview
     - AI Search: https://dash.cloudflare.com/ai/ai-search
 
-### AutoRAG Sync Frequency
+### AI Search Sync Frequency
 
 - **Automatic**: Every 6 hours (Cloudflare's default)
 - **Manual**: Triggered by GitHub Actions after each deployment
@@ -79,8 +79,8 @@ You can also trigger deployment manually:
 ### Wiki Files (to R2)
 
 - All `.md` files from `sqlite-mcp-server.wiki` repository
-- Uploaded to `sqlite-mcp-server-wiki` R2 bucket
-- AutoRAG automatically indexes changes
+- Uploaded to `adamic-blog-search` R2 bucket
+- AI Search automatically indexes changes
 
 ## 🛠️ Troubleshooting
 
@@ -93,15 +93,15 @@ You can also trigger deployment manually:
 ### R2 Upload Failing
 
 - Verify API token has R2:Edit permission
-- Check R2 bucket exists: `sqlite-mcp-server-wiki`
+- Check R2 bucket exists: `adamic-blog-search`
 - Ensure account ID is correct
 
-### AutoRAG Not Updating
+### AI Search Not Updating
 
 - Wait 5-10 minutes for sync to complete
 - Manually trigger sync in Cloudflare dashboard
 - Check AI Search Jobs tab for sync status
-- AutoRAG syncs automatically every 6 hours anyway
+- AI Search syncs automatically every 6 hours anyway
 
 ## 📝 Local Development
 
@@ -109,10 +109,10 @@ To test locally before pushing:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Test deployment (dry run)
-npm run deploy
+pnpm run deploy
 ```
 
 ## 🔐 Security Notes
