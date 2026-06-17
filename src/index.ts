@@ -15,6 +15,30 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <meta name="author" content="Adamic">
     <meta name="theme-color" content="#1d4ed8">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://search.adamic.tech/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Adamic AI Documentation Search",
+      "description": "AI-powered search for MCP servers and Cloudflare tools.",
+      "url": "https://search.adamic.tech",
+      "applicationCategory": "SearchEngine",
+      "operatingSystem": "Web",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Adamic",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://adamic.tech/assets/images/logo.webp"
+        }
+      }
+    }
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
@@ -30,6 +54,7 @@ const HTML_CONTENT = `<!DOCTYPE html>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://adamic.tech/assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="https://adamic.tech/assets/images/favicons/site.webmanifest">
 
     <!-- External Stylesheets - Async Loading -->
     <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css" media="print" onload="this.media='all'">
@@ -80,12 +105,12 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <span class="nav-text">Contact</span>
                     <span class="nav-icon">📧</span>
                 </a>
-                <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener" class="nav-link" title="Docker Hub">
+                <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener noreferrer" class="nav-link" title="Docker Hub">
                     <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .101.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.30-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983 0 1.944-.09 2.86-.266a12.248 12.248 0 003.255-1.138A11.382 11.382 0 0016.366 16c.412-.738.744-1.527.991-2.35l.144-.005c.131 0 .263-.001.394-.005.494-.011.98-.097 1.42-.25.394-.138.748-.315 1.055-.528l.365-.253-.4-.288c-.048-.034-.16-.117-.25-.16l-.004-.002c-.287-.208-.82-.582-1.327-.582z"/>
                     </svg>
                 </a>
-                <a href="https://github.com/neverinfamous" target="_blank" rel="noopener" class="nav-link" title="GitHub">
+                <a href="https://github.com/neverinfamous" target="_blank" rel="noopener noreferrer" class="nav-link" title="GitHub">
                     <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
@@ -131,13 +156,13 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <span class="nav-text">Contact</span>
                 <span class="nav-icon">📧</span>
             </a>
-            <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener" class="nav-link" title="Docker Hub">
+            <a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener noreferrer" class="nav-link" title="Docker Hub">
                 <span class="nav-text">Docker Hub</span>
                 <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .101.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338 0-.676.30-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983 0 1.944-.09 2.86-.266a12.248 12.248 0 003.255-1.138A11.382 11.382 0 0016.366 16c.412-.738.744-1.527.991-2.35l.144-.005c.131 0 .263-.001.394-.005.494-.011.98-.097 1.42-.25.394-.138.748-.315 1.055-.528l.365-.253-.4-.288c-.048-.034-.16-.117-.25-.16l-.004-.002c-.287-.208-.82-.582-1.327-.582z"/>
                 </svg>
             </a>
-            <a href="https://github.com/neverinfamous" target="_blank" rel="noopener" class="nav-link" title="GitHub">
+            <a href="https://github.com/neverinfamous" target="_blank" rel="noopener noreferrer" class="nav-link" title="GitHub">
                 <span class="nav-text">GitHub</span>
                 <svg width="18" height="23" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -305,14 +330,14 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                 <div class="footer-section">
                     <h2>Projects</h2>
                     <ul>
-                        <li><a href="https://github.com/neverinfamous/mysql-mcp" target="_blank" rel="noopener">MySQL MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener">Memory Journal MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener">PostgreSQL MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener">SQLite MCP</a></li>
-                        <li><a href="https://github.com/neverinfamous/d1-manager" target="_blank" rel="noopener">D1 Manager</a></li>
-                        <li><a href="https://github.com/neverinfamous/do-manager" target="_blank" rel="noopener">DO Manager</a></li>
-                        <li><a href="https://github.com/neverinfamous/kv-manager" target="_blank" rel="noopener">KV Manager</a></li>
-                        <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener">R2 Manager</a></li>
+                        <li><a href="https://github.com/neverinfamous/mysql-mcp" target="_blank" rel="noopener noreferrer">MySQL MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/memory-journal-mcp" target="_blank" rel="noopener noreferrer">Memory Journal MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/postgres-mcp" target="_blank" rel="noopener noreferrer">PostgreSQL MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/sqlite-mcp-server" target="_blank" rel="noopener noreferrer">SQLite MCP</a></li>
+                        <li><a href="https://github.com/neverinfamous/d1-manager" target="_blank" rel="noopener noreferrer">D1 Manager</a></li>
+                        <li><a href="https://github.com/neverinfamous/do-manager" target="_blank" rel="noopener noreferrer">DO Manager</a></li>
+                        <li><a href="https://github.com/neverinfamous/kv-manager" target="_blank" rel="noopener noreferrer">KV Manager</a></li>
+                        <li><a href="https://github.com/neverinfamous/R2-Manager-Worker" target="_blank" rel="noopener noreferrer">R2 Manager</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -328,8 +353,8 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <ul>
                         <li><a href="https://adamic.tech/contact.html">Contact</a></li>
                         <li><a href="https://adamic.tech/security-policy.html">Security Policy</a></li>
-                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener">GitHub Profile</a></li>
-                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener">Docker Hub</a></li>
+                        <li><a href="https://github.com/neverinfamous" target="_blank" rel="noopener noreferrer">GitHub Profile</a></li>
+                        <li><a href="https://hub.docker.com/u/writenotenow" target="_blank" rel="noopener noreferrer">Docker Hub</a></li>
                     </ul>
                 </div>
             </div>
@@ -644,6 +669,11 @@ export default {
                         'Content-Type': 'text/html; charset=utf-8',
                     },
                 });
+            }
+
+            // Redirect favicon to central asset
+            if (path === '/favicon.ico') {
+                return Response.redirect('https://adamic.tech/assets/images/favicons/favicon.ico', 301);
             }
 
             // Health check endpoint
