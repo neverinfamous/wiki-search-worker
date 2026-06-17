@@ -31,7 +31,7 @@ export default {
                     {
                         status: 'healthy',
                         service: 'MCP Servers & Cloudflare Managers Documentation Search',
-                        version: '5.2.0',
+                        version: '1.1.7',
                         projects: [
                             'MySQL MCP',
                             'SQLite MCP',

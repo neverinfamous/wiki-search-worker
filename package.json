@@ -10,7 +10,8 @@
         "tail": "wrangler tail",
         "lint": "eslint src",
         "typecheck": "tsc --noEmit",
-        "check": "pnpm run lint && pnpm run typecheck"
+        "build": "echo \"No build required\"",
+        "check": "pnpm run lint && pnpm run typecheck && pnpm run build"
     },
     "keywords": [
         "cloudflare",

@@ -73,10 +73,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const responseTime = Date.now() - startTime;
 
-        const resultCount =
-            mode === 'ai'
-                ? ((result as { chunks?: unknown[] }).chunks?.length ?? 0)
-                : ((result as { chunks?: unknown[] }).chunks?.length ?? 0);
+        const searchResult = result as { chunks?: unknown[] };
+        const resultCount = searchResult.chunks?.length ?? 0;
         
         logger.info('api', 'Search completed', {
             query: body.query,
