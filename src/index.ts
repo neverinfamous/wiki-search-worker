@@ -76,10 +76,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
                     <span class="nav-text">AI Search</span>
                     <span class="nav-icon">🔍</span>
                 </a>
-                <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
-                    <span class="nav-text">FAQ</span>
-                    <span class="nav-icon">❓</span>
-                </a>
                 <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
                     <span class="nav-text">Contact</span>
                     <span class="nav-icon">📧</span>
@@ -130,10 +126,6 @@ html[data-theme="light"]{--primary-color:#2563eb;--text-color:#1f2937;--text-mut
             <a href="https://search.adamic.tech" class="nav-link active" title="AI Search">
                 <span class="nav-text">AI Search</span>
                 <span class="nav-icon">🔍</span>
-            </a>
-            <a href="https://adamic.tech/faq.html" class="nav-link" title="FAQ">
-                <span class="nav-text">FAQ</span>
-                <span class="nav-icon">❓</span>
             </a>
             <a href="https://adamic.tech/contact.html" class="nav-link" title="Contact">
                 <span class="nav-text">Contact</span>
