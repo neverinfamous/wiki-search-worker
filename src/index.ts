@@ -18,7 +18,8 @@ export default {
                 return new Response(renderTemplate(env.TURNSTILE_SITE_KEY), {
                     headers: {
                         'Content-Type': 'text/html; charset=utf-8',
-                        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'",
+                        'Content-Security-Policy':
+                            "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'",
                         'X-Content-Type-Options': 'nosniff',
                         'X-Frame-Options': 'DENY',
                         'Referrer-Policy': 'strict-origin-when-cross-origin',
