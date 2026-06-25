@@ -1,15 +1,17 @@
 import { z } from 'zod';
 
-export const SearchRequestSchema = z.object({
-    query: z
-        .string()
-        .min(3, 'Query must be at least 3 characters long')
-        .max(500, 'Query must be less than 500 characters'),
-    mode: z.enum(['ai', 'search']).optional().default('ai'),
-    max_results: z.number().int().min(1).max(50).optional().default(5),
-    rewrite: z.boolean().optional(),
-    turnstileToken: z.string().optional(),
-}).strict();
+export const SearchRequestSchema = z
+    .object({
+        query: z
+            .string()
+            .min(3, 'Query must be at least 3 characters long')
+            .max(500, 'Query must be less than 500 characters'),
+        mode: z.enum(['ai', 'search']).optional().default('ai'),
+        max_results: z.number().int().min(1).max(50).optional().default(5),
+        rewrite: z.boolean().optional(),
+        turnstileToken: z.string().optional(),
+    })
+    .strict();
 
 export type SearchRequest = z.infer<typeof SearchRequestSchema>;
 

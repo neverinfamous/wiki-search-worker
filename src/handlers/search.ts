@@ -30,7 +30,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         }
 
         const body = parseResult.data;
-        const truncatedQuery = body.query.length > 30 ? body.query.substring(0, 30) + '...' : body.query;
+        const truncatedQuery =
+            body.query.length > 30 ? body.query.substring(0, 30) + '...' : body.query;
         logger.info('api', `Search query`, { query: truncatedQuery, mode: body.mode });
 
         const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
@@ -48,7 +49,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                     429,
                     undefined,
                     request.headers.get('Origin'),
-                    env.ALLOWED_ORIGINS
+                    env.ALLOWED_ORIGINS,
                 );
             }
         }
@@ -62,13 +63,21 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
             formData.append('response', body.turnstileToken);
             formData.append('remoteip', ip);
 
-            const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-                body: formData,
-                method: 'POST',
-            });
+            const result = await fetch(
+                'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+                {
+                    body: formData,
+                    method: 'POST',
+                },
+            );
 
             const outcome = await result.json();
-            if (!outcome || typeof outcome !== 'object' || !('success' in outcome) || !outcome.success) {
+            if (
+                !outcome ||
+                typeof outcome !== 'object' ||
+                !('success' in outcome) ||
+                !outcome.success
+            ) {
                 throw new ValidationError('Turnstile validation failed');
             }
         }
