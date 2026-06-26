@@ -33,7 +33,7 @@ export default {
                 '/apple-touch-icon-precomposed.png',
             ];
             if (iconPaths.includes(path)) {
-                return Response.redirect(`https://adamic.tech/assets/images/favicons${path}`, 301);
+                return await fetch(`https://adamic.tech/assets/images/favicons${path}`);
             }
 
             if (path === '/health') {
