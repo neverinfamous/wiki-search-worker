@@ -20,6 +20,35 @@ interface SearchResponse {
     timestamp: string;
 }
 
+async function checkRateLimit(rateLimiter: Env['RATE_LIMITER'], ip: string): Promise<boolean> {
+    if (!rateLimiter) return true;
+    const { success } = await rateLimiter.limit({ key: ip });
+    return success;
+}
+
+async function verifyTurnstile(token: string | undefined, ip: string, secretKey?: string): Promise<void> {
+    if (!secretKey) return;
+    if (!token) {
+        throw new ValidationError('Turnstile validation is required');
+    }
+    const formData = new FormData();
+    formData.append('secret', secretKey);
+    formData.append('response', token);
+    formData.append('remoteip', ip);
+
+    const result = await fetch(TURNSTILE_VERIFY_URL, {
+        body: formData,
+        method: 'POST',
+    });
+
+    const outcomeRaw = await result.json();
+    const parseOutcome = TurnstileResponseSchema.safeParse(outcomeRaw);
+
+    if (!parseOutcome.success || !parseOutcome.data.success) {
+        throw new ValidationError('Turnstile validation failed');
+    }
+}
+
 export async function handleSearch(request: Request, env: Env): Promise<Response> {
     try {
         logger.info('api', `Search request received: ${request.url}`);
@@ -44,48 +73,23 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
 
-        if (env.RATE_LIMITER) {
-            const { success } = await env.RATE_LIMITER.limit({ key: ip });
-            if (!success) {
-                return jsonResponse(
-                    {
-                        success: false,
-                        error: 'Too many requests. Please try again later.',
-                        mode: body.mode,
-                        timestamp: new Date().toISOString(),
-                    },
-                    429,
-                    undefined,
-                    request.headers.get('Origin'),
-                    env.ALLOWED_ORIGINS,
-                );
-            }
-        }
-
-        if (env.TURNSTILE_SECRET_KEY) {
-            if (!body.turnstileToken) {
-                throw new ValidationError('Turnstile validation is required');
-            }
-            const formData = new FormData();
-            formData.append('secret', env.TURNSTILE_SECRET_KEY);
-            formData.append('response', body.turnstileToken);
-            formData.append('remoteip', ip);
-
-            const result = await fetch(
-                TURNSTILE_VERIFY_URL,
+        const isRateLimitOk = await checkRateLimit(env.RATE_LIMITER, ip);
+        if (!isRateLimitOk) {
+            return jsonResponse(
                 {
-                    body: formData,
-                    method: 'POST',
+                    success: false,
+                    error: 'Too many requests. Please try again later.',
+                    mode: body.mode,
+                    timestamp: new Date().toISOString(),
                 },
+                429,
+                undefined,
+                request.headers.get('Origin'),
+                env.ALLOWED_ORIGINS,
             );
-
-            const outcomeRaw = await result.json();
-            const parseOutcome = TurnstileResponseSchema.safeParse(outcomeRaw);
-
-            if (!parseOutcome.success || !parseOutcome.data.success) {
-                throw new ValidationError('Turnstile validation failed');
-            }
         }
+
+        await verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET_KEY);
 
         const mode = body.mode;
         const maxResults = body.max_results;
