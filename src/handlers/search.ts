@@ -20,8 +20,13 @@ interface SearchResponse {
 
 async function checkRateLimit(rateLimiter: Env['RATE_LIMITER'], ip: string): Promise<boolean> {
     if (!rateLimiter) return true;
-    const { success } = await rateLimiter.limit({ key: ip });
-    return success;
+    try {
+        const { success } = await rateLimiter.limit({ key: ip });
+        return success;
+    } catch (error) {
+        logger.warn('api', 'Rate limiter error, failing open', { error: String(error) });
+        return true;
+    }
 }
 
 async function verifyTurnstile(token: string | undefined, ip: string, secretKey?: string): Promise<void> {
@@ -39,7 +44,13 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
         method: 'POST',
     });
 
-    const outcomeRaw = await result.json();
+    let outcomeRaw: unknown;
+    try {
+        outcomeRaw = await result.json();
+    } catch {
+        throw new ValidationError('Turnstile validation failed: Invalid response from Cloudflare');
+    }
+
     const parseOutcome = TurnstileResponseSchema.safeParse(outcomeRaw);
 
     if (!parseOutcome.success || !parseOutcome.data.success) {
@@ -50,6 +61,11 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
 export async function handleSearch(request: Request, env: Env): Promise<Response> {
     try {
         logger.info('api', `Search request received: ${request.url}`);
+
+        const contentType = request.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new ValidationError('Unsupported Media Type: Content-Type must be application/json');
+        }
 
         let rawBody: unknown;
         try {
