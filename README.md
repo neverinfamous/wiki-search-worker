@@ -1,11 +1,11 @@
 # Wiki Search Worker - Complete Documentation
 
 **Production URL**: https://search.adamic.tech
-**Worker Name**: `sqlite-wiki-search`
+**Worker Name**: `adamic-blog-search`
 **AI Search Namespace**: `adamic-blog-search`
 **GitHub Repo**: https://github.com/neverinfamous/wiki-search-worker
 
-Public AI-powered search interface for the SQLite MCP Server documentation using Cloudflare Workers + AI Search (formerly AI Search).
+AI-powered search interface for the SQLite MCP documentation using Cloudflare Workers and AI Search.
 
 ---
 
@@ -27,7 +27,7 @@ Public AI-powered search interface for the SQLite MCP Server documentation using
 
 ## 🎯 Overview
 
-This Cloudflare Worker provides an AI-powered search interface for the [SQLite MCP Server Wiki](https://github.com/neverinfamous/sqlite-mcp-server.wiki). It uses Cloudflare's AI Search technology to deliver intelligent, context-aware answers from the complete wiki documentation.
+This Cloudflare Worker provides an AI-powered search interface for the [SQLite MCP Server Wiki](https://github.com/neverinfamous/sqlite-mcp-server.wiki). It delivers intelligent, context-aware answers from the documentation using Cloudflare AI Search.
 
 ### Features
 
@@ -205,28 +205,31 @@ wiki-search-worker/
 ### Wrangler Configuration (`wrangler.toml`)
 
 ```toml
-name = "sqlite-wiki-search"
+name = "adamic-blog-search"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
-# account_id loaded from CLOUDFLARE_ACCOUNT_ID env var or set here
 
-# AI binding for AI Search access
-[ai]
-binding = "AI"
+[[ai_search_namespaces]]
+binding = "WIKI_SEARCH"
+namespace = "adamic-blog-search"
 
-# Environment variables
 [vars]
-ALLOWED_ORIGINS = "*"
+ALLOWED_ORIGINS = "https://adamic.tech"
+TURNSTILE_SITE_KEY = "0x4AAAAAADmjyYZe1SbQUi1P_bgYiM-ijGA"
 
-# Production configuration
-[env.production]
-vars = { ALLOWED_ORIGINS = "https://adamic.tech" }
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 10 }
 
-# Custom domain route
-routes = [
-  { pattern = "adamic.tech/wiki-search/*", zone_name = "adamic.tech" }
-]
+[[routes]]
+pattern = "search.adamic.tech/*"
+zone_name = "adamic.tech"
+
+[[routes]]
+pattern = "adamic.tech/wiki-search/*"
+zone_name = "adamic.tech"
 ```
 
 ### Custom Domain
@@ -632,7 +635,7 @@ pnpm run deploy
 ### Worker Code
 
 - **GitHub**: https://github.com/neverinfamous/wiki-search-worker
-- **Local**: `../wiki-search-worker\`
+- **Local**: `../wiki-search-worker/`
 - **Main Worker**: `src/index.ts`
 - **Config**: `wrangler.toml`
 - **Package**: `package.json`
@@ -643,13 +646,13 @@ pnpm run deploy
 ### Wiki Source
 
 - **GitHub**: https://github.com/neverinfamous/sqlite-mcp-server.wiki
-- **Local**: `../sqlite-mcp-server.wiki\`
+- **Local**: `../sqlite-mcp-server.wiki/`
 - **Files**: 19 markdown files
 - **Main entry**: `Home.md`
 
 ### Documentation
 
-- **This file**: `../docs_images\wiki_AI Search.md`
+- **This file**: `../docs_images/wiki_AI Search.md`
 - **Main Project**: https://github.com/neverinfamous/sqlite-mcp-server
 
 ---
