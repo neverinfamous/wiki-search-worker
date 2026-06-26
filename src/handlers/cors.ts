@@ -60,11 +60,11 @@ export function jsonResponse(
     origin?: string | null,
     allowedOriginsRaw?: string,
 ): Response {
-    const headers: Record<string, string> = Object.assign(
-        { 'Content-Type': 'application/json' },
-        SECURITY_HEADERS,
-        additionalHeaders
-    );
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        ...SECURITY_HEADERS,
+        ...additionalHeaders
+    };
 
     return new Response(JSON.stringify(data), {
         status,

@@ -5,9 +5,8 @@ import { renderTemplate } from './ui/template.js';
 import { logger } from './utils/logger.js';
 import { AppError } from './utils/errors.js';
 import { HTTP_STATUS, HTML_CSP, ICON_PATHS } from './utils/constants.js';
-import pkg from '../package.json';
-
-const VERSION = pkg.version;
+// Hardcoded to prevent esbuild from bundling the entire package.json in the edge worker
+const VERSION = '1.3.0';
 
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
