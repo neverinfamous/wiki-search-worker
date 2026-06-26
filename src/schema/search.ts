@@ -41,7 +41,7 @@ export const TurnstileResponseSchema = z.object({
 export type TurnstileResponse = z.infer<typeof TurnstileResponseSchema>;
 
 export const AiSearchResponseSchema = z.object({
-    chunks: z.array(z.unknown()).optional(),
+    chunks: z.array(z.record(z.string(), z.unknown())).optional(),
 }).loose();
 
 export type AiSearchResponse = z.infer<typeof AiSearchResponseSchema>;

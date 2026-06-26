@@ -1,11 +1,16 @@
 export interface AiSearchBinding {
-    chatCompletions(options: Record<string, unknown>): Promise<unknown>;
-    search(options: Record<string, unknown>): Promise<unknown>;
+    chatCompletions(options: {
+        messages: Array<{ role: string; content: string }>;
+        ai_search_options?: Record<string, unknown>;
+    }): Promise<unknown>;
+    search(options: {
+        messages: Array<{ role: string; content: string }>;
+        ai_search_options?: Record<string, unknown>;
+    }): Promise<unknown>;
 }
 
 // Ensure the Env interface matches what wrangler provides
 export interface Env {
-    AI: unknown;
     WIKI_SEARCH: AiSearchBinding;
     WIKI_SEARCH_INSTANCE_ID?: string;
     ALLOWED_ORIGINS?: string;

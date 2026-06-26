@@ -4,7 +4,7 @@ import { handleSearch } from './handlers/search.js';
 import { renderTemplate } from './ui/template.js';
 import { logger } from './utils/logger.js';
 
-const VERSION = '1.2.0';
+const VERSION = '1.3.0';
 const HTML_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'";
 
 export default {
