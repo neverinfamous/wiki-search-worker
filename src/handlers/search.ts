@@ -8,6 +8,7 @@ import {
 } from '../schema/search.js';
 import { logger } from '../utils/logger.js';
 import { AiSearchError, ValidationError } from '../utils/errors.js';
+import { HTTP_STATUS, MAX_LOG_QUERY_LENGTH } from '../utils/constants.js';
 
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const DEFAULT_MATCH_THRESHOLD = 0.5;
@@ -68,7 +69,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const body = parseResult.data;
         const truncatedQuery =
-            body.query.length > 30 ? body.query.substring(0, 30) + '...' : body.query;
+            body.query.length > MAX_LOG_QUERY_LENGTH ? body.query.substring(0, MAX_LOG_QUERY_LENGTH) + '...' : body.query;
         logger.info('api', `Search query`, { query: truncatedQuery, mode: body.mode });
 
         const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
@@ -82,7 +83,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                     mode: body.mode,
                     timestamp: new Date().toISOString(),
                 },
-                429,
+                HTTP_STATUS.TOO_MANY_REQUESTS,
                 undefined,
                 request.headers.get('Origin'),
                 env.ALLOWED_ORIGINS,
@@ -154,7 +155,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         return jsonResponse(
             response,
-            200,
+            HTTP_STATUS.OK,
             { 'X-Response-Time': `${String(responseTime)}ms` },
             request.headers.get('Origin'),
             env.ALLOWED_ORIGINS,
@@ -193,7 +194,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                 mode: 'unknown',
                 timestamp: new Date().toISOString(),
             },
-            500,
+            HTTP_STATUS.INTERNAL_SERVER_ERROR,
             undefined,
             request.headers.get('Origin'),
             env.ALLOWED_ORIGINS,

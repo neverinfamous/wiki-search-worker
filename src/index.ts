@@ -3,8 +3,10 @@ import { handleCORS, jsonResponse, SECURITY_HEADERS } from './handlers/cors.js';
 import { handleSearch } from './handlers/search.js';
 import { renderTemplate } from './ui/template.js';
 import { logger } from './utils/logger.js';
+import { HTTP_STATUS } from './utils/constants.js';
+import pkg from '../package.json';
 
-const VERSION = '1.3.0';
+const VERSION = pkg.version;
 const HTML_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'";
 
 export default {
@@ -59,7 +61,7 @@ export default {
                             health: '/health (GET)',
                         },
                     },
-                    200,
+                    HTTP_STATUS.OK,
                     { 'X-Robots-Tag': 'noindex, nofollow' },
                     request.headers.get('Origin'),
                     env.ALLOWED_ORIGINS,
@@ -75,7 +77,7 @@ export default {
                             error: 'Method not allowed',
                             message: 'This endpoint requires POST method with JSON body',
                         },
-                        405,
+                        HTTP_STATUS.METHOD_NOT_ALLOWED,
                         { 'X-Robots-Tag': 'noindex, nofollow' },
                         request.headers.get('Origin'),
                         env.ALLOWED_ORIGINS,
@@ -85,7 +87,7 @@ export default {
 
             return jsonResponse(
                 { error: 'Endpoint not found' },
-                404,
+                HTTP_STATUS.NOT_FOUND,
                 undefined,
                 request.headers.get('Origin'),
                 env.ALLOWED_ORIGINS,
@@ -98,7 +100,7 @@ export default {
                     success: false,
                     error: 'An internal server error occurred',
                 },
-                500,
+                HTTP_STATUS.INTERNAL_SERVER_ERROR,
                 undefined,
                 request.headers.get('Origin'),
                 env.ALLOWED_ORIGINS,
