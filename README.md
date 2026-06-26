@@ -192,7 +192,7 @@ wiki-search-worker/
 ├── wrangler.toml               # Worker configuration
 ├── package.json                # Dependencies
 ├── tsconfig.json               # TypeScript config
-├── DEPLOYMENT.md               # Deployment guide
+
 ├── SECURITY.md                 # Security policy
 ├── README.md                   # Project overview
 └── API_TOKEN_SETUP.md          # Token creation guide
@@ -638,7 +638,7 @@ pnpm run deploy
 - **Package**: `package.json`
 - **CI/CD**: `.github/workflows/deploy.yml`
 - **Security**: `SECURITY.md`
-- **Deployment Guide**: `DEPLOYMENT.md`
+
 
 ### Wiki Source
 
@@ -667,7 +667,7 @@ pnpm run deploy
 **In wiki-search-worker repository**:
 
 - `README.md` - Project overview and quick start
-- `DEPLOYMENT.md` - Complete deployment guide
+
 - `SECURITY.md` - Security policy and reporting
 - `API_TOKEN_SETUP.md` - API token creation guide
 - `CREATE_API_TOKEN.md` - Detailed token instructions
