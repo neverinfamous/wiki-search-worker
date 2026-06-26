@@ -4,7 +4,6 @@ import {
     SearchRequestSchema,
     isSpecificQuery,
     TurnstileResponseSchema,
-    AiSearchResponseSchema,
 } from '../schema/search.js';
 import { logger } from '../utils/logger.js';
 import { AiSearchError, ValidationError, AppError } from '../utils/errors.js';
@@ -149,11 +148,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const responseTime = Date.now() - startTime;
 
-        const searchResultParse = AiSearchResponseSchema.safeParse(result);
-        const resultCount =
-            searchResultParse.success && searchResultParse.data.chunks
-                ? searchResultParse.data.chunks.length
-                : 0;
+        const chunks = (result as Record<string, unknown> | null)?.chunks;
+        const resultCount = Array.isArray(chunks) ? chunks.length : 0;
 
         logger.info('api', 'Search completed', {
             query: body.query,

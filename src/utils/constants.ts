@@ -13,8 +13,8 @@ export const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile
 export const DEFAULT_MATCH_THRESHOLD = 0.5;
 export const DEFAULT_INSTANCE_ID = 'adamic-blog-search';
 export const HTML_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'";
-export const ICON_PATHS = [
+export const ICON_PATHS = new Set([
     '/favicon.ico',
     '/apple-touch-icon.png',
     '/apple-touch-icon-precomposed.png',
-];
+]);

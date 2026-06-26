@@ -15,13 +15,7 @@ export const SearchRequestSchema = z
 
 export type SearchRequest = z.infer<typeof SearchRequestSchema>;
 
-const SPECIFIC_QUERY_PATTERNS = [
-    /^how (do|to) i/i, // Clear how-to questions
-    /\w+_\w+/, // Tool names (snake_case patterns)
-    /`[^`]+`/, // Code backticks
-    /"[^"]+"/, // Quoted exact terms
-    /\b(install|configure|setup|create|delete|list|get)\b/i, // Action verbs
-];
+const SPECIFIC_QUERY_PATTERN = /(?:^how (?:do|to) i)|(?:\w+_\w+)|(?:`[^`]+`)|(?:"[^"]+")|(?:\b(?:install|configure|setup|create|delete|list|get)\b)/i;
 
 /**
  * Determines if a query is specific enough to skip LLM query rewriting.
@@ -29,7 +23,7 @@ const SPECIFIC_QUERY_PATTERNS = [
  * don't benefit from rewriting and can save ~100-200ms inference time.
  */
 export function isSpecificQuery(query: string): boolean {
-    return SPECIFIC_QUERY_PATTERNS.some((p) => p.test(query));
+    return SPECIFIC_QUERY_PATTERN.test(query);
 }
 
 export const TurnstileResponseSchema = z.object({

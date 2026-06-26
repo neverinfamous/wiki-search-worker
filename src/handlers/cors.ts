@@ -25,27 +25,25 @@ export function resolveAllowedOrigin(origin?: string | null, allowedOriginsRaw?:
 }
 
 export function applyCorsHeaders(
-    headers: Record<string, string>,
+    headers: Headers,
     origin?: string | null,
     allowedOriginsRaw?: string,
-): Record<string, string> {
+): Headers {
     const allowedOrigin = resolveAllowedOrigin(origin, allowedOriginsRaw);
     if (allowedOrigin) {
-        headers['Access-Control-Allow-Origin'] = allowedOrigin;
+        headers.set('Access-Control-Allow-Origin', allowedOrigin);
     }
     
-    headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-    headers['Access-Control-Allow-Headers'] = 'Content-Type';
+    headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    headers.set('Access-Control-Allow-Headers', 'Content-Type');
     
     return headers;
 }
 
 export function handleCORS(request: Request, env: Env): Response {
     const origin = request.headers.get('Origin');
-    const headers: Record<string, string> = {
-        'Access-Control-Max-Age': '86400', // 24 hours
-        ...SECURITY_HEADERS,
-    };
+    const headers = new Headers(SECURITY_HEADERS);
+    headers.set('Access-Control-Max-Age', '86400'); // 24 hours
 
     return new Response(null, {
         status: 204,
@@ -60,11 +58,14 @@ export function jsonResponse(
     origin?: string | null,
     allowedOriginsRaw?: string,
 ): Response {
-    const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-        ...SECURITY_HEADERS,
-        ...additionalHeaders
-    };
+    const headers = new Headers(SECURITY_HEADERS);
+    headers.set('Content-Type', 'application/json');
+    
+    if (additionalHeaders) {
+        for (const [key, value] of Object.entries(additionalHeaders)) {
+            headers.set(key, value);
+        }
+    }
 
     return new Response(JSON.stringify(data), {
         status,

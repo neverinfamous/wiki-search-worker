@@ -30,7 +30,7 @@ export default {
                 });
             }
 
-            if (ICON_PATHS.includes(path)) {
+            if (ICON_PATHS.has(path)) {
                 return Response.redirect(`https://adamic.tech/assets/images/favicons${path}`, 301);
             }
 
