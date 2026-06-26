@@ -8,6 +8,15 @@ import { ICONS } from './icons.js';
 let cachedTemplateString: string | null = null;
 let cachedSiteKey: string | undefined = undefined;
 
+function escapeHtmlAttr(str: string): string {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
 export const renderTemplate = (siteKey?: string): string => {
     if (cachedTemplateString !== null && cachedSiteKey === siteKey) {
         return cachedTemplateString;
@@ -192,7 +201,7 @@ ${STYLES}
                     <button class="mode-btn active" data-mode="ai" aria-pressed="true">✨ AI-Enhanced</button>
                     <button class="mode-btn" data-mode="search" aria-pressed="false">📄 Raw Docs</button>
                 </div>
-                ${siteKey ? `<div class="cf-turnstile" data-sitekey="${siteKey}" data-theme="auto" style="margin-bottom: 1.5rem;"></div>` : ''}
+                ${siteKey ? `<div class="cf-turnstile" data-sitekey="${escapeHtmlAttr(siteKey)}" data-theme="auto" style="margin-bottom: 1.5rem;"></div>` : ''}
                 <button class="search-btn" id="searchBtn">Search Documentation</button>
             </section>
 

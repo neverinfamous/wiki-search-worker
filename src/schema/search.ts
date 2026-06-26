@@ -5,7 +5,6 @@ export type SearchRequest = {
     mode: 'ai' | 'search';
     max_results: number;
     rewrite?: boolean;
-    wiki?: string;
     turnstileToken: string;
 };
 
@@ -18,7 +17,6 @@ export const SearchRequestSchema: z.ZodType<SearchRequest> = z
         mode: z.enum(['ai', 'search']).optional().default('ai'),
         max_results: z.number().int().min(1).max(50).optional().default(5),
         rewrite: z.boolean().optional(),
-        wiki: z.string().optional(),
         turnstileToken: z.string(),
     })
     .strict();
