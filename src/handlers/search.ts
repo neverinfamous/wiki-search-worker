@@ -18,7 +18,10 @@ interface SearchResponse {
 }
 
 async function checkRateLimit(rateLimiter: Env['RATE_LIMITER'], ip: string): Promise<boolean> {
-    if (!rateLimiter) return true;
+    if (!rateLimiter) {
+        logger.error('api', 'RATE_LIMITER binding is missing. Failing closed.');
+        throw new AppError('Rate limiting configuration error', 'INTERNAL_ERROR', HTTP_STATUS.INTERNAL_SERVER_ERROR);
+    }
     try {
         const { success } = await rateLimiter.limit({ key: ip });
         return success;
@@ -29,7 +32,10 @@ async function checkRateLimit(rateLimiter: Env['RATE_LIMITER'], ip: string): Pro
 }
 
 async function verifyTurnstile(token: string | undefined, ip: string, secretKey?: string): Promise<void> {
-    if (!secretKey) return;
+    if (!secretKey) {
+        logger.error('api', 'TURNSTILE_SECRET_KEY is missing. Failing closed.');
+        throw new AppError('Security configuration error', 'INTERNAL_ERROR', HTTP_STATUS.INTERNAL_SERVER_ERROR);
+    }
     if (!token) {
         throw new ValidationError('Turnstile validation is required');
     }
@@ -54,6 +60,12 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
 
     if (!parseOutcome.success || !parseOutcome.data.success) {
         throw new ValidationError('Turnstile validation failed');
+    }
+
+    const hostname = parseOutcome.data.hostname;
+    if (hostname && !hostname.endsWith('adamic.tech')) {
+        logger.warn('api', 'Turnstile token generated for invalid hostname', { hostname });
+        throw new ValidationError('Turnstile validation failed: Invalid origin');
     }
 }
 
