@@ -21,19 +21,33 @@ function main() {
     const syncAll = args.includes('--all');
     const specificWiki = args.find(a => !a.startsWith('--'));
 
-    // Auto-load .env file if it exists
-    const envPath = join(process.cwd(), '.env');
-    if (existsSync(envPath)) {
-        const envFile = readFileSync(envPath, 'utf-8');
-        for (const line of envFile.split('\n')) {
-            const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
-            if (match) {
-                const key = match[1];
-                let value = match[2] || '';
-                value = value.replace(/(^['"]|['"]$)/g, '').trim();
-                if (!process.env[key]) process.env[key] = value;
+    // Auto-load .env files if they exist
+    const envPaths = [
+        join(BASE_PATH, 'adamic', 'secrets.env'),
+        join(process.cwd(), '.env')
+    ];
+
+    for (const envPath of envPaths) {
+        if (existsSync(envPath)) {
+            const envFile = readFileSync(envPath, 'utf-8');
+            for (const line of envFile.split('\n')) {
+                const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+                if (match) {
+                    const key = match[1];
+                    let value = match[2] || '';
+                    value = value.replace(/(^['"]|['"]$)/g, '').trim();
+                    if (!process.env[key]) process.env[key] = value;
+                }
             }
         }
+    }
+
+    // Map Adamic centralized secrets if present
+    if (!process.env.CLOUDFLARE_API_TOKEN && process.env.CF_API_TOKEN_1) {
+        process.env.CLOUDFLARE_API_TOKEN = process.env.CF_API_TOKEN_1;
+    }
+    if (!process.env.CLOUDFLARE_ACCOUNT_ID && process.env.CF_ACCOUNT_ID) {
+        process.env.CLOUDFLARE_ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
     }
 
     if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID) {
