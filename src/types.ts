@@ -7,6 +7,7 @@ export interface AiSearchBinding {
 export interface Env {
     AI: unknown;
     WIKI_SEARCH: AiSearchBinding;
+    WIKI_SEARCH_INSTANCE_ID?: string;
     ALLOWED_ORIGINS?: string;
     TURNSTILE_SITE_KEY?: string;
     TURNSTILE_SECRET_KEY?: string;

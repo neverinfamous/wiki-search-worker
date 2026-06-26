@@ -1,9 +1,17 @@
 import { Env } from '../types.js';
 import { jsonResponse } from './cors.js';
-import { SearchRequestSchema, isSpecificQuery } from '../schema/search.js';
+import {
+    SearchRequestSchema,
+    isSpecificQuery,
+    TurnstileResponseSchema,
+    AiSearchResponseSchema,
+} from '../schema/search.js';
 import { logger } from '../utils/logger.js';
 import { AiSearchError, ValidationError } from '../utils/errors.js';
 
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const DEFAULT_MATCH_THRESHOLD = 0.5;
+const DEFAULT_INSTANCE_ID = 'blog-index';
 interface SearchResponse {
     success: boolean;
     data?: unknown;
@@ -64,20 +72,17 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
             formData.append('remoteip', ip);
 
             const result = await fetch(
-                'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+                TURNSTILE_VERIFY_URL,
                 {
                     body: formData,
                     method: 'POST',
                 },
             );
 
-            const outcome = await result.json();
-            if (
-                !outcome ||
-                typeof outcome !== 'object' ||
-                !('success' in outcome) ||
-                !outcome.success
-            ) {
+            const outcomeRaw = await result.json();
+            const parseOutcome = TurnstileResponseSchema.safeParse(outcomeRaw);
+
+            if (!parseOutcome.success || !parseOutcome.data.success) {
                 throw new ValidationError('Turnstile validation failed');
             }
         }
@@ -88,10 +93,10 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const aiSearch = env.WIKI_SEARCH;
         const searchOptions = {
-            instance_ids: ['blog-index'],
+            instance_ids: [env.WIKI_SEARCH_INSTANCE_ID || DEFAULT_INSTANCE_ID],
             retrieval: {
                 max_num_results: maxResults,
-                match_threshold: 0.5,
+                match_threshold: DEFAULT_MATCH_THRESHOLD,
             },
             query_rewrite: {
                 enabled: shouldRewrite,
@@ -123,8 +128,11 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
 
         const responseTime = Date.now() - startTime;
 
-        const searchResult = result as { chunks?: unknown[] };
-        const resultCount = searchResult.chunks?.length ?? 0;
+        const searchResultParse = AiSearchResponseSchema.safeParse(result);
+        const resultCount =
+            searchResultParse.success && searchResultParse.data.chunks
+                ? searchResultParse.data.chunks.length
+                : 0;
 
         logger.info('api', 'Search completed', {
             query: body.query,

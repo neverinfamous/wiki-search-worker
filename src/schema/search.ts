@@ -30,3 +30,18 @@ export function isSpecificQuery(query: string): boolean {
     ];
     return specificPatterns.some((p) => p.test(query));
 }
+
+export const TurnstileResponseSchema = z.object({
+    success: z.boolean(),
+    'error-codes': z.array(z.string()).optional(),
+    challenge_ts: z.string().optional(),
+    hostname: z.string().optional(),
+}).loose();
+
+export type TurnstileResponse = z.infer<typeof TurnstileResponseSchema>;
+
+export const AiSearchResponseSchema = z.object({
+    chunks: z.array(z.unknown()).optional(),
+}).loose();
+
+export type AiSearchResponse = z.infer<typeof AiSearchResponseSchema>;
