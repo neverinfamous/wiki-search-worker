@@ -6,21 +6,23 @@ on:
     workflow_dispatch: # Manual trigger
 
 jobs:
+    setup:
+        runs-on: ubuntu-24.04
+        outputs:
+            matrix: ${{ steps.set-matrix.outputs.matrix }}
+        steps:
+            - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+            - id: set-matrix
+              run: echo "matrix=$(jq -c . wikis.json)" >> $GITHUB_OUTPUT
+
     sync:
+        needs: setup
         runs-on: ubuntu-24.04
         permissions:
             contents: read
         strategy:
             matrix:
-                wiki:
-                    - { repo: 'sqlite-mcp-server.wiki.git', id: 'sqlite', dir: 'db-mcp.wiki' }
-                    - { repo: 'postgres-mcp.wiki.git', id: 'postgres', dir: 'postgres-mcp.wiki' }
-                    - { repo: 'memory-journal-mcp.wiki.git', id: 'memory-journal', dir: 'memory-journal-mcp.wiki' }
-                    - { repo: 'R2-Manager-Worker.wiki.git', id: 'r2-manager', dir: 'R2-Manager-Worker.wiki' }
-                    - { repo: 'kv-manager.wiki.git', id: 'kv-manager', dir: 'kv-manager.wiki' }
-                    - { repo: 'mysql-mcp.wiki.git', id: 'mysql-mcp', dir: 'mysql-mcp.wiki' }
-                    - { repo: 'd1-manager.wiki.git', id: 'd1-manager', dir: 'd1-manager.wiki' }
-                    - { repo: 'do-manager.wiki.git', id: 'do-manager', dir: 'do-manager.wiki' }
+                wiki: ${{ fromJson(needs.setup.outputs.matrix) }}
             fail-fast: false
 
         name: Sync ${{ matrix.wiki.id }}

@@ -5,16 +5,16 @@ import { readdirSync, existsSync, readFileSync } from 'node:fs';
 const BUCKET_NAME = 'adamic-blog-search';
 const BASE_PATH = resolve(process.cwd(), '..');
 
-const WIKIS = {
-    'sqlite': { path: join(BASE_PATH, 'db-mcp.wiki'), folder: 'sqlite', displayName: 'SQLite MCP Server' },
-    'postgres': { path: join(BASE_PATH, 'postgres-mcp.wiki'), folder: 'postgres', displayName: 'PostgreSQL MCP Server' },
-    'memory-journal': { path: join(BASE_PATH, 'memory-journal-mcp.wiki'), folder: 'memory-journal', displayName: 'Memory Journal MCP' },
-    'r2-manager': { path: join(BASE_PATH, 'R2-Manager-Worker.wiki'), folder: 'r2-manager', displayName: 'R2 Bucket Manager' },
-    'd1-manager': { path: join(BASE_PATH, 'd1-manager.wiki'), folder: 'd1-manager', displayName: 'D1 Database Manager' },
-    'do-manager': { path: join(BASE_PATH, 'do-manager.wiki'), folder: 'do-manager', displayName: 'DO Manager' },
-    'kv-manager': { path: join(BASE_PATH, 'kv-manager.wiki'), folder: 'kv-manager', displayName: 'KV Manager' },
-    'mysql-mcp': { path: join(BASE_PATH, 'mysql-mcp.wiki'), folder: 'mysql-mcp', displayName: 'MySQL MCP Server' }
-};
+const wikisConfigPath = join(process.cwd(), 'wikis.json');
+const wikisConfig = JSON.parse(readFileSync(wikisConfigPath, 'utf-8'));
+const WIKIS = {};
+for (const w of wikisConfig) {
+    WIKIS[w.id] = { 
+        path: join(BASE_PATH, w.dir), 
+        folder: w.id, 
+        displayName: w.displayName 
+    };
+}
 
 function main() {
     const args = process.argv.slice(2);

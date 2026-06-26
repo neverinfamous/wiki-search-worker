@@ -357,45 +357,22 @@ pnpm run sync memory-journal
 
 **Follow these steps to add a new project wiki to the AI Search system:**
 
-### 1. Add Wiki to Local Sync Script
+### 1. Add Wiki to Central Configuration
 
-Edit `scripts/sync-wikis.mjs` and add your new wiki to the `WIKIS` object:
+Edit `wikis.json` at the root of the repository and add your new wiki to the JSON array:
 
-```javascript
-const WIKIS = {
-    // ... existing wikis ...
-    'your-project': { 
-        path: join(BASE_PATH, 'your-project.wiki'), 
-        folder: 'your-project', 
-        displayName: 'Your Project Name' 
-    }
-};
+```json
+[
+  // ... existing wikis ...
+  { "id": "your-project", "repo": "your-project.wiki.git", "dir": "your-project.wiki", "displayName": "Your Project Name" }
+]
 ```
 
-### 2. Add Wiki to GitHub Actions Workflow
+*(You don't need to touch any code or GitHub Actions workflows—both the local script and the CI/CD pipeline dynamically read from this JSON file).*
 
-Edit `.github/workflows/deploy.yml` and add these steps before "Step 6":
 
-```yaml
-- name: Clone Your Project wiki repository
-  run: |
-      git clone https://github.com/yourusername/your-project.wiki.git your-project-wiki-temp
 
-- name: Upload Your Project wiki files to R2
-  run: |
-      cd your-project-wiki-temp
-      for file in *.md; do
-        echo "Uploading $file to R2 (your-project folder)..."
-        npx wrangler r2 object put adamic-blog-search/your-project/"$file" --file="$file" --remote
-      done
-  env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-```
-
-Update the deployment summary to include your new wiki.
-
-### 3. Configure R2 Bucket Folder Structure
+### 2. Configure R2 Bucket Folder Structure
 
 The R2 bucket uses this structure:
 
@@ -409,7 +386,7 @@ adamic-blog-search/
 └── your-project/    # Your new project wiki files
 ```
 
-### 4. Initial Sync
+### 3. Initial Sync
 
 After adding the configuration:
 
@@ -425,7 +402,7 @@ pnpm run sync your-project
 - GitHub Actions will automatically sync all wikis
 - Check Actions tab for progress
 
-### 5. Trigger AI Search Index Sync
+### 4. Trigger AI Search Index Sync
 
 After files are in R2, sync the search index:
 
@@ -434,7 +411,7 @@ After files are in R2, sync the search index:
 3. Wait 1-2 minutes for completion
 4. Test search at: https://search.adamic.tech
 
-### 6. Update Documentation
+### 5. Update Documentation
 
 Update these files to document the new wiki:
 
@@ -442,7 +419,7 @@ Update these files to document the new wiki:
 - `adamic-blog/README.md` - Add to supported projects
 - Both files: Update feature counts and descriptions
 
-### 7. Verify Integration
+### 6. Verify Integration
 
 Test that your wiki content is searchable:
 

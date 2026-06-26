@@ -1,0 +1,10 @@
+[
+  { "id": "sqlite", "repo": "sqlite-mcp-server.wiki.git", "dir": "db-mcp.wiki", "displayName": "SQLite MCP Server" },
+  { "id": "postgres", "repo": "postgres-mcp.wiki.git", "dir": "postgres-mcp.wiki", "displayName": "PostgreSQL MCP Server" },
+  { "id": "memory-journal", "repo": "memory-journal-mcp.wiki.git", "dir": "memory-journal-mcp.wiki", "displayName": "Memory Journal MCP" },
+  { "id": "r2-manager", "repo": "R2-Manager-Worker.wiki.git", "dir": "R2-Manager-Worker.wiki", "displayName": "R2 Bucket Manager" },
+  { "id": "d1-manager", "repo": "d1-manager.wiki.git", "dir": "d1-manager.wiki", "displayName": "D1 Database Manager" },
+  { "id": "do-manager", "repo": "do-manager.wiki.git", "dir": "do-manager.wiki", "displayName": "DO Manager" },
+  { "id": "kv-manager", "repo": "kv-manager.wiki.git", "dir": "kv-manager.wiki", "displayName": "KV Manager" },
+  { "id": "mysql-mcp", "repo": "mysql-mcp.wiki.git", "dir": "mysql-mcp.wiki", "displayName": "MySQL MCP Server" }
+]
