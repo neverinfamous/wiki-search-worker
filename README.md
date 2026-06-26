@@ -81,9 +81,11 @@ GitHub Wiki → GitHub Actions → R2 Bucket → AI Search Index → Worker → 
 Every push to `main` branch automatically:
 
 1. ✅ **Deploys Worker** to Cloudflare Edge
-2. ✅ **Clones wiki repository** from GitHub
-3. ✅ **Uploads files** to R2 bucket (with `--remote` flag)
-4. ⚠️ **Requires manual sync** - Click "Sync Index" in dashboard (or wait 6 hours)
+
+The **Wiki Sync Pipeline** runs automatically every 6 hours (or manually via GitHub Actions) to:
+1. ✅ **Clone wiki repositories** from GitHub
+2. ✅ **Upload files** to the R2 bucket
+3. ⚠️ **Require manual sync** - Click "Sync Index" in the Cloudflare dashboard (or wait for its 6-hour auto-sync)
 
 ### GitHub Actions Workflow
 
@@ -328,22 +330,23 @@ mcp_cloudflare -
 
 ### Local Wiki Sync Script
 
-**PowerShell Script**: Use `sync-wikis-to-r2.ps1` for manual syncing from local wikis
+**Node.js Script**: Use `pnpm run sync` for manual syncing from local wikis
 
-```powershell
+```bash
 # Set required environment variables (one-time setup)
-$env:CLOUDFLARE_API_TOKEN = "<your-api-token>"
-$env:CLOUDFLARE_ACCOUNT_ID = "<your-account-id>"
+export CLOUDFLARE_API_TOKEN="<your-api-token>"
+export CLOUDFLARE_ACCOUNT_ID="<your-account-id>"
+# (On Windows PowerShell: $env:CLOUDFLARE_API_TOKEN="...")
 
 # Sync all wikis
-.\sync-wikis-to-r2.ps1
+pnpm run sync:all
 
 # Sync specific wiki only
-.\sync-wikis-to-r2.ps1 -WikiName r2-manager
-.\sync-wikis-to-r2.ps1 -WikiName kv-manager
-.\sync-wikis-to-r2.ps1 -WikiName sqlite
-.\sync-wikis-to-r2.ps1 -WikiName postgres
-.\sync-wikis-to-r2.ps1 -WikiName memory-journal
+pnpm run sync r2-manager
+pnpm run sync kv-manager
+pnpm run sync sqlite
+pnpm run sync postgres
+pnpm run sync memory-journal
 ```
 
 **After running the script**: Go to the Cloudflare dashboard and click "Sync Index" or wait for automatic sync.
@@ -356,17 +359,17 @@ $env:CLOUDFLARE_ACCOUNT_ID = "<your-account-id>"
 
 ### 1. Add Wiki to Local Sync Script
 
-Edit `sync-wikis-to-r2.ps1` and add your new wiki to the `$wikis` hash table:
+Edit `scripts/sync-wikis.mjs` and add your new wiki to the `WIKIS` object:
 
-```powershell
-$wikis = @{
-    # ... existing wikis ...
-    'your-project' = @{
-        Path = "$BASE_PATH\your-project.wiki"
-        Folder = "your-project"
-        DisplayName = "Your Project Name"
+```javascript
+const WIKIS = {
+    // ... existing wikis ...
+    'your-project': { 
+        path: join(BASE_PATH, 'your-project.wiki'), 
+        folder: 'your-project', 
+        displayName: 'Your Project Name' 
     }
-}
+};
 ```
 
 ### 2. Add Wiki to GitHub Actions Workflow
@@ -412,8 +415,8 @@ After adding the configuration:
 
 **Option A: Local Sync (Fast)**
 
-```powershell
-.\sync-wikis-to-r2.ps1 -WikiName your-project
+```bash
+pnpm run sync your-project
 ```
 
 **Option B: GitHub Actions (Automatic)**

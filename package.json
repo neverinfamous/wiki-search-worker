@@ -11,7 +11,9 @@
         "lint": "eslint src",
         "typecheck": "tsc --noEmit",
         "build": "echo \"No build required\"",
-        "check": "pnpm run lint && pnpm run typecheck && pnpm run build"
+        "check": "pnpm run lint && pnpm run typecheck && pnpm run build",
+        "sync": "node scripts/sync-wikis.mjs",
+        "sync:all": "node scripts/sync-wikis.mjs --all"
     },
     "keywords": [
         "cloudflare",

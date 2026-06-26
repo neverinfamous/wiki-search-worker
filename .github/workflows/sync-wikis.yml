@@ -1,57 +1,53 @@
 name: Sync Wiki Indexes
 
 on:
-    workflow_dispatch: # Manual trigger only
+    schedule:
+        - cron: '0 */6 * * *' # Every 6 hours
+    workflow_dispatch: # Manual trigger
 
 jobs:
     sync:
         runs-on: ubuntu-24.04
-        permissions: {}
+        permissions:
+            contents: read
         strategy:
             matrix:
                 wiki:
-                    - { repo: 'sqlite-mcp-server.wiki.git', folder: 'sqlite' }
-                    - { repo: 'postgres-mcp.wiki.git', folder: 'postgres' }
-                    - { repo: 'memory-journal-mcp.wiki.git', folder: 'memory-journal' }
-                    - { repo: 'R2-Manager-Worker.wiki.git', folder: 'r2-manager' }
-                    - { repo: 'kv-manager.wiki.git', folder: 'kv-manager' }
-                    - { repo: 'mysql-mcp.wiki.git', folder: 'mysql-mcp' }
-                    - { repo: 'd1-manager.wiki.git', folder: 'd1-manager' }
-                    - { repo: 'do-manager.wiki.git', folder: 'do-manager' }
+                    - { repo: 'sqlite-mcp-server.wiki.git', id: 'sqlite', dir: 'db-mcp.wiki' }
+                    - { repo: 'postgres-mcp.wiki.git', id: 'postgres', dir: 'postgres-mcp.wiki' }
+                    - { repo: 'memory-journal-mcp.wiki.git', id: 'memory-journal', dir: 'memory-journal-mcp.wiki' }
+                    - { repo: 'R2-Manager-Worker.wiki.git', id: 'r2-manager', dir: 'R2-Manager-Worker.wiki' }
+                    - { repo: 'kv-manager.wiki.git', id: 'kv-manager', dir: 'kv-manager.wiki' }
+                    - { repo: 'mysql-mcp.wiki.git', id: 'mysql-mcp', dir: 'mysql-mcp.wiki' }
+                    - { repo: 'd1-manager.wiki.git', id: 'd1-manager', dir: 'd1-manager.wiki' }
+                    - { repo: 'do-manager.wiki.git', id: 'do-manager', dir: 'do-manager.wiki' }
             fail-fast: false
 
-        name: Sync ${{ matrix.wiki.folder }}
+        name: Sync ${{ matrix.wiki.id }}
         steps:
+            - name: Checkout repository
+              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
             - name: Setup Node.js
               uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
               with:
                   node-version: '22'
 
-            - name: Install Wrangler
-              run: npm install -g wrangler@3.114.4
-
             - name: Clone wiki
-              run: git clone https://github.com/neverinfamous/${{ matrix.wiki.repo }} wiki-temp
+              run: |
+                  cd ..
+                  git clone https://github.com/neverinfamous/${{ matrix.wiki.repo }} ${{ matrix.wiki.dir }}
 
             - name: Validate wiki content
               run: |
-                  cd wiki-temp
+                  cd ../${{ matrix.wiki.dir }}
                   if grep -rlE '<script|<iframe|javascript:' *.md 2>/dev/null; then
                       echo "Suspicious content detected"
                       exit 1
                   fi
 
             - name: Upload to R2
-              run: |
-                  cd wiki-temp
-                  for f in *.md; do
-                      if [ ! -e "$f" ]; then continue; fi
-                      echo "Uploading $f..."
-                      if ! wrangler r2 object put "adamic-blog-search/${{ matrix.wiki.folder }}/${f}" --file="${f}" --remote >/dev/null 2>&1; then
-                          echo "Failed to upload $f"
-                          exit 1
-                      fi
-                  done
+              run: node scripts/sync-wikis.mjs ${{ matrix.wiki.id }}
               env:
                   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
