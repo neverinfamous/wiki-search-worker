@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
-import { readdirSync, existsSync } from 'node:fs';
+import { readdirSync, existsSync, readFileSync } from 'node:fs';
 
 const BUCKET_NAME = 'adamic-blog-search';
 const BASE_PATH = resolve(process.cwd(), '..');
@@ -20,6 +20,21 @@ function main() {
     const args = process.argv.slice(2);
     const syncAll = args.includes('--all');
     const specificWiki = args.find(a => !a.startsWith('--'));
+
+    // Auto-load .env file if it exists
+    const envPath = join(process.cwd(), '.env');
+    if (existsSync(envPath)) {
+        const envFile = readFileSync(envPath, 'utf-8');
+        for (const line of envFile.split('\n')) {
+            const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+            if (match) {
+                const key = match[1];
+                let value = match[2] || '';
+                value = value.replace(/(^['"]|['"]$)/g, '').trim();
+                if (!process.env[key]) process.env[key] = value;
+            }
+        }
+    }
 
     if (!process.env.CLOUDFLARE_API_TOKEN || !process.env.CLOUDFLARE_ACCOUNT_ID) {
         console.error('Error: CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID environment variables must be set.');
