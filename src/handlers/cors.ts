@@ -7,10 +7,16 @@ export const SECURITY_HEADERS: Record<string, string> = {
     'Content-Security-Policy': "default-src 'none'",
 };
 
+const parsedOriginsCache = new Map<string, string[]>();
+
 export function resolveAllowedOrigin(origin?: string | null, allowedOriginsRaw?: string): string | null {
-    const allowedOrigins = allowedOriginsRaw
-        ? allowedOriginsRaw.split(',').map((s) => s.trim())
-        : [];
+    if (!allowedOriginsRaw) return null;
+    
+    let allowedOrigins = parsedOriginsCache.get(allowedOriginsRaw);
+    if (!allowedOrigins) {
+        allowedOrigins = allowedOriginsRaw.split(',').map((s) => s.trim());
+        parsedOriginsCache.set(allowedOriginsRaw, allowedOrigins);
+    }
     
     if (allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin))) {
         return origin || '*';
@@ -54,11 +60,11 @@ export function jsonResponse(
     origin?: string | null,
     allowedOriginsRaw?: string,
 ): Response {
-    const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-        ...SECURITY_HEADERS,
-        ...additionalHeaders,
-    };
+    const headers: Record<string, string> = Object.assign(
+        { 'Content-Type': 'application/json' },
+        SECURITY_HEADERS,
+        additionalHeaders
+    );
 
     return new Response(JSON.stringify(data), {
         status,

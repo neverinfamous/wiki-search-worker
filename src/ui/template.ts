@@ -5,7 +5,16 @@ import { ICONS } from './icons.js';
  * Public Search Interface Template
  */
 
-export const renderTemplate = (siteKey?: string) => `<!DOCTYPE html>
+let cachedTemplateString: string | null = null;
+let cachedSiteKey: string | undefined = undefined;
+
+export const renderTemplate = (siteKey?: string) => {
+    if (cachedTemplateString !== null && cachedSiteKey === siteKey) {
+        return cachedTemplateString;
+    }
+    
+    cachedSiteKey = siteKey;
+    cachedTemplateString = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -586,3 +595,5 @@ ${STYLES}
     </script>
 </body>
 </html>`;
+    return cachedTemplateString;
+};

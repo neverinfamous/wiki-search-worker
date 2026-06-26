@@ -18,13 +18,13 @@ export const logger = {
 
 function log(level: LogLevel, module: string, message: string, context?: Record<string, unknown>) {
     const timestamp = new Date().toISOString();
-    const payload = {
-        ...context,
+    const base = {
         timestamp,
         level,
         module,
         message,
     };
+    const payload = context ? Object.assign(base, context) : base;
 
     if (level === 'ERROR') {
         console.error(JSON.stringify(payload));
