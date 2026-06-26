@@ -2,11 +2,11 @@ export interface AiSearchBinding {
     chatCompletions(options: {
         messages: Array<{ role: string; content: string }>;
         ai_search_options?: Record<string, unknown>;
-    }): Promise<unknown>;
+    }): Promise<{ chunks?: Array<Record<string, unknown>> } & Record<string, unknown>>;
     search(options: {
         messages: Array<{ role: string; content: string }>;
         ai_search_options?: Record<string, unknown>;
-    }): Promise<unknown>;
+    }): Promise<{ chunks?: Array<Record<string, unknown>> } & Record<string, unknown>>;
 }
 
 // Ensure the Env interface matches what wrangler provides

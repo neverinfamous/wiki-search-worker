@@ -3,11 +3,11 @@ import { handleCORS, jsonResponse, SECURITY_HEADERS } from './handlers/cors.js';
 import { handleSearch } from './handlers/search.js';
 import { renderTemplate } from './ui/template.js';
 import { logger } from './utils/logger.js';
-import { HTTP_STATUS } from './utils/constants.js';
+import { AppError } from './utils/errors.js';
+import { HTTP_STATUS, HTML_CSP, ICON_PATHS } from './utils/constants.js';
 import pkg from '../package.json';
 
 const VERSION = pkg.version;
-const HTML_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'";
 
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
@@ -31,12 +31,7 @@ export default {
                 });
             }
 
-            const iconPaths = [
-                '/favicon.ico',
-                '/apple-touch-icon.png',
-                '/apple-touch-icon-precomposed.png',
-            ];
-            if (iconPaths.includes(path)) {
+            if (ICON_PATHS.includes(path)) {
                 return Response.redirect(`https://adamic.tech/assets/images/favicons${path}`, 301);
             }
 
@@ -93,6 +88,20 @@ export default {
                 env.ALLOWED_ORIGINS,
             );
         } catch (error) {
+            if (error instanceof AppError) {
+                logger.error('router', 'Worker error', { error: error.message, context: error.context });
+                return jsonResponse(
+                    {
+                        success: false,
+                        error: error.message,
+                    },
+                    error.statusCode,
+                    undefined,
+                    request.headers.get('Origin'),
+                    env.ALLOWED_ORIGINS,
+                );
+            }
+
             const msg = error instanceof Error ? error.message : 'Internal server error';
             logger.error('router', 'Worker error', { error: msg });
             return jsonResponse(

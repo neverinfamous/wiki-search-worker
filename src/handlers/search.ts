@@ -7,12 +7,9 @@ import {
     AiSearchResponseSchema,
 } from '../schema/search.js';
 import { logger } from '../utils/logger.js';
-import { AiSearchError, ValidationError } from '../utils/errors.js';
-import { HTTP_STATUS, MAX_LOG_QUERY_LENGTH } from '../utils/constants.js';
+import { AiSearchError, ValidationError, AppError } from '../utils/errors.js';
+import { HTTP_STATUS, MAX_LOG_QUERY_LENGTH, TURNSTILE_VERIFY_URL, DEFAULT_MATCH_THRESHOLD, DEFAULT_INSTANCE_ID } from '../utils/constants.js';
 
-const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-const DEFAULT_MATCH_THRESHOLD = 0.5;
-const DEFAULT_INSTANCE_ID = 'blog-index';
 interface SearchResponse {
     success: boolean;
     data?: unknown;
@@ -72,8 +69,10 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
             body.query.length > MAX_LOG_QUERY_LENGTH ? body.query.substring(0, MAX_LOG_QUERY_LENGTH) + '...' : body.query;
         logger.info('api', `Search query`, { query: truncatedQuery, mode: body.mode });
 
-        const ip = request.headers.get('cf-connecting-ip') ?? 'unknown';
-
+        const ip = request.headers.get('cf-connecting-ip');
+        if (!ip) {
+            throw new ValidationError('Client IP is required for rate limiting');
+        }
         const isRateLimitOk = await checkRateLimit(env.RATE_LIMITER, ip);
         if (!isRateLimitOk) {
             return jsonResponse(
@@ -166,38 +165,16 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                 message: error.message,
                 context: error.context,
             });
-            return jsonResponse(
-                {
-                    success: false,
-                    error: 'Invalid request: check query, mode, and max_results fields.',
-                    mode: 'unknown',
-                    timestamp: new Date().toISOString(),
-                },
-                error.statusCode,
-                undefined,
-                request.headers.get('Origin'),
-                env.ALLOWED_ORIGINS,
-            );
+            throw error;
         }
 
-        const msg = error instanceof Error ? error.message : 'Search failed';
+        const msg = error instanceof Error ? error.message : String(error);
         logger.error('api', 'Search error', {
             error: msg,
             stack: error instanceof Error ? error.stack : undefined,
             url: request.url,
         });
 
-        return jsonResponse(
-            {
-                success: false,
-                error: 'An internal server error occurred processing the search',
-                mode: 'unknown',
-                timestamp: new Date().toISOString(),
-            },
-            HTTP_STATUS.INTERNAL_SERVER_ERROR,
-            undefined,
-            request.headers.get('Origin'),
-            env.ALLOWED_ORIGINS,
-        );
+        throw error instanceof AppError ? error : new AppError(msg, 'INTERNAL_ERROR', HTTP_STATUS.INTERNAL_SERVER_ERROR);
     }
 }

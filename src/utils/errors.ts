@@ -26,8 +26,3 @@ export class AiSearchError extends AppError {
     }
 }
 
-export class ConfigurationError extends AppError {
-    constructor(message: string, context?: Record<string, unknown>) {
-        super(message, 'CONFIGURATION_ERROR', 500, context);
-    }
-}

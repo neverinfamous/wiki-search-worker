@@ -8,3 +8,13 @@ export const HTTP_STATUS = {
 } as const;
 
 export const MAX_LOG_QUERY_LENGTH = 30;
+
+export const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+export const DEFAULT_MATCH_THRESHOLD = 0.5;
+export const DEFAULT_INSTANCE_ID = 'blog-index';
+export const HTML_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://adamic.tech; img-src 'self' data: https://adamic.tech; connect-src 'self'";
+export const ICON_PATHS = [
+    '/favicon.ico',
+    '/apple-touch-icon.png',
+    '/apple-touch-icon-precomposed.png',
+];
