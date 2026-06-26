@@ -124,7 +124,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         const shouldRewrite = body.rewrite ?? !isSpecificQuery(body.query);
 
         const aiSearch = env.WIKI_SEARCH;
-        const searchOptions = {
+        const searchOptions: Record<string, unknown> = {
             instance_ids: [env.WIKI_SEARCH_INSTANCE_ID || DEFAULT_INSTANCE_ID],
             retrieval: {
                 max_num_results: maxResults,
@@ -134,6 +134,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                 enabled: shouldRewrite,
             },
         };
+
         const messages: Array<{ role: 'user'; content: string }> = [
             { role: 'user', content: body.query },
         ];

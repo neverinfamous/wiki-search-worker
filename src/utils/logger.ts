@@ -5,13 +5,13 @@
 export type LogLevel = 'INFO' | 'WARN' | 'ERROR';
 
 export const logger = {
-    info(module: string, message: string, context?: Record<string, unknown>) {
+    info(module: string, message: string, context?: Record<string, unknown>): void {
         log('INFO', module, message, context);
     },
-    warn(module: string, message: string, context?: Record<string, unknown>) {
+    warn(module: string, message: string, context?: Record<string, unknown>): void {
         log('WARN', module, message, context);
     },
-    error(module: string, message: string, context?: Record<string, unknown>) {
+    error(module: string, message: string, context?: Record<string, unknown>): void {
         log('ERROR', module, message, context);
     },
 };

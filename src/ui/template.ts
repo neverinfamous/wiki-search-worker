@@ -8,7 +8,7 @@ import { ICONS } from './icons.js';
 let cachedTemplateString: string | null = null;
 let cachedSiteKey: string | undefined = undefined;
 
-export const renderTemplate = (siteKey?: string) => {
+export const renderTemplate = (siteKey?: string): string => {
     if (cachedTemplateString !== null && cachedSiteKey === siteKey) {
         return cachedTemplateString;
     }

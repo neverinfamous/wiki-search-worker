@@ -1,6 +1,15 @@
 import { z } from 'zod';
 
-export const SearchRequestSchema = z
+export type SearchRequest = {
+    query: string;
+    mode: 'ai' | 'search';
+    max_results: number;
+    rewrite?: boolean;
+    wiki?: string;
+    turnstileToken: string;
+};
+
+export const SearchRequestSchema: z.ZodType<SearchRequest> = z
     .object({
         query: z
             .string()
@@ -9,11 +18,10 @@ export const SearchRequestSchema = z
         mode: z.enum(['ai', 'search']).optional().default('ai'),
         max_results: z.number().int().min(1).max(50).optional().default(5),
         rewrite: z.boolean().optional(),
+        wiki: z.string().optional(),
         turnstileToken: z.string(),
     })
     .strict();
-
-export type SearchRequest = z.infer<typeof SearchRequestSchema>;
 
 const SPECIFIC_QUERY_PATTERN = /(?:^how (?:do|to) i)|(?:\w+_\w+)|(?:`[^`]+`)|(?:"[^"]+")|(?:\b(?:install|configure|setup|create|delete|list|get)\b)/i;
 
@@ -26,17 +34,24 @@ export function isSpecificQuery(query: string): boolean {
     return SPECIFIC_QUERY_PATTERN.test(query);
 }
 
-export const TurnstileResponseSchema = z.object({
+export type TurnstileResponse = {
+    success: boolean;
+    'error-codes'?: string[];
+    challenge_ts?: string;
+    hostname?: string;
+};
+
+export const TurnstileResponseSchema: z.ZodType<TurnstileResponse> = z.object({
     success: z.boolean(),
     'error-codes': z.array(z.string()).optional(),
     challenge_ts: z.string().optional(),
     hostname: z.string().optional(),
 }).loose();
 
-export type TurnstileResponse = z.infer<typeof TurnstileResponseSchema>;
+export type AiSearchResponse = {
+    chunks?: Record<string, unknown>[];
+};
 
-export const AiSearchResponseSchema = z.object({
+export const AiSearchResponseSchema: z.ZodType<AiSearchResponse> = z.object({
     chunks: z.array(z.record(z.string(), z.unknown())).optional(),
 }).loose();
-
-export type AiSearchResponse = z.infer<typeof AiSearchResponseSchema>;
