@@ -15,7 +15,7 @@ namespace = "adamic-blog-search"
 # Use "*" to allow all origins (not recommended for production)
 # Example: "https://adamic.tech,https://docs.adamic.tech"
 ALLOWED_ORIGINS = "https://adamic.tech"
-TURNSTILE_SITE_KEY = "0x4AAAAAADmjyYZe1SbQUi1P_bgYiM-ijGA"
+TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
 
 [[ratelimits]]
 name = "RATE_LIMITER"
