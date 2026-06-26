@@ -1,6 +1,13 @@
 name: Sync Wiki Indexes
 
 on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'wikis.json'
+            - 'scripts/sync-wikis.mjs'
+            - '.github/workflows/sync-wikis.yml'
     schedule:
         - cron: '0 */6 * * *' # Every 6 hours
     workflow_dispatch: # Manual trigger
