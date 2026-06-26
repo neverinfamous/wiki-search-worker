@@ -26,8 +26,8 @@ async function checkRateLimit(rateLimiter: Env['RATE_LIMITER'], ip: string): Pro
         const { success } = await rateLimiter.limit({ key: ip });
         return success;
     } catch (error) {
-        logger.warn('api', 'Rate limiter error, failing open', { error: String(error) });
-        return true;
+        logger.error('api', 'Rate limiter error, failing closed', { error: String(error) });
+        return false;
     }
 }
 
@@ -63,7 +63,7 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
     }
 
     const hostname = parseOutcome.data.hostname;
-    if (hostname && !hostname.endsWith('adamic.tech')) {
+    if (hostname && hostname !== 'adamic.tech' && !hostname.endsWith('.adamic.tech')) {
         logger.warn('api', 'Turnstile token generated for invalid hostname', { hostname });
         throw new ValidationError('Turnstile validation failed: Invalid origin');
     }

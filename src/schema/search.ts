@@ -9,7 +9,7 @@ export const SearchRequestSchema = z
         mode: z.enum(['ai', 'search']).optional().default('ai'),
         max_results: z.number().int().min(1).max(50).optional().default(5),
         rewrite: z.boolean().optional(),
-        turnstileToken: z.string().optional(),
+        turnstileToken: z.string(),
     })
     .strict();
 
