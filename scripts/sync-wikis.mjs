@@ -56,7 +56,7 @@ function main() {
     }
 
     try {
-        execSync('npx --no wrangler --version', { stdio: 'ignore' });
+        execSync('npx --yes wrangler --version', { stdio: 'ignore' });
     } catch {
         console.error('Error: Wrangler CLI not found or failed to run. Make sure it is installed.');
         process.exit(1);
@@ -109,7 +109,7 @@ function main() {
             process.stdout.write(`   Uploading: ${file}...`);
             
             try {
-                execSync(`npx --no wrangler r2 object put "${BUCKET_NAME}/${r2Path}" --file="${fullPath}" --remote`, { stdio: 'pipe' });
+                execSync(`npx --yes wrangler r2 object put "${BUCKET_NAME}/${r2Path}" --file="${fullPath}" --remote`, { stdio: 'pipe' });
                 console.log(' Done');
                 successCount++;
             } catch (err) {
