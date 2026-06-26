@@ -34,13 +34,13 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
     if (!token) {
         throw new ValidationError('Turnstile validation is required');
     }
-    const formData = new FormData();
-    formData.append('secret', secretKey);
-    formData.append('response', token);
-    formData.append('remoteip', ip);
+    const params = new URLSearchParams();
+    params.append('secret', secretKey);
+    params.append('response', token);
+    params.append('remoteip', ip);
 
     const result = await fetch(TURNSTILE_VERIFY_URL, {
-        body: formData,
+        body: params,
         method: 'POST',
     });
 
@@ -89,10 +89,7 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
         if (!ip) {
             throw new ValidationError('Client IP is required for rate limiting');
         }
-        const [isRateLimitOk] = await Promise.all([
-            checkRateLimit(env.RATE_LIMITER, ip),
-            verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET_KEY)
-        ]);
+        const isRateLimitOk = await checkRateLimit(env.RATE_LIMITER, ip);
         
         if (!isRateLimitOk) {
             return jsonResponse(
@@ -108,6 +105,8 @@ export async function handleSearch(request: Request, env: Env): Promise<Response
                 env.ALLOWED_ORIGINS,
             );
         }
+
+        await verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET_KEY);
 
         const mode = body.mode;
         const maxResults = body.max_results;
