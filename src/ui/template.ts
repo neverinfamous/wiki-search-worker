@@ -75,11 +75,6 @@ export const renderTemplate = (siteKey?: string): string => {
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
     <link rel="manifest" href="https://adamic.tech/assets/images/favicons/site.webmanifest">
 
-    <!-- External Stylesheets - Async Loading -->
-    <link rel="stylesheet" href="https://adamic.tech/assets/css/main.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/main.css"></noscript>
-    <link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://adamic.tech/assets/css/pages.css"></noscript>
 
     <style>
 ${STYLES}
