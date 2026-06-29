@@ -108,13 +108,29 @@ function main() {
             
             process.stdout.write(`   Uploading: ${file}...`);
             
-            try {
-                execSync(`npx --yes wrangler r2 object put "${BUCKET_NAME}/${r2Path}" --file="${fullPath}" --remote`, { stdio: 'pipe' });
+            let success = false;
+            let lastErr = null;
+            for (let attempt = 1; attempt <= 3; attempt++) {
+                try {
+                    execSync(`npx --yes wrangler r2 object put "${BUCKET_NAME}/${r2Path}" --file="${fullPath}" --remote`, { stdio: 'pipe' });
+                    success = true;
+                    break;
+                } catch (err) {
+                    lastErr = err;
+                    if (attempt < 3) {
+                        console.log(` Retry ${attempt}...`);
+                        // brief wait before retry
+                        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000 * attempt);
+                    }
+                }
+            }
+            
+            if (success) {
                 console.log(' Done');
                 successCount++;
-            } catch (err) {
+            } else {
                 console.log(' Failed');
-                console.log(`      Error: ${err.message}`);
+                console.log(`      Error: ${lastErr.message}`);
                 failCount++;
             }
         }
