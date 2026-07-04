@@ -39,7 +39,7 @@ export const renderTemplate = (siteKey?: string): string => {
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
+    [{
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Adamic AI Documentation Search",
@@ -55,7 +55,20 @@ export const renderTemplate = (siteKey?: string): string => {
           "url": "https://adamic.tech/assets/images/logo.webp"
         }
       }
-    }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://search.adamic.tech/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://search.adamic.tech/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }]
     </script>
 
     <!-- Open Graph -->
@@ -63,11 +76,14 @@ export const renderTemplate = (siteKey?: string): string => {
     <meta property="og:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
     <meta property="og:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
     <meta property="og:url" content="https://search.adamic.tech/">
+    <meta property="og:image" content="https://adamic.tech/assets/images/logo.webp">
 
     <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
-    <meta property="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@adamic">
+    <meta name="twitter:title" content="MCP Servers & Cloudflare Manager Documentation | AI Search">
+    <meta name="twitter:description" content="AI-powered search for MCP servers and Cloudflare tools. Find answers across MySQL, SQLite, PostgreSQL, Memory Journal, D1, DO, KV, and R2 docs.">
+    <meta name="twitter:image" content="https://adamic.tech/assets/images/logo.webp">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
