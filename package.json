@@ -26,13 +26,13 @@
     "author": "Adamic",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260625.1",
+        "@cloudflare/workers-types": "^5.20260708.1",
         "@eslint/js": "^10.0.1",
-        "eslint": "^10.5.0",
+        "eslint": "^10.6.0",
         "ts-pattern": "^5.9.0",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.62.0",
-        "wrangler": "^4.105.0"
+        "typescript-eslint": "^8.63.0",
+        "wrangler": "^4.109.0"
     },
     "packageManager": "pnpm@10.11.1",
     "pnpm.overrides": {
