@@ -9,7 +9,7 @@ on:
             - 'scripts/sync-wikis.mjs'
             - '.github/workflows/sync-wikis.yml'
     schedule:
-        - cron: '0 */6 * * *' # Every 6 hours
+        - cron: '0 0 * * 0' # Once a week on Sunday
     workflow_dispatch: # Manual trigger
 
 jobs:
