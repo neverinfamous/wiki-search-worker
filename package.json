@@ -26,13 +26,13 @@
     "author": "Adamic",
     "license": "MIT",
     "devDependencies": {
-        "@cloudflare/workers-types": "^5.20260817.1",
+        "@cloudflare/workers-types": "^5.20261030.1",
         "@eslint/js": "^10.0.1",
-        "eslint": "^10.8.1",
-        "ts-pattern": "^5.9.0",
+        "eslint": "^10.14.0",
+        "ts-pattern": "^5.9.2",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.67.0",
-        "wrangler": "^4.123.0"
+        "typescript-eslint": "^8.72.1",
+        "wrangler": "^4.156.0"
     },
     "packageManager": "pnpm@10.11.1",
     "pnpm.overrides": {
@@ -43,6 +43,6 @@
         "sharp": "^0.35.0"
     },
     "dependencies": {
-        "zod": "^4.4.3"
+        "zod": "^4.6.7"
     }
 }
