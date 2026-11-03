@@ -212,7 +212,7 @@ compatibility_flags = ["nodejs_compat"]
 
 [[ai_search_namespaces]]
 binding = "WIKI_SEARCH"
-namespace = "adamic-blog-search"
+namespace = "default"
 
 [vars]
 ALLOWED_ORIGINS = "https://adamic.tech"
