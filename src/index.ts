@@ -4,9 +4,9 @@ import { handleSearch } from './handlers/search.js';
 import { renderTemplate } from './ui/template.js';
 import { logger } from './utils/logger.js';
 import { AppError } from './utils/errors.js';
-import { HTTP_STATUS, HTML_CSP, ICON_PATHS } from './utils/constants.js';
+import { HTTP_STATUS, HTML_CSP, ICON_PATHS, WEB_MANIFEST } from './utils/constants.js';
 // Hardcoded to prevent esbuild from bundling the entire package.json in the edge worker
-const VERSION = '1.3.0';
+const VERSION = '1.4.4';
 
 export default {
     async fetch(request: Request, env: Env): Promise<Response> {
@@ -26,6 +26,16 @@ export default {
                         'X-Content-Type-Options': SECURITY_HEADERS['X-Content-Type-Options'],
                         'X-Frame-Options': SECURITY_HEADERS['X-Frame-Options'],
                         'Referrer-Policy': SECURITY_HEADERS['Referrer-Policy'],
+                    },
+                });
+            }
+
+            if (path === '/site.webmanifest') {
+                return new Response(WEB_MANIFEST, {
+                    headers: {
+                        'Content-Type': 'application/manifest+json; charset=utf-8',
+                        'Cache-Control': 'public, max-age=86400',
+                        'X-Content-Type-Options': SECURITY_HEADERS['X-Content-Type-Options'],
                     },
                 });
             }

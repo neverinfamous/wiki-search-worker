@@ -89,7 +89,7 @@ export const renderTemplate = (siteKey?: string): string => {
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamic.tech/assets/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://adamic.tech/assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://adamic.tech/assets/images/favicons/apple-touch-icon.png">
-    <link rel="manifest" href="https://adamic.tech/assets/images/favicons/site.webmanifest">
+    <link rel="manifest" href="/site.webmanifest">
 
 
     <style>
@@ -390,13 +390,19 @@ ${STYLES}
             const loading = document.getElementById('loading');
             const results = document.getElementById('results');
             const searchBtn = document.getElementById('searchBtn');
+            const turnstileTokenInput = document.querySelector('[name="cf-turnstile-response"]');
+            const turnstileToken = turnstileTokenInput ? turnstileTokenInput.value : '';
+
+            if (turnstileTokenInput && !turnstileToken) {
+                results.classList.add('show');
+                results.innerHTML = '<div class="result-card"><div class="error">Please wait a moment for security verification to complete, then try again.</div></div>';
+                return;
+            }
+
             loading.classList.add('show');
             results.classList.remove('show');
             searchBtn.disabled = true;
             try {
-                const turnstileTokenInput = document.querySelector('[name="cf-turnstile-response"]');
-                const turnstileToken = turnstileTokenInput ? turnstileTokenInput.value : undefined;
-                
                 const response = await fetch('/api/search', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -451,6 +457,13 @@ ${STYLES}
                 results.classList.add('show');
                 results.innerHTML = '<div class="result-card"><div class="error">Error: ' + escapeHtml(error.message) + '</div></div>';
             } finally {
+                if (window.turnstile) {
+                    try {
+                        window.turnstile.reset();
+                    } catch (e) {
+                        // Ignore reset errors if widget is not yet initialized
+                    }
+                }
                 searchBtn.disabled = false;
             }
         }

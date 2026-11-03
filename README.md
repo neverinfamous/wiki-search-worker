@@ -216,7 +216,7 @@ namespace = "adamic-blog-search"
 
 [vars]
 ALLOWED_ORIGINS = "https://adamic.tech"
-TURNSTILE_SITE_KEY = "0x4AAAAAADmjyYZe1SbQUi1P_bgYiM-ijGA"
+TURNSTILE_SITE_KEY = "0x4AAAAAADmjyVoJ8sBsHH-K"
 
 [[ratelimits]]
 name = "RATE_LIMITER"

@@ -59,7 +59,8 @@ async function verifyTurnstile(token: string | undefined, ip: string, secretKey?
     const parseOutcome = TurnstileResponseSchema.safeParse(outcomeRaw);
 
     if (!parseOutcome.success || !parseOutcome.data.success) {
-        throw new ValidationError('Turnstile validation failed');
+        const errorCodes = parseOutcome.success ? parseOutcome.data['error-codes'] : undefined;
+        throw new ValidationError('Turnstile validation failed', errorCodes ? { errorCodes } : undefined);
     }
 
     const hostname = parseOutcome.data.hostname;

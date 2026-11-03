@@ -18,3 +18,34 @@ export const ICON_PATHS: Set<string> = new Set([
     '/apple-touch-icon.png',
     '/apple-touch-icon-precomposed.png',
 ]);
+
+export const WEB_MANIFEST: string = JSON.stringify({
+    id: '/?v=2',
+    name: 'Adamic AI Documentation Search',
+    short_name: 'Adamic Search',
+    description: 'AI-powered search for MCP servers and Cloudflare management tools documentation',
+    icons: [
+        {
+            src: 'https://adamic.tech/assets/images/favicons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any maskable',
+        },
+        {
+            src: 'https://adamic.tech/assets/images/favicons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+        },
+    ],
+    theme_color: '#1d4ed8',
+    background_color: '#111827',
+    display: 'standalone',
+    start_url: '/',
+    scope: '/',
+    lang: 'en',
+    categories: ['developer', 'documentation', 'tools'],
+    orientation: 'any',
+    dir: 'ltr',
+    prefer_related_applications: false,
+});
